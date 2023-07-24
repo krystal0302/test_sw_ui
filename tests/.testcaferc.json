@@ -1,0 +1,17 @@
+{
+	"browsers": [
+		{
+			"path": "chrome",
+			"command": "--window-size=1920,1080"
+		}
+	],
+	"src": [
+		"e2e/00_auto_deploy_role.test.js"
+	],
+	"skipJsErrors": true,
+	"baseUrl": "http://localhost:3000",
+	"speed": 1,
+	"concurrency": 1,
+	"selectorTimeout": 3000,
+	"assertionTimeout": 3000
+}

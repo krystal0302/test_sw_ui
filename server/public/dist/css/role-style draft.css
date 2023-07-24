@@ -1,0 +1,45 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.panel {
+    width: 100%;
+    height: 2em !important;
+    /* background-color: rgb(138, 132 ,113); */
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    overflow-x: auto;
+}
+
+#typeSelect {
+    background-color: rgb(238, 232 ,213);
+}
+
+.button, .input {
+    font-size: 1em;
+    font-family: Consolas, monospace;
+    /* background-color: rgb(238, 232 ,213); */
+    color: #666;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.button {
+    cursor: pointer;
+}
+
+.editor {
+    width: 100%;
+    height: 100%;
+}
+
+.CodeMirror {
+    font-size: 16px;
+    font-family: Consolas, monospace;
+    width: 100%;
+    height: 95% !important;
+}

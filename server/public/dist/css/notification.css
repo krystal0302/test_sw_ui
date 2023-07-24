@@ -1,0 +1,340 @@
+/* Notification */
+
+.notification-container {
+  position: fixed;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1em;
+  box-sizing: border-box;
+  z-index: 9999;
+  overflow: hidden;
+  transition: all .5s linear;
+}
+
+.notification-container.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notification-container.top-left {
+  left: 10px;
+  top: 10px;
+}
+
+.notification-container.bottom-left {
+  left: 10px;
+  bottom: 10px;
+}
+
+.notification-container.top-right {
+  right: 10px;
+  top: 10px;
+}
+
+.notification-container.bottom-right {
+  right: 10px;
+  bottom: 10px;
+}
+
+.notification {
+  position: relative;
+  overflow: hidden;
+  max-height: 500px;
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  margin: 0 0 6px;
+  opacity: 0.9;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 rgba(36, 30, 30, 0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.notification:hover {
+  box-shadow: 0 0 30px #000000;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.notification-default {
+  background: rgba(255, 255, 255, 0.99);
+  color: rgba(0, 0, 0, 0.8);
+  border-left: 4px solid rgb(194, 191, 191);
+}
+
+.notification-error {
+  background: #bd362f;
+  color: #fff;
+  border-left: 4px solid rgb(241, 234, 234);
+}
+
+.notification-success {
+  background: #51a351;
+  color: #fff;
+  border-left: 4px solid rgb(241, 234, 234);
+}
+
+.notification-warning {
+  background: #f87400;
+  color: #fff;
+  border-left: 4px solid rgb(241, 234, 234);
+}
+
+.notification-info {
+  background: #2f96b4;
+  color: #fff;
+  border-left: 4px solid rgb(241, 234, 234);
+}
+
+.notification-close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: block;
+  height: 24px;
+  width: 24px;
+  transition: color .1s;
+  cursor: pointer;
+}
+
+.notification-close svg {
+  display: block;
+}
+
+.notification-close .close-x {
+  stroke: #fff;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-width: 5;
+}
+
+.notification-default .close-x {
+  stroke: #bd362f;
+}
+
+.notification-body {
+  align-items: center;
+  display: flex;
+  min-height: 56px;
+  width: 290px;
+  padding: 10px;
+  letter-spacing: 1px;
+  word-break: break-word !important;
+}
+
+.notification-icon {
+  font-size: 36px;
+  line-height: 36px;
+  width: 36px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.notification:not(.notification-default) .notification-icon {
+  color: #fff;
+}
+
+.notification-default .notification-icon {
+  color: #ffc107;
+}
+
+.notification-default .notification-icon::before {
+  content: "\1F514";
+}
+
+.notification-warning .notification-icon::before {
+  content: "\0021";
+}
+
+.notification-error .notification-icon::before {
+  content: "\26A0";
+}
+
+.notification-success .notification-icon::before {
+  content: "\2714";
+}
+
+.notification-info .notification-icon::before {
+  content: "\24D8";
+}
+
+.notification-body>div {
+  padding: 4px;
+  height: 100%;
+}
+
+.notification .notification-title {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 4px;
+  margin-top: -2px;
+}
+
+.notification-default .notification-title {
+  color: red;
+}
+
+.notification:not(.notification-default) .notification-desc {
+  padding: 4px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.notification-default .notification-desc {
+  padding: 4px;
+  color: rgb(92, 91, 91);
+}
+
+.bottom-right .notification.animation-slide-in,
+.top-right .notification.animation-slide-in {
+  animation: right-slide-in .5s forwards, bounceIn .7s forwards;
+  transform: translateX(100%);
+}
+
+.bottom-right .notification.animation-slide-out,
+.top-right .notification.animation-slide-out {
+  animation: right-slide-out .5s forwards;
+}
+
+.top-left .notification.animation-slide-in,
+.bottom-left .notification.animation-slide-in {
+  animation: left-slide-in .5s forwards, bounceIn .7s forwards;
+  transform: translateX(-100%);
+}
+
+.top-left .notification.animation-slide-out,
+.bottom-left .notification.animation-slide-out {
+  animation: left-slide-out .5s forwards;
+}
+
+.notification.animation-fade-in {
+  animation: fade-in .5s forwards, bounceIn .7s forwards;
+  opacity: 0;
+}
+
+.notification.animation-fade-out {
+  animation: fade-out .5s forwards;
+}
+
+.notification-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.notification-default .notification-buttons {
+  border-top: 1px solid rgb(230, 226, 226);
+}
+
+.notification-button {
+  background: rgba(255, 255, 255, 0.99);
+  align-items: center;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  min-height: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  cursor: pointer;
+}
+
+.notification-button:hover {
+  background: #fff;
+  /*color: #000;*/
+  text-decoration: none;
+}
+
+.notification-cancel:before {
+  content: "\2717";
+}
+
+.notification-cancel {
+  color: darkred;
+  border-right: 1px solid rgb(230, 226, 226);
+}
+
+.notification-cancel:hover {
+  color: red;
+}
+
+.notification-action:before {
+  content: "\2714";
+  color: green;
+}
+
+.notification-action:hover {
+  color: #1983da;
+}
+
+@keyframes left-slide-in {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes left-slide-out {
+  to {
+    transform: translateX(-100%);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes right-slide-in {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-slide-out {
+  to {
+    transform: translateX(100%);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes bounceIn {
+  50% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  75% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+}

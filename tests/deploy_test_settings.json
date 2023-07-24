@@ -1,0 +1,121 @@
+{
+    "user_account":"admin",
+    "user_password":"admin",
+    "app_data_path": "/home/user/farobot_dev_env/data/far_app_data",
+    "settings2": {
+        "data": {
+            "swarm_core": [
+                {
+                    "low_battery_threshold": "50",
+                    "full_battery_threshold": "90",
+                    "charging_due_time": "4800",
+                    "battery_log_time": "80",
+                    "battery_log_threshold": "48080"
+                }
+            ]
+        }        
+    },
+    "role": { 
+        "data": [
+            {
+                "text_val": "role1",
+                "combination": [
+                    "move"
+                ]
+            },
+            {
+                "text_val": "role2",
+                "combination": [
+                    "move",
+                    "docking@docking"
+                ]
+            },
+            {
+                "text_val": "role3",
+                "combination": [
+                    "move",
+                    "docking@undocking"
+                ]
+            },
+            {
+                "text_val": "role4",
+                "combination": [
+                    "artifact@lift_module@lift"
+                ]
+            },
+            {
+                "text_val": "role5",
+                "combination": [
+                    "rotate"
+                ]
+            },
+            {
+                "text_val": "role6",
+                "combination": [
+                    "wait"
+                ]
+            },
+            {
+                "text_val": "role7",
+                "combination": [
+                    "move",
+                    "move",
+                    "artifact@lift_module@lift",
+                    "move",
+                    "artifact@lift_module@lift"
+                ]
+            },
+            {
+                "text_val": "role8",
+                "combination": [
+                    "move",
+                    "move",
+                    "rotate",
+                    "artifact@lift_module@lift",
+                    "move",
+                    "artifact@lift_module@lift"
+                ]
+            },
+            {
+                "text_val": "role9",
+                "combination": [
+                    "move",
+                    "docking@docking",
+                    "wait",
+                    "docking@undocking"
+                ]
+            },
+            {
+                "text_val": "role10",
+                "others_menu": [
+                    "move",
+                    "docking@docking",
+                    "artifact@lift_module@lift",
+                    "docking@undocking"
+                ]
+            }
+        ]        
+    },
+    "map": {
+        "data": {
+            "vertex": "random@1",
+            "cell": "random@10",
+            "function_type": "random@1"
+        }
+    },
+    "operation": {
+        "data": "random@1" 
+    },
+    "fleet": {
+        "data": "random@1"
+    },
+    "special_character":[
+        "&test",
+        "Te [space] sT",
+        "測試test",
+        "Ｔｅｓｔ１２３"
+    ]
+
+ }
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>far_swarm_ui</name>
+  <release>V1.1</release>
+  <version>1.1.266</version>
+  <description>FAR Swarm Core UI</description>
+  <maintainer email="eduardo.munera@farobottech.com">Eduardo Munera</maintainer>
+  <license>TODO: License declaration</license>
+</package>

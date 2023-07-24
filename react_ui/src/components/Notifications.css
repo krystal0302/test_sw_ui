@@ -1,0 +1,20 @@
+.Toastify__toast-container {
+	width: 440px;!important
+}
+
+.Toastify__toast {
+	min-height: 128px;!important
+}
+
+.Toastify__toast--info {
+	font-size: 1.35rem; !important;
+}
+.Toastify__toast--success {
+	font-size: 1.35rem; !important;
+}
+.Toastify__toast--warning {
+	font-size: 1.35rem; !important;
+}
+.Toastify__toast--error {
+	font-size: 1.35rem; !important;
+}

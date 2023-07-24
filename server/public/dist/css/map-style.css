@@ -1,0 +1,145 @@
+@import url("../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../plugins/fontawesome-free/css/all.min.css");
+@import url("adminlte.min.css");
+@import url("notification.css");
+@import url("toastify.min.css");
+@import url("codemirror@5.52.0/codemirror.css");
+@import url("codemirror@5.52.0/solarized.css");
+@import url("codemirror@5.52.0/monokai.css");
+@import url("codemirror@5.52.0/material.css");
+@import url("../../plugins/select2/css/select2.min.css");
+@import url("general-style.css");
+
+
+table.legend_table {
+  font-size: 11px;
+  border-width: 1px;
+  border-color: #d3d3d3;
+  border-style: solid;
+}
+table.legend_table,
+td {
+  border-width: 1px;
+  border-color: #d3d3d3;
+  border-style: solid;
+  padding: 2px;
+}
+div.table_content {
+  width: 80px;
+  text-align: center;
+}
+div.table_description {
+  width: 100px;
+}
+
+#operation {
+  font-size: 28px;
+}
+
+.config-table {
+  display: none;
+  position: absolute;
+  top: 350px;
+  left: 470px;
+  z-index: 299;
+  background-color: #f9f9f9;
+  color: black;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5394ed;
+  padding: 10px;
+  text-align: center;
+}
+
+#node-popUp {
+  width: 300px;
+  height: 230px;
+}
+
+#edge-popUp {
+  width: 300px;
+  height: 120px;
+}
+
+#cell-popUp {
+  width: 360px;  
+  height: 720px; 
+}
+
+.rt-config#cell-popUp {
+  height: 200px; 
+}
+
+#reflector-popUp {
+  width: 360px;  
+  height: 250px; 
+}
+
+#zone-node-popUp {
+  width: 300px;
+  height: 170px;
+}
+
+#cont {
+  position: relative;
+  /* width: 800px; */
+  width: 100%;
+  padding: 2px !important; // reduce the padding space between container and canvas
+}
+
+#fabric_canvas{
+  background-color: #cdcdcd;
+}
+
+#reflector-canvas-container {
+  width: 100%;
+  padding: 2px !important; // reduce the padding space between container and canvas
+}
+
+#reflector_canvas {
+  border: 2px solid #5394ed;
+}
+
+#cc-canvas-container {
+  width: 100%;
+  padding: 2px !important; // reduce the padding space between container and canvas
+}
+
+#cc_canvas {
+  border: 2px solid #5394ed;
+}
+
+#edit-tools-list {
+  top: 85px;
+  right: 0;
+  width: 25%;
+  min-width: 340px;
+  position: fixed;
+  z-index: 2;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+#edit-tools-func ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+#edit-tools-func button.btn.btn-default {
+  margin-bottom: .5rem !important;
+  width: 100%;
+}
+
+#edit-tools-footer button {
+  width: 80px;
+}
+
+/* Input field */
+.select2-results__option {
+  background-color: white;
+  color: black; 
+}
+
+.select2-selection__choice {
+  color: black !important;
+}

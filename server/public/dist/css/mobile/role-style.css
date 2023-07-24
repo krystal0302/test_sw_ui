@@ -1,0 +1,219 @@
+@import url("../../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../../plugins/fontawesome-free/css/all.min.css");
+@import url("../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
+@import url("../adminlte.min.css");
+@import url("../notification.css");
+@import url("../toastify.min.css");
+@import url("../jquery.nestable.css");
+@import url("general-style.css");
+
+.content_wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.line-vertical {
+  width: 2px;
+  height: 45px;
+  float: left;
+  background-color:lightgray;
+  margin: 5px;
+}
+
+/**
+* Nestable Draggable Handles
+*/
+.dd3-content {
+  display: block;
+  height: 45px;
+  padding: 5px 10px 5px 54px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 32px;
+  border: 1px solid #343a40;
+  background: #343a40;
+  background: -webkit-linear-gradient(top, #343a40 0%, #4b545c 100%);
+  background: -moz-linear-gradient(top, #343a40 0%, #4b545c 100%);
+  background: linear-gradient(top, #343a40 0%, #4b545c 100%);
+  -webkit-border-radius: 3px;
+  border-radius: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#far-network {
+ padding: 0 5px 5px 0;
+}
+
+.dd3-content:hover {
+  color: #fff;
+  background: #343a40;
+}
+
+.dd-dragel > .dd3-item > .dd3-content {
+  margin: 0;
+}
+
+.dd3-item {
+  margin: 10px 0;
+}
+.dd3-item > button {
+  margin-left: 30px;
+}
+
+.dd3-handle {
+  position: absolute;
+  margin: 0;
+  left: 0;
+  top: 0;
+  cursor: move;
+  width: 45px;
+  height: 45px;
+  text-indent: 70px;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 1px solid #aaa;
+  background: #343a40;
+  background: -webkit-linear-gradient(top, #343a40 0%, #bbb 100%);
+  background: -moz-linear-gradient(top, #343a40 0%, #bbb 100%);
+  background: linear-gradient(top, #343a40 0%, #bbb 100%);
+  border-radius: 0;
+}
+
+.dd3-handle:before {
+  content: "≡";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 100%;
+  text-align: center;
+  text-indent: 0;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.dd3-handle:hover {
+  background: #ddd;
+}
+
+.item-edit {
+  font-size: 13px;
+  float: right;
+  color: rgb(49, 35, 248);
+  cursor: pointer;
+}
+
+.item-edit2 {
+  float: right;
+  cursor: pointer;
+  padding: 0 0.3rem;
+}
+
+.item-trash {
+  float: right;
+  cursor: pointer;
+  padding: 0 0.3rem;
+}
+
+.item-edit:hover {
+  text-decoration: underline;
+}
+
+.item-settings.d-none {
+  display: none !important;
+}
+.item-settings {
+  display: block;
+  padding: 10px;
+  position: relative;
+  z-index: 10;
+  border: 1px solid #343a40;
+  background: #4b545c;
+  border-top: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.item-settings p {
+  margin-top: 0;
+}
+
+.item-settings p label {
+  font-size: 13px;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.item-settings p label input {
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  color: #32373c;
+  outline: 0;
+  border-spacing: 0;
+  width: -webkit-fill-available;
+  clear: both;
+  margin: 0;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 0;
+}
+
+.item-settings .item-delete {
+  color: #a00;
+}
+
+/**
+* Nestable Extras
+*/
+
+.nestable-lists {
+  /* display: block; */
+  /* clear: both; */
+  width: 100%;
+  border: 0;
+}
+
+.dd-hover > .dd-handle {
+  background: #2ea8e5 !important;
+}
+
+.dd {
+  max-width: none !important; /*unset the width written in the library*/
+}
+
+.dd-hover > .dd-handle {
+  background: #2ea8e5 !important;
+}
+
+.toolbar-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.editing-rolename-input {
+  padding: 0.375rem 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0 transparent;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.edit_role_name_btn {
+  font-size: 1.2rem;
+  /* padding: 5px 6px; */
+  background-color: #393f52;
+  border: none;
+  /* margin: 0; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* -ms-transform: translateY(-50%); */
+  /* transform: translateY(-50%); */
+  /* margin-left: 2px; */
+  outline: none !important;  
+}

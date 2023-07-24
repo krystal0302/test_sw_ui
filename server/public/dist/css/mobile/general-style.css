@@ -1,0 +1,698 @@
+@import url("../flag.css");
+
+@layer device {
+  @layer desktop {
+    .farobot-logo-img {
+      width: 665px;
+      height: auto;
+    }
+
+    .farobot-login-card {
+      width: 50%;
+    }
+
+    .farobot-md-sidemenu {
+      filter: drop-shadow(-10px 10px 4px rgba(39, 39, 39, 0.9));
+      max-width: 35%;
+    }
+
+    @media only screen and (min-width: 1025px) {
+      .farobot-login-card {
+        width: 25%;
+      }
+    }
+  }
+
+  @layer tablet {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      .farobot-md-sidemenu {
+        max-width: 45%;
+      }
+    }
+
+    @media only screen and (min-width: 505px) and (max-width: 767px) {
+      .farobot-logo-img {
+        width: 70%;
+      }
+
+      .farobot-login-card {
+        width: 40%;
+      }
+
+      .farobot-md-sidemenu {
+        max-width: 60%;
+      }
+    }
+  }
+
+  @layer phone {
+    @media only screen and (max-width: 504px) {
+      .farobot-logo-img {
+        width: 70%;
+      }
+
+      .farobot-login-card {
+        width: 80%;
+      }
+
+      .farobot-md-sidemenu {
+        max-width: 80%;
+      }
+    }
+  }
+}
+
+/* Dark theme */
+.farobot-dark-mode .modal-content,
+.farobot-dark-mode .info-box {
+  background-color: #343a40 !important;
+  color: white;
+}
+
+.farobot-dark-mode .modal-content .products-list>.item {
+  background: #343a40;
+}
+
+.farobot-dark-mode .farobot-card-deck {
+  background-color: #343642 !important;
+  filter: drop-shadow(2px 2px 1px #1e2128);
+  /* border: 2px solid gray !important; */
+}
+
+.farobot-dark-mode .sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  z-index: 1;
+  background-color: #343a40;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
+.farobot-dark-mode button.close {
+  color: white !important;
+  text-shadow: 0 2px 0 black !important;
+}
+
+.farobot-dark-mode #overlay-div {
+  background-color: rgba(58, 66, 74, 0.5);
+}
+
+.farobot-dark-mode .modal-body table td, .farobot-dark-mode .modal-body table th,
+.card-dark table td, .card-dark table th {
+  background-color: #393f52 !important;
+  border-color: #4b545c !important;
+  color: white;
+}
+
+.card-dark {
+  background-color: rgba(58, 66, 74, 0.5) !important;
+  /* #3a424a */
+  /* filter: drop-shadow(0 0 0.75rem rgba(61, 66, 95, 0.5)); */
+  color: white;
+}
+
+.card-dark .card-header {
+  background-color: #393f52 !important;
+  color: white !important;
+}
+
+.card-dark .table-bordered th {
+  border: 1px solid #dee2e6 !important;
+  /* border-bottom: 2px solid #dee2e6 !important; */
+}
+
+.card-dark .table-bordered thead th {
+  border-bottom: 2px solid #dee2e6 !important;
+}
+
+.card-dark .agent-settings>i,
+.card-dark .wrapper-deploy {
+  color: white;
+}
+
+.card-dark .farobot-view-bg,
+.control-sidebar-dark .farobot-view-bg {
+  background-color: #393f52 !important;
+}
+
+.card-dark div#options-container {
+  background-color: #343642;
+  filter: drop-shadow(2px 2px 1px #272727);
+}
+
+/* Light theme */
+.farobot-light-mode .modal-content,
+.farobot-light-mode .info-box {
+  background-color: lightgray !important;
+  color: black;
+}
+
+.farobot-light-mode .modal-content .products-list>.item {
+  background: lightgray;
+}
+
+.farobot-light-mode .farobot-card-deck {
+  background-color: rgba(52, 58, 64, 0.5) !important;
+  filter: drop-shadow(2px 2px 1px #1e2128);
+}
+
+.farobot-light-mode .sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
+.farobot-light-mode button.close {
+  color: black !important;
+  text-shadow: 0 2px 0 gray !important;
+}
+
+.farobot-light-mode #overlay-div {
+  background-color: rgba(191, 191, 191, 0.5);
+}
+
+.farobot-light-mode table td, .farobot-light-mode table th,
+.card-light table td, .card-light table th {
+  background-color: lightgray !important;
+  border-color: white !important;
+  color: rgba(58, 66, 74, 0.8)
+}
+
+.card-light {
+  background-color: lightgray !important;
+  color: rgba(58, 66, 74, 0.8) !important;
+  /* #3a424a */
+}
+
+.card-light .card-header, .card-light .modal-footer {
+  background-color: rgba(52, 58, 64, 0.5) !important;
+  color: white !important;
+}
+
+.card-light .agent-settings>i,
+.card-light .item-settings p label {
+  color: rgba(58, 66, 74, 0.8);
+}
+
+.card-light .farobot-view-bg,
+.card-light ul.list li,
+.control-sidebar-light .farobot-view-bg {
+  background-color: lightgray !important;
+}
+
+.card-light .dd3-content, .card-light .dd3-handle {
+  border: 1px solid gray;
+  background: lightgray;
+  background: -webkit-linear-gradient(top, white 0%, gray 100%);
+  background: -moz-linear-gradient(top, white 0%, lightgray 100%);
+  background: linear-gradient(top, white 0%, lightgray 100%);
+  color: rgba(58, 66, 74, 0.8);
+}
+
+.card-light .dd3-content:hover {
+  color: #343a40;
+  background: lightgray;
+}
+
+.card-light .item-settings {
+  border: 1px solid gray;
+  background: lightgray;
+}
+
+.card-light .line-vertical {
+  background-color: rgba(58, 66, 74, 0.5);
+}
+
+.card-light .drawflow, .card-light #drawflow {
+  background-color: lightgray;
+}
+
+.card-light #myTab .nav-item .nav-link {
+  background-color: gray;
+}
+
+.card-light .nav-pills .nav-link, .card-light .nav-tabs .nav-link {
+  color: lightgray;
+}
+
+.card-light .nav-tabs .nav-link.active {
+  color: gray;
+}
+
+.card-light div#options-container {
+  background-color: gray;
+  filter: drop-shadow(2px 2px 1px #272727);
+}
+
+/* General */
+.card-deck .card {
+  padding: 0px;
+}
+
+.card .modal-footer {
+  border-color: rgba(0, 0, 0, .125);
+}
+
+.main-header {
+  border-bottom: 1px solid #4b545c !important;
+}
+
+.close:focus {
+  outline: 0;
+}
+
+.select-bold-text {
+  font-weight: bold !important;
+}
+
+.select-bold-text option {
+  font-weight: bold;
+}
+
+.space-right {
+  margin-right: 5px;
+}
+
+div.vis-network {
+  background-color: #cdcdcd;
+}
+
+/* SweetAlert */
+
+/* .swal2-success-circular-line-left, .swal2-success-circular-line-right, .swal2-success-fix {
+  background-color: rgba(255, 255, 255, 0) !important;
+} */
+
+.swal2-title {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* Sidebar */
+.sidebar nav {
+  padding-bottom: 50px;
+}
+
+.nav-sidebar .fleet-group i {
+  margin: 0 0.2rem 0 0.5rem;
+}
+
+
+/* Grid */
+.jsgrid-header-row, .jsgrid-row, .jsgrid-alt-row {
+  color: black !important;
+}
+
+/* .jsgrid-grid-header, */
+.jsgrid-grid-body {
+  overflow: auto !important;
+}
+
+.jsgrid-grid-header {
+  overflow: hidden !important;
+}
+
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* Pagination */
+.page-link {
+  background-color: rgba(61, 66, 95, 0.5);
+  border-color: #343a40;
+  color: white;
+}
+
+.page-item.disabled .page-link {
+  background-color: rgba(61, 66, 95, 0.5);
+  border-color: #343a40;
+}
+
+.page-item.active .page-link {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #4b545c;
+  background: #343642;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 5px #343642;
+  background: #4b545c;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4b545c;
+}
+
+/* Buttons */
+::-webkit-scrollbar-button {
+  background-color: white;
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 16px;
+  width: 1em;
+}
+
+/* Up */
+::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDI1NSAyNTUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI1NSAyNTU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iYXJyb3ctZHJvcC11cCI+CgkJPHBvbHlnb24gcG9pbnRzPSIwLDE5MS4yNSAxMjcuNSw2My43NSAyNTUsMTkxLjI1ICAgIiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+}
+
+/* Down */
+::-webkit-scrollbar-button:vertical:increment {
+  background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQwNC4zMDggNDA0LjMwOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDA0LjMwOCA0MDQuMzA5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTAsMTAxLjA4aDQwNC4zMDhMMjAyLjE1MSwzMDMuMjI5TDAsMTAxLjA4eiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+}
+
+/* Left */
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url(../../../../public/dist/img/left-arrow.png);
+}
+
+/* Right */
+::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url(../../../../public/dist/img/right-arrow.png);
+}
+
+
+/* Custom Styles */
+.hide-border {
+  border-color: transparent !important;
+}
+
+.farobot-bg-dark {
+  background-color: #343a40 !important;
+  background-image: linear-gradient(to bottom right, #343a40, #3d425f) !important;
+}
+
+.farobot-dark-mode {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+.farobot-light-mode {
+  background-color: white !important;
+  color: rgba(0, 0, 0, .5) !important;
+  border-color: #dee2e6 !important;
+}
+
+.farobot-view-header-bg-dark {
+  background-color: #3d425f !important;
+}
+
+.farobot-card-deck-darkshadow {
+  background-color: rgba(58, 66, 74, 0.5) !important;
+  filter: drop-shadow(2px 2px 1px #272727);
+  color: white;
+  border: 1px solid #4b545c;
+}
+
+.farobot-card-deck-darkshadow .task-div,
+.farobot-card-deck-darkshadow .flow-div {
+  background-color: #393f52;
+}
+
+.farobot-card-deck-darkshadow .task-div i,
+.farobot-card-deck-darkshadow .flow-div i {
+  color: white;
+}
+
+.farobot-card-deck-lightshadow {
+  background-color: rgba(58, 66, 74, 0.5) !important;
+  filter: drop-shadow(2px 2px 1px #272727);
+  color: white;
+  border: 1px solid #4b545c;
+}
+
+.farobot-card-deck-lightshadow .task-div,
+.farobot-card-deck-lightshadow .flow-div {
+  background-color: white;
+}
+
+.farobot-card-deck-lightshadow .task-div i,
+.farobot-card-deck-lightshadow .flow-div i {
+  color: black;
+}
+
+.farobot-map-tooltip {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.farobot-lg-sidemenu {
+  filter: drop-shadow(-10px 10px 4px rgba(39, 39, 39, 0.9));
+  max-width: 90%;
+}
+
+.farobot-lg-sidemenu-card-header {
+  background-color: rgba(52, 58, 64, 0.5) !important;
+}
+
+.farobot-role-bg-dark, .farobot-lg-sidemenu-card-content {
+  background-color: #343a40 !important;
+}
+
+.farobot-sm-btn {
+  font-weight: bold !important;
+  width: 100px;
+  margin: 5px;
+}
+
+.farobot-md-btn {
+  font-weight: bold !important;
+  width: 150px;
+  margin: 5px;
+}
+
+.farobot-lg-btn {
+  font-weight: bold !important;
+  width: 200px;
+  margin: 5px;
+}
+
+.farobot-btn-group button {
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  color: #343a40;
+  border-color: #f8f9fa;
+  padding: 8px;
+  margin: 0.1rem;
+}
+
+.farobot-btn-focus {
+  outline: 10px auto -webkit-focus-ring-color;
+}
+
+.farobot-btn-group {
+  margin: 0 1rem 0 1rem;
+}
+
+/* .farobot-bg-warning {
+  border: 2px solid #8B8000 !important;
+  background-color: #ffc107 !important;
+  background-image: linear-gradient(-90deg, #ffc107, #8B8000) !important;
+  opacity: 0.8;
+} */
+
+.farobot-info-bg-queued {
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+  /* border: 1px solid rgba(0, 0, 0, 0.5); */
+}
+
+.farobot-info-bg-active {
+  border: 1px solid #8b8000;
+  animation: activeShadowThrob 0.9s infinite;
+  animation-direction: alternate;
+  -webkit-animation: activeShadowThrob 0.9s ease-out infinite;
+  -webkit-animation-direction: alternate;
+}
+
+.farobot-info-bg-success {
+  border: 1px solid rgba(40, 167, 6, 0.5);
+  filter: drop-shadow(0 0 0.75rem rgba(40, 167, 69, 0.5));
+}
+
+.farobot-info-bg-error {
+  border: 1px solid rgba(190, 65, 12, 0.5);
+  animation: errorShadowThrob 0.9s infinite;
+  animation-direction: alternate;
+  -webkit-animation: errorShadowThrob 0.9s ease-out infinite;
+  -webkit-animation-direction: alternate;
+}
+
+@keyframes activeShadowThrob {
+  from {
+    box-shadow: 0 0 5px 5px rgba(139, 128, 0, 0.5)
+  }
+
+  to {
+    box-shadow: 0 0 5px 5px transparent;
+  }
+}
+
+@-webkit-keyframes activeShadowThrob {
+  from {
+    box-shadow: 0 0 5px 5px #8b8000;
+  }
+
+  to {
+    box-shadow: 0 0 5px 5px transparent;
+  }
+}
+
+@keyframes errorShadowThrob {
+  from {
+    box-shadow: 0 0 5px 5px rgba(190, 65, 12, 0.3);
+  }
+
+  to {
+    box-shadow: 0 0 5px 5px transparent
+  }
+}
+
+@-webkit-keyframes errorShadowThrob {
+  from {
+    box-shadow: 0 0 5px 5px rgba(190, 65, 12, 0.3);
+  }
+
+  to {
+    box-shadow: 0 0 5px 5px transparent
+  }
+}
+
+.farobot-loader {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* map editor canvas */
+#cont>.canvas-container>canvas {
+  position: absolute !important;
+  /* left: calc(50% - 360px) !important; */
+  top: 0 !important;
+  /* width: 720px !important; */
+  /* height: 720px !important; */
+}
+
+.dark-cloud-sync {
+  background-image: url(data:image/png;base64,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);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.light-cloud-sync {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAADj0lEQVRoge3ZXYhVVRTA8d+MMzWNEpVlNlESGIzNQI1WKolQUg9Wj4E9REWP9dJDVi9RWBBUKGkQFIhQ9BC99EUfD1GQBEFhZmEfFFNYBpbaWFnq6WHt07kz3jv349yZSTh/OA/3nL3Xx9lrr7X2uVRUVFRUVHROzyzpmYdRXIZzcAz78AM+w4lZsqNjrsTzOIiswbUfz+GqMopmakXOx2ZsqNHxNXYJw/swhGFcmp5neBn34/sZsqst1oqwyfArNmHJNOOX4TFMpDkHsG6GbWzKOvwhDHoJi9qYu1isSIZ/cGvXrWuRYfyeDHmwQxk9eCjJ+BOrumPayZyB5bgWS2vu94n4z/BoF/Q8mWTtw5ldkPcfl2AHjpiccb7ALbgn/f4AvV3QNw/vJ5mbuiAP3KBIn8fFm39PZJas5v5xUSe6xQpRXyZwbllhlyuyyQ5cOOX5GkVIvVpWWR1eT7LvKivowyToiWnGLBArdFNZZXW4Uxde0lgS8i36m4ydLzZ8LSN4GnvEqk7gc1EoR6aMfbiB3CFF9e+Ye3WWhQawVeyZRm3JMeFkv3AiayCrB0fFXjmtTTsQhe3TpOCONuYN4N00769k7NUYFKu2EtuScRm+UTjXiPH0/KJ2HBhSbLBMhMONbczfpsj/Y9OMW4HDJq9SI/an55txM05vZsQyhfff4XbxJltlVITAUVzRZGweTs0c6RdhWDvuFzygwb49Lxmf4RWRidolX42tTcbVc6KRI31i9dbgNtG//Z3Gfyy67Em8mB6+5eTs0yp7kozVHc5vlaX4KOn6Uk0LMyJC4hAumGEjusWAaIcyvJDffEqxmU4lFouEcULak58IR9bOgTGrk+5dHc5/PM3fAr+lH2eXNKreBm5UsXOeqTWkA1am+buJwpVpIT83oV0nlotUXaZrPivpOkhROy7uUFhOrRPj6qTGGsbwk3KrQXQLeeH2TvqxoYRACifys8sBPCLe/Px0rRL1Jo+Ct3XYQyVGk5yvKE53b5QQSBFOi5KsRg1j3jRuUT6cNyZ522Gh4i1eV0Lo1D1xDZ4Vx+G8jd8tHBguoSdnED8Ku9fnN3PPfhbn81OB7cLmnWo+NPbiNYUzc/6BbBoGFU4cUifjLVA4k+FN8ZFsiXIbshsMio29URFOh3F9owm9uE9RJP+v104t1p6FuFt0w+OKE91cXUewV4TUerP3d0hFRUVFRUXFnPAvbV9gyQzkLKIAAAAASUVORK5CYII=);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* input placeholder font-size style */
+input::placeholder {
+  font-size: 0.8rem;
+}

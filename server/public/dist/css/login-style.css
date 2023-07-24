@@ -1,0 +1,17 @@
+@import url("../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../plugins/fontawesome-free/css/all.min.css");
+@import url("adminlte.min.css");
+@import url("general-style.css");
+
+ol {
+    counter-reset: item;
+}
+
+ol li {
+    display: block;
+}
+
+ol li:before {
+    content: counters(item, ". ") ". ";
+    counter-increment: item;
+}

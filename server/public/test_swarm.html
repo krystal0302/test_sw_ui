@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Dashboard</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Notification -->
+  <link rel="stylesheet" href="dist/css/notification.css" >
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- toastify -->
+  <link rel="stylesheet" type="text/css" href="dist/css/toastify.min.css">
+
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="dist/css/general-style.css">
+  <link rel="stylesheet" href="dist/css/test_swarm-style.css">
+
+  <script type="text/javascript" src="dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+  
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+  
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|</li>
+        <li class="nav-item align-self-center">
+          <button type="button" class="btn btn-link" id="user-logout-btn" onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class="fas fa-th-large"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+  
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <!-- Main content -->
+  
+      <!-- Content Header (Page header) -->
+      <div class="" style="padding: 1rem">
+      </div>
+      <!-- /.content-header -->
+  
+      <div class="content-header">
+        <div class="col-sm-12">
+          <h4 class="m-0">Set Parameter Test</h4>
+        </div><!-- /.col -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Info boxes -->
+      <div class="container-fluid">
+        <div class="input-group" style="padding-bottom: 1em">
+          <label style="padding-top:.4rem; font-size:large; color:wheat">Choose agent:&nbsp;&nbsp;</label>
+          <select class="form-control" id="sel-gmapping-agent">
+            <option value="fb_0">fb_0</option>
+            <option value="fb_1">fb_1</option>
+          </select>
+        </div>
+
+        <button type="button" id="toggle-gmapping" class="btn btn-link">Set Gmapping</button>
+      </div>
+  
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="col-sm-12">
+          <!-- <h4 class="m-0 text-white">Top 10 Task Schedule Overview</h4> -->
+        </div>
+      </div>
+      <!-- /.content-header(task schedule overview) -->
+      
+      </div>
+      <!-- /.task_row -->
+      <div style="height: 0px; overflow: hidden">
+        <div id="far-network" class="card-body text-center" style="visibility: hidden"></div>
+        <div id="hidden-map" class="card-body text-center"></div>
+        <div id="overview-map" style="display: none;"></div>
+      </div>
+      <!-- /.shadow canvas (overview map row) -->
+    </div>
+    <!-- /.Content Wrapper (main content) -->
+  
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark farobot-sidemenu">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+    
+  </div>
+  <!-- ./wrapper -->
+
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- ChartJS -->
+  <script src="plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="plugins/sparklines/sparkline.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.js"></script>
+  <!-- Notification -->
+  <script src="dist/js/pages/lib/notification.js"></script>
+
+   <!-- vis.js Network 8.5.4 -->
+   <script src="dist/js/pages/lib/vis-network.min.js"></script>
+
+  <!-- FARobot Dashboard Page -->
+  <script src="dist/js/pages/far_utilities.js"></script>
+  <script src="dist/js/pages/far_requests.js"></script>
+  <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+  <script src="dist/js/pages/far_comm.js"></script>
+  <script src="dist/js/pages/far_comm_data.js"></script>
+  <script src="dist/js/pages/far_map_util.js"></script>
+  <script src="dist/js/pages/far_map_test.js"></script>
+  <script src="dist/js/pages/far_dashboard.js"></script>
+  <script src="dist/js/pages/test_swarm.js"></script>
+</body>
+
+</html>

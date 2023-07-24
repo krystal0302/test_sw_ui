@@ -1,0 +1,48 @@
+i.country_flags{
+	background-size:32px;
+	width:32px;
+	height:32px;
+	display:inline-block;
+}
+.country_flags[size='ultra_small']{
+	background-size:16px;
+	width:16px;
+	height:16px;
+}
+.country_flags[size='small']{
+	background-size:32px;
+	width:32px;
+	height:32px;
+}
+.country_flags[size='medium']{
+	background-size:64px;
+	width:64px;
+	height:64px;
+}
+.country_flags[size='large']{
+	background-size:128px;
+	width:128px;
+	height:128px;
+}
+.country_flags[size='extra_large']{
+	background-size:256px;
+	width:256px;
+	height:256px;
+}
+.country_flags[size='ultra_large']{
+	background-size:512px;
+	width:512px;
+	height:512px;
+}
+.country_flags[country='CN']{
+	background-image:url('../img/flags/CN.png');
+	background-repeat: no-repeat;
+}
+.country_flags[country='TW']{
+	background-image:url('../img/flags/TW.png');
+	background-repeat: no-repeat;
+}
+.country_flags[country='US']{
+	background-image:url('../img/flags/US.png');
+	background-repeat: no-repeat;
+}

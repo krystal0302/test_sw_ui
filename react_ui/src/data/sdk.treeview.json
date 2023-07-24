@@ -1,0 +1,66 @@
+{
+	"wrapper_config": {
+		"name": "Wrapper configuration",
+		"children": [
+			{
+				"name": "Live info",
+				"modifiable": "true",
+				"category": "config",
+				"description": "Runtime info to be published to swarm core (currently no use)"
+			},
+			{
+				"name": "Configuration",
+				"modifiable": "true",
+				"category": "config",
+				"description": "Runtime configuration which can be accessed from swarm core UI"
+			},
+			{
+				"name": "Wrapper data",
+				"modifiable": "true",
+				"category": "config",
+				"description": "Static data to record wrapper information (currently no use)"
+			},
+			{
+				"name": "Picture",
+				"modifiable": "true",
+				"category": "config",
+				"description": "Picture of wrapper to be shown on swarm core UI"
+			}
+		]
+	},
+	"service_list": {
+		"name": "Service list",
+		
+		"children": [
+			{
+				"name": "my_service_1",
+				"modifiable": "true",
+				"category": "service",
+				"description": ""
+			},
+			{
+				"name": "my_service_2",
+				"modifiable": "true",
+				"category": "service",
+				"description": ""
+			},
+			{
+				"name": "my_service_3",
+				"modifiable": "true",
+				"category": "service",
+				"description": ""
+			}
+		]
+	},
+	"operation_logic": {
+		"name": "Operation logic",
+		"children": [
+			{
+				"name": "Main",
+				"modifiable": "true",
+				"category": "code",
+				"description": "The place to hold the logic of wrapper"
+			}
+		]
+	}
+}

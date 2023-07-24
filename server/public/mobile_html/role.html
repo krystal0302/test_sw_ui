@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Role</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="public/dist/css/mobile/role-style.css">
+
+  <script type="text/javascript" src="public/dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed farobot-dark-mode">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn"
+            onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class='country_flags' country=''></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <div class="" style="padding-top: 2rem"></div>
+
+      <section class="content" style="margin-left: 1.5rem;">
+        <!-- <div class="container-fluid" id="roles-showcase" style="display:none"> -->
+        <div class="container-fluid" id="roles-showcase">
+          <!-- <div class="row align-items-center"> -->
+          <!-- <div class="col-12 conainter text-left"> -->
+          <!-- <button class="btn btn-default btn-lg" onclick="location.href='operation.html'"
+            style="margin-top:1.5rem; margin-left: -0.5rem;">Back</button> -->
+          <!-- </div> -->
+          <!-- </div> -->
+          <div class="row" style="margin-top:1rem; justify-content: center;">
+            <!-- left column -->
+            <div class="col-md-10">
+              <div class="card card-default" style="height:200%">
+                <!-- <button class="btn btn-primary btn-lg" onclick="fetchArtifacts();">Test</button> -->
+                <div class="card-header">
+                  <div class="card-title" style="font-size: 22px;"><b data-i18n="role.ttl_RolesOverview"><span>Roles
+                        Overview</span></b>&ensp;<i id="role-intro" class="fa fa-info-circle custom-tooltip" data-toggle="tooltip"></i>
+                    <!-- <button class="btn" onclick="location.href='operation.html'"><i class="fas fa-chevron-circle-left fa-2x"></i></button><b>Roles Overview</b> -->
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" id="roles-deck" style="overflow-y:scroll; height:200px;">
+                </div>
+                <!-- /.card-body -->
+
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal"
+                    data-target="#new-role-modal"><i class="fas fa-plus"></i>&ensp;<span
+                      data-i18n="role.btn_CreateNewRole">Create New Role</span></button>
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+          </div>
+          <!-- /.row -->
+        </div>
+
+        <div class="container-fluid" id="role-editor" style="display:none;">
+          <!-- <div class="container-fluid" > -->
+          <div class="row align-items-center">
+            <div class="col-12 py-1 conainter text-left" style="padding-right:2rem;">
+              <button id="back-role-btn" class="btn btn-default btn-lg" data-i18n="role.btn_BackToPrev"
+                onclick="toRolesOverview();">Back</button>
+              &ensp;
+              <!-- <button class="btn btn-default btn-lg" onclick="location.href='operation.html'">Back to Home</button> -->
+              <!-- <h3 class="text-center">Role Editor - <b><span id="editing-role-name"
+                    style="font-size:24px">character</span></b></span></h3> -->
+            </div>
+            <div class="col-12 py-1 conainter text-center" style="padding-right:2rem; font-size:24px;">
+              <span id="editing-role-name" class="editing-rolename-span"
+                style="word-break: break-all;">default_text</span>
+              <span id="hide_origin_role_name" class="" style="display: none;">default_text</span>
+              <button id='sb-role-edit' class="edit_role_name_btn">
+                <i class='fa fa-pen fa-lg' style="color: white;"></i>
+              </button>
+            </div>
+          </div>
+          <br />
+          <!-- <div class="row align-items-center justify-content-center">
+            <textarea id="nestable-output" style="width:90%; height:10%;"></textarea>
+          </div> -->
+
+          <div class="row" style="justify-content: center;">
+            <!-- left column -->
+            <div class="col-md-10" id="bt-container" style="padding: 0.1em;">
+              <div class="card card-default" style="height:600px">
+                <!-- <div class="card-header"> -->
+                <div class="toolbar-row">
+
+                  <!-- Navbar -->
+                  <nav class="navbar navbar-expand">
+                    <div class="container" style="font-size:20px;">
+                      <!-- Left navbar links -->
+                      <ul class="navbar-nav navbar-left" id="bt-toolbar" style="flex-flow: row wrap"></ul>
+                    </div>
+                  </nav>
+                  <!-- /.navbar -->
+
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" id="roles-deck" style="overflow-y:scroll; height:150px;">
+                  <!-- <div class="row col-12 justify-content-center" style="justify-content: center;"> -->
+                  <!-- Logic Blocks Here -->
+                  <div class="dd" id="nestable"></div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer text-center">
+                  <button id="save-role-btn" class="btn btn-primary btn-lg" data-i18n="role.btn_SaveRole"
+                    onclick="saveRoleEditorCb();">Save</button>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+            <!--/.col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+
+      </section>
+      <!-- /.row container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <aside class="control-sidebar control-sidebar-dark farobot-lg-sidemenu">
+      <div class="p-3 control-sidebar-content">
+        <div class="row card-deck" style="border-radius: 15px; height:10%; justify-content: center;">
+          <!-- <div class="row col-11" style="margin-top:1rem; justify-content: center;"> -->
+          <!-- <div class="col-6 text-center"> -->
+          <!-- <span id="role-name" class="rolename-span" style="font-size:24px">default_text</span> -->
+          <!-- <div class="input-group input-group-2x">
+                <input type="text" class="form-control form-control-lg" id="sb-role-name" value="Role X" readonly=true>
+                <div class="input-group-append" id="sb-role-edit">
+                  <div class=" input-group-text"><i class="fas fa-pen"></i></div>
+                </div>swar  
+              </div> -->
+          <!-- </div> -->
+          <!-- </div> -->
+          <div class="col-12 text-center">
+            <div id="hide-sidebar" style="float: left; position: absolute;"><i
+                class="fas fa-angle-double-right fa-2x"></i></div>
+            <span id="role-name" class="rolename-span" style="font-size:24px">default_text</span>
+          </div>
+        </div>
+        <!-- /. role-title-deck -->
+
+        <div type="text" class="text-center" style="text-align:center; font-size: 1.6rem; padding-top: 0.5rem;"
+          id="sb-model-label">
+          Capabilities</div>
+
+        <div class="col-md-12">
+          <div class="card card-dark card-outline" id="sidebar-param-card">
+            <div class="card-body" id="cap-deck" style="overflow-y:scroll; height:400px;">
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-2">
+                  <button type="button" class="btn btn-secondary" onclick="addNewCapCb()"><i
+                      class="fas fa-plus"></i>&ensp;Add</button>
+                </div>
+                <div class="col-3">
+                  <!-- <input type="text" class="form-control" id="sbft-cap-name" placeholder="capability"> -->
+                  <select type="text" class="form-control" id="sbft-cap-name" onchange="updateSbCapValue();">
+                    <option value='payload'>payload</option>
+                    <option value='perceptions'>perception</option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <select type="text" class="form-control" id="sbft-cap-type">
+                    <option>Required</option>
+                    <option>Preferred</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" id="sbft-cap-value" placeholder="unit: kg">
+                  <!-- <div id="sbft-cap-value"></div> -->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- /.nav-tabs-custom -->
+          <div class="row justify-content-center" style="margin-top:1rem;">
+            <div style="text-align: center;" id="save-placeholder">
+              <button type="button" class="btn btn-primary btn-lg" id="sb-settings-save"
+                onclick="saveRoleCapsCb();">Save</button>
+            </div>
+          </div>
+          <!-- /.save-btn -->
+        </div>
+        <!-- /.col -->
+
+      </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <div class="modal fade" id="modal-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="available-items-title"></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="products-list product-list-in-card pl-2 pr-2" id="available-items-list">
+            </ul>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Save as a filename -->
+    <div class="modal fade" id="new-role-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Create a New Role</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="role-input" id="role-filename" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"
+              onclick="cancelCreateRole();">Cancel</button>
+            <button type="button" class="btn btn-primary" id="confirm-create-role" data-dismiss="modal"
+              onclick="createRole();">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Button trigger modal end -->
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+
+  </div>
+  <!-- ./wrapper -->
+
+  <div id="confirm-modal" class="farobot-dark-mode text-right"></div>
+
+  <template id="sb-capability-row">
+    <div class="card card-default">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-3">
+            <input type="text" class="form-control cap-name" placeholder="cap." readonly=true>
+          </div>
+          <div class="col-3">
+            <select type="text" class="form-control cap-type" disabled=true>
+              <option>Required</option>
+              <option>Preferred</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <input type="text" class="form-control cap-value" placeholder="val." readonly=true>
+          </div>
+          <div class="col-1">
+            <a class="btn cap-edit"><i class="fas fa-pen fa-1x"></i></a>
+          </div>
+          <div class="col-1">
+            <a class="btn cap-remove"><i class="fas fa-trash fa-1x"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="role-card">
+    <div class="card card-default">
+      <div class="card-body p-0">
+        <table class="table">
+          <tbody>
+            <tr class="row">
+              <td class="col-8 d-flex align-items-center" style="font-size:1.4rem;">
+                <div class="role-name" style="word-break: break-all;">Role Name</div>
+              </td>
+              <td class="col-4 d-flex align-items-center justify-content-end">
+                <div class="btn-group btn-group-sm">
+                  <!-- [20220816 FAR-1968] -->
+                  <!-- <a class="btn config-role" data-widget="control-sidebar"><i class="fas fa-cog fa-2x"></i></a>&ensp; -->
+                  <div class="row">
+                    <div class="col-12 col-sm-6"><a class="btn edit-role"><i class="fas fa-pen fa-2x"></i></a></div>
+                    <div class="col-12 col-sm-6"><a class="btn remove-role"><i class="fas fa-trash fa-2x"></i></a></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </template>
+
+  <template id="bt-group-tab">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false"></a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown"></div>
+    </li>
+    <hr class="line-vertical" />
+  </template>
+
+  <!-- jQuery -->
+  <script src="public/plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- ChartJS -->
+  <script src="public/plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="public/plugins/sparklines/sparkline.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="public/dist/js/adminlte.js"></script>
+  <!-- Lodash App -->
+  <script src="public/dist/js/pages/lib/lodash.min.js"></script>
+  <!-- Notification -->
+  <script src="public/dist/js/pages/lib/notification.js"></script>
+  <!-- i18Next -->
+  <script src="public/dist/js/pages/lib/i18next.min.js"></script>
+  <script src="public/dist/js/pages/lib/jquery-i18next.min.js"></script>
+  <!-- Nestable -->
+  <script type="text/javascript" src="public/dist/js/pages/lib/jquery.nestable.js"></script>
+  <!-- Powertip 1.3.2 -->
+  <script src="public/plugins/powertip/jquery.powertip.min.js"></script>
+
+  <script type="application/javascript" src="public/dist/js/pages/lib/jquery.cookie.min.js"></script>
+  <script src="public/dist/js/pages/util_validation.js"></script>
+  <script src="public/dist/js/pages/far_utilities.js"></script>
+  <script src="public/dist/js/pages/far_requests.js"></script>
+  <script src="public/dist/js/pages/far_requests_rmt.js"></script>
+  <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+  <script src="public/dist/js/pages/far_comm.js"></script>
+  <script src="public/dist/js/pages/far_comm_data.js"></script>
+  <script src="public/dist/js/pages/far_role.js"></script>
+  <script src="public/dist/js/pages/util_hollywood.js"></script>
+</body>
+
+</html>

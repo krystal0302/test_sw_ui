@@ -1,0 +1,671 @@
+{
+	"lng": "en",
+	"resources": {
+		"en": {
+			"translation": {
+				"general": {
+					"btn_Cancel": "Cancel",
+					"btn_Confirm": "Confirm"
+				},
+				"nav": {
+					"dashboard": "Dashboard",
+					"live_view": "Live Map",
+					"fleet_configuration": "Fleet configuration",
+					"flow_configuration": "Flow configuration",
+					"scheduled_task viewer": "Scheduled task viewer",
+					"flow_trigger": "Flow trigger",
+					"map": "Map",
+					"create_map": "Create Map",
+					"edit_map": "Edit Map",
+					"role": "Role",
+					"system_settings": "System settings",
+					"log": "Log",
+					"user_management": "User management",
+					"api_info": "API info",
+					"sign_out": "Sign out",
+					"footer": {
+						"version": "Version"
+					}
+				},
+				"dashboard": {
+					"ttl_AgntStcs": "Agents Statistics",
+					"ttl_ArtfStcs": "Artifacts Statistics",
+					"ttl_FlowStcs": "Flows Statistics",
+					"ttl_AgntList": "Agents List",
+					"ttl_ArtfList": "Artifacts List",
+					"ttl_FlowList": "Flows List",
+					"tabs": {
+						"flow": "Flow",
+						"task": "Task"
+					},
+					"modal": {
+						"ttl_AgntDetail": "Agent Details",
+						"col_AgntId": "ID",
+						"col_AgntName": "Name",
+						"col_AgntStts": "Status",
+						"col_AgntMode": "Mode",
+						"col_AgntModel": "Model",
+						"col_AgntVers": "Version",
+						"col_AgntIp": "IP",
+						"col_AgntMac": "Mac",
+						"col_AgntBatt": "Battery"
+					},
+					"tmpl": {
+						"col_AgntName": "Agent Name",
+						"col_AgntTask": "Task",
+						"col_AgntBatt": "Battery",
+						"col_ArtfName": "Artifact Name",
+						"col_NoFlows": "No Flows in this fleet",
+						"chart": {
+							"arr_AgntStates": [
+								"Idle",
+								"Charging",
+								"Active",
+								"Paused",
+								"Waiting",
+								"Emergency",
+								"Unintialized",
+								"Disconnected"
+							],
+							"arr_ArtfStates": [
+								"In service",
+								"No data received",
+								"Error",
+								"Disconnected"
+							],
+							"arr_FlowStates": [
+								"Queued",
+								"Active",
+								"Completed",
+								"Failed",
+								"Paused"
+							]
+						},
+						"list": {
+							"agnt": {
+								"lbl_Name": "Agent Name",
+								"lbl_Task": "Task",
+								"lbl_Batt": "Battery",
+								"row_Empty": "No Agents in this fleet"
+							},
+							"artf": {
+								"lbl_Name": "Artifact Name",
+								"row_Empty": "No Artifacts in this fleet"
+							},
+							"flow": {
+								"lbl_Name": "Name",
+								"lbl_Id": "ID",
+								"lbl_Assignee": "Assigned to",
+								"lbl_Status": "Status",
+								"lbl_Progress": "Progress",
+								"lbl_Operation": "Operation",
+								"row_Empty": "No Flows in this fleet"
+							}
+						}
+					}
+				},
+				"live_view": {
+					"ttl_liveView": "Live View",
+					"lbl_Map": "Map",
+					"lbl_MapFileName": "file name"
+				},
+				"fleet_config": {
+					"btn_CreateNewFleet": "Create New Fleet",
+					"btn_DeleteFleet": "Delete Fleet",
+					"btn_SaveFleet": "Save",
+					"ttl_AgntFltStts": "Agent Fleet Status",
+					"ttl_ArtfFltStts": "Artifact Fleet Status",
+					"ttl_Maps": "Maps",
+					"ttl_Roles": "Roles",
+					"sidebar": {
+						"lbl_AgntArtfName": "Name",
+						"lbl_AgntArtfId": "ID",
+						"lbl_AgntArtfMode": "Mode",
+						"lbl_AgntArtfModel": "Model",
+						"lbl_AgntArtfSw": "Version",
+						"lbl_AgntArtfUl": "Upgrade list",
+						"btn_AgntLink": "Link to AMR",
+						"btn_AgntInitP": "Initial Pose",
+						"btn_AgntReboot": "Reboot",
+						"tab_PortData": "Import/Export",
+						"tab_FactorySet": "Factory Settings"
+					},
+					"tmpl": {
+						"btn_SidebarImport": "Import",
+						"btn_SidebarExport": "Export",
+						"agnt": {
+							"lbl_SidebarName": "Agent Name",
+							"lbl_AvailTitle": "Available Agents",
+							"ttp_SidebarDesc": "Description",
+							"ttp_SidebarRange": "Range",
+							"ttp_SidebarUnit": "Unit",
+							"btn_Load": "Loading",
+							"btn_Ready": "Ready",
+							"btn_Init": "Confirm Initial Pose"
+						},
+						"artf": {
+							"lbl_SidebarName": "Artifact Name",
+							"lbl_AvailTitle": "Available Artifacts",
+							"lbl_SidebarDesc": "Description",
+							"lbl_SidebarRange": "Range",
+							"lbl_SidebarUnit": "Unit"
+						},
+						"maps": {
+							"lbl_AvailTitle": "Available Maps"
+						},
+						"role": {
+							"lbl_AvailTitle": "Available Roles"
+						}
+					}
+				},
+				"flow_config": {
+					"ttl_Flows": "Flow",
+					"ttl_PlanArtfStatus": "Plan Artifact Status",
+					"btn_createFlow": "flow",
+					"btn_ToRoleEditor": "Go to Role Overview",
+					"editor": {
+						"btn_Back": "Back",
+						"btn_SaveFlow": "Save",
+						"lbl_FlowTrig": "Flow trigger",
+						"tab_Role": "Role",
+						"btn_Run": "Run",
+						"btn_ClearPanel": "Clear Panel"
+					},
+					"tmpl": {
+						"list": {
+							"artf": {
+								"lbl_Title": "Available Artifacts"
+							}
+						}
+					}
+				},
+				"task_schedule_viewer": {
+					"lbl_ViewBy": "View by",
+					"btn_ApplyDate": "Apply Date",
+					"btn_Reset": "Reset",
+					"tmpl": {
+						"chart": {
+							"ldn_Complete": "Normal",
+							"ldn_Queue": "Forecast",
+							"ldn_Fail": "Failed/Canceled/Manual/Intervened",
+							"ldn_Active": "Ongoing"
+						}
+					}
+				},
+				"create_map": {
+					"ttl_CreateMap": "Create Map",
+					"btn_SaveMap": "Save Map",
+					"editor": {
+						"btn_SelAgnt": "Choose Agent",
+						"tab_CreateMap": "Create",
+						"lbl_StartMap": "Start Mapping",
+						"col_Param": "Parameters",
+						"col_Value": "Value",
+						"col_ParamRes": "Resolution",
+						"col_ParamOrigin": "Origin",
+						"col_ParamHeight": "Height",
+						"col_ParamWidth": "Wdith",
+						"lbl_RotateMap": "rotate map"
+					}
+				},
+				"edit_map": {
+					"ttl_MapEditor": "Map Editor",
+					"ttl_PropView": "Properties View",
+					"opt_MapImg": "Map",
+					"opt_MapOrig": "Origin",
+					"opt_Routes": "Route",
+					"opt_Cells": "Cells",
+					"tgl_EditProp": "Edit Properties",
+					"tgl_MapImg": "Map",
+					"tgl_Routes": "Route",
+					"tgl_Cells": "Cells",
+					"tgl_ConnCells": "Connected cell management",
+					"tgl_Reflectors": "Reflectors",
+					"tgl_MultiFuncZone": "Multiple function zone",
+					"modal": {
+						"ttl_RenameMap": "Rename the Map",
+						"btn_Cancel": "Cancel",
+						"btn_Confirm": "Confirm",
+						"ttl_DeleteMap": "Delete",
+						"lbl_ConfirmMsg": "Confirm"
+					},
+					"editor": {
+						"ttl_MapEditPropTools": "Edit Properties Tool",
+						"ttl_LineWidth": "Line Width",
+						"btn_MapView": "View",
+						"btn_MapLine": "Line",
+						"btn_MapEraser": "Eraser",
+						"btn_MapEditOrigin": "Edit Origin",
+						"btn_SetOrigin": "Set Origin",
+						"btn_CancelSetOrigin": "Cancel Set Origin",
+						"btn_FitView": "Fit",
+						"btn_AddVertex": "Add Vertex",
+						"btn_EndAddVertex": "End Add Vertex",
+						"btn_EditVertex": "Edit Vertex",
+						"btn_DeleteVertex": "Delete Vertex",
+						"btn_AddEdge": "Add Edge",
+						"btn_EditEdge": "Edit Edge",
+						"btn_AddCell": "Add Cell",
+						"btn_EditCell": "Edit Cell",
+						"btn_DeleteCell": "Delete Cell",
+						"btn_FunctionType": "function-type Menu",
+						"btn_CreateNewZone": "Create new zone",
+						"btn_DrawZone": "Draw Zone",
+						"btn_DeleteZone": "Delete Zone",
+						"btn_Create": "Create",
+						"btn_Cancel": "Cancel",
+						"btn_Undo": "Undo",
+						"btn_Save": "Save",
+						"btn_Delete": "Delete",
+						"btn_PanZoom": "Pan & Zoom",
+						"lbl_Label": "label",
+						"lbl_Weight": "weight",
+						"lbl_FunctionType": "function type",
+						"lbl_Area": "area",
+						"lbl_Direction": "direction",
+						"opt_Forward": "Forward",
+						"opt_Backward": "Backward",
+						"opt_Left": "Left",
+						"opt_Right": "Right",
+						"lbl_Load": "Load",
+						"opt_Empty": "Empty",
+						"opt_Occupied": "Occupied",
+						"lbl_Markers": "Markers",
+						"opt_Pattern": "Pattern",
+						"opt_None": "None",
+						"lbl_MarkerOffset": "Marker offset",
+						"lbl_CellSize": "Cell size",
+						"lbl_ZoneList": "Zone list",
+						"lbl_ZoneType": "Zone type",
+						"lbl_ZoneName": "Zone name",
+						"lbl_ZonePriority": "Zone priority",
+						"lbl_ZoneModel": "Model filter",
+						"tab_ZoneEdit": "Zone edit",
+						"tab_Setting": "Setting",
+						"btn_AddConfig": "Add configuration"
+					},
+					"tmpl": {
+						"editor": {
+							"btn_Delete": "Delete",
+							"ttp_Desc": "Description",
+							"ttp_Range": "Range",
+							"ttp_Unit": "Unit"
+						},
+						"modal": {
+							"ttl_AddConfig": "Add configuration"
+						}
+					}
+				},
+				"role": {
+					"ttl_RolesOverview": "Roles Overview",
+					"btn_CreateNewRole": "Create New Role",
+					"btn_BackToPrev": "Back",
+					"btn_SaveRole": "Save",
+					"btn_Create": "Create",
+					"btn_Cancel": "Cancel"
+				},
+				"sys_set": {
+					"tab_swarm_core": "Swarm Core",
+					"tab_UsrSetting": "User Settings",
+					"tab_UiSetting": "Ui Settings",
+					"tab_Others": "Others",
+					"swarm_core": {
+						"ttl_LowBatteryThresh": "Low battery threshold",
+						"txt_LowBatteryThresh": "When the AMR is not in the charging mode, it will be assigned the charging task if its battery level is lower than this threshold",
+						"btn_SaveSettings": "Save"
+					},
+					"usr_set": {
+						"lbl_Account": "Account",
+						"lbl_Pwd": "Password",
+						"lbl_ContactNumber": "Contact Number",
+						"lbl_Email": "E-mail",
+						"btn_Apply": "Apply",
+						"ttl_ChangePwd": "Change Password",
+						"txt_Pwd": "Password",
+						"txt_ConfirmPwd": "Confirm Password",
+						"btn_Cancel": "Cancel",
+						"btn_Confirm": "Confirm"
+					},
+					"ui_set": {
+						"lbl_Theme": "Appereance",
+						"opt_Dark": "Dark",
+						"opt_Light": "Light",
+						"lbl_FontSize": "Font Size",
+						"opt_Small": "Small",
+						"opt_Medium": "Medium",
+						"opt_Large": "Large",
+						"lbl_LangEnv": "Language Environment",
+						"btn_Apply": "Apply"
+					},
+					"others": {
+						"lbl_SwVer": "Software Version",
+						"lbl_CurrVer": "Current software version",
+						"lbl_LocoUpdateSC": "Local update of Swarm Core",
+						"lbl_LocoRepo": "Upload software package from local folder",
+						"lbl_LocoUpdateAgnt": "Local update of SMR",
+						"lbl_OtaConnCheck": "Over The Air server connection checking",
+						"lbl_OtaStatus": "OTA status",
+						"lbl_OtaUpdateSC": "OTA update of Swarm Core",
+						"lbl_OtaUpdateAgnt": "OTA update of SMR",
+						"btn_Sw2Loco": "Upload from local folder",
+						"btn_Deploy": "Deploy",
+						"btn_LocoUpdateAgnt": "Local update for SMR",
+						"btn_OtaUpdateAgnt": "Over The Air update for SMR",
+						"lbl_LGN": "LINE Groups Notification",
+						"lbl_LineToken": "Line Token",
+						"lbl_LogLevel": "Log Level",
+						"lbl_LogContent": "Log Content",
+						"plh_LineToken": "input token here...",
+						"plh_LogKeywords": "filter content here...",
+						"btn_Update": "Update",
+						"lbl_LicAuth": "License Authorization",
+						"lbl_LicStatus": "License status",
+						"lbl_LicType": "License type",
+						"lbl_LicExpire": "Valid until",
+						"lbl_ContainerId": "Container ID",
+						"lbl_HwSig": "Hardware Signature",
+						"btn_Activate": "Activate",
+						"btn_Remove": "Remove",
+						"btn_ExportHwSig": "Export",
+						"lbl_EulaStatus": "EULA status",
+						"btn_OpenEula": "Open EULA",
+						"lbl_FacSet": "Data Import/Export - Factory Reset",
+						"btn_ImportData": "Import",
+						"btn_ExportData": "Export",
+						"lbl_EraseData": "Erase all data",
+						"btn_Delete": "Delete",
+						"btn_Export": "Export",
+						"btn_Upload": "Upload",
+						"btn_Download": "Download"
+					}
+				},
+				"log": {
+					"ttl_BatteryLog": "Battery Log",
+					"btn_BatteryLogExport": "Export",
+					"ttl_DebugLog": "Debug Log",
+					"btn_DebugLogExport": "Export",
+					"ttl_EventLog": "Event Log",
+					"btn_AdvancedOptions": "Advanced option",
+					"btn_DownloadCSV": "Download CSV",
+					"col_Time": "Time",
+					"col_EventType": "Event Type",
+					"col_EventId": "Event ID",
+					"col_ModPub": "Pub Module",
+					"col_ModSub": "Sub Module",
+					"col_Level": "Level",
+					"col_Msg": "Message Content",
+					"col_DeviceId": "Device ID",
+					"editor": {
+						"plh_Keywords": "Search for any keywords",
+						"lbl_Event": "Event",
+						"lbl_Module": "Module",
+						"lbl_Others": "Others",
+						"lbl_DateTime": "Date & Time",
+						"btn_Cancel": "Cancel",
+						"btn_Clear": "Clear",
+						"btn_Apply": "Apply"
+					}
+				},
+				"usr_man": {
+					"ttl_ManageUser": "Manage User",
+					"btn_CreateNewUser": "Create New User",
+					"col_Edit": "Edit",
+					"col_UserName": "User Name",
+					"col_UserAccount": "User Account",
+					"col_Admin": "Admin",
+					"col_PhoneNumber": "Phone Number",
+					"col_Email": "E-mail",
+					"col_Membership": "Memeber Since",
+					"col_Options": "Options",
+					"btn_DeleteUser": "Delete",
+					"btn_SaveUser": "Save",
+					"editor": {
+						"ttl_AddUser": "Add a new user",
+						"lbl_Account": "Account",
+						"lbl_PhoneNumber": "Contack Number",
+						"lbl_Pwd": "Password",
+						"lbl_Email": "E-mail",
+						"lbl_Name": "Name",
+						"lbl_Auth": "Authority",
+						"btn_Cancel": "Cancel",
+						"btn_Create": "Create"
+					}
+				},
+				"api": {
+					"agent_settings": {
+						"version": "1.0.0",
+						"category": {
+							"system": "system",
+							"control": "control",
+							"localization": "localization",
+							"network": "network",
+							"perception": "perception",
+							"planning": "planning"
+						},
+						"system": {
+							"map": {
+								"title": "Map",
+								"description": "The current map that robot is using."
+							},
+							"fleet_name": {
+								"title": "Fleet Name",
+								"description": "The current fleet that robot is joined."
+							},
+							"agent_name": {
+								"title": "Agent Name",
+								"description": "User defined agent name."
+							},
+							"initial_pose_x": {
+								"title": "Initial Pose X",
+								"description": ""
+							},
+							"initial_pose_y": {
+								"title": "Initial Pose Y",
+								"description": ""
+							},
+							"initial_pose_yaw": {
+								"title": "Initial Pose Yaw",
+								"description": ""
+							},
+							"initial_pose_confirmed": {
+								"title": "Initial Pose Confirmed",
+								"description": ""
+							},
+							"mapping_mode": {
+								"title": "Mapping Mode",
+								"description": "True: Enable SLAM, False: disable SLAM"
+							}
+						},
+						"control": {
+							"[move_mode] max_velocity": {
+								"title": "Max Velocity",
+								"description": "The maximum velocity for linear direction"
+							},
+							"[move_mode] goal_tolerance_distance": {
+								"title": "Goal Tolerance Distance",
+								"description": "The control error tolerance for longitude"
+							},
+							"[move_mode] goal_tolerance_angle": {
+								"title": "Gaol Tolerance Angle",
+								"description": "The control error tolerance for rotation"
+							},
+							"[move_mode] max_angular_velocity": {
+								"title": "Max Angular Velocity",
+								"description": "The maximum velocity for angular direction"
+							},
+							"[move_mode] distance_threshold_high_velocity": {
+								"title": "Distance Threshold High Velocity",
+								"description": "The distance for calculating the limitation of maximum velocity, over this value max velocity would use higher speed"
+							},
+							"[move_mode] distance_threshold_low_velocity": {
+								"title": "Distance Threshold Low Velocity",
+								"description": "The distance for calculating the limitation of maximum velocity, lower this value max velocity would use lower speed"
+							},
+							"[docking_mode] abort_distance": {
+								"title": "Abort Distance",
+								"description": "The distance which starts to check the control error tolerance"
+							},
+							"[docking_mode] num_of_retries": {
+								"title": "Num. of Retries",
+								"description": "The number of docking process retry when control error is too large"
+							},
+							"[docking_mode] docking_time_limit": {
+								"title": "Docking Time Limit",
+								"description": "The time limit for the docking process"
+							},
+							"[docking_mode] detect_time_limit": {
+								"title": "Delete Time Limit",
+								"description": "The time limit for the detection pattern"
+							},
+							"[docking_mode] max_velocity": {
+								"title": "Max Velocity",
+								"description": "The docking mode maximum velocity in linear direction"
+							},
+							"[docking_mode] max_angular_velocity": {
+								"title": "Max Angular Velocity",
+								"description": "The docking mode maximum velocity in rotation"
+							},
+							"[docking_mode] tolerance_longitudinal_distance": {
+								"title": "Toloerance Logitudinal Distance",
+								"description": "The control error tolerance for longitude"
+							},
+							"[docking_mode] tolerance_lateral_distance": {
+								"title": "Tolerance Lateral Distance",
+								"description": "The control error tolerance for latitude"
+							},
+							"[docking_mode] tolerance_rotation": {
+								"title": "Tolerance Rotation",
+								"description": "The control error tolerance for rotation"
+							},
+							"[docking_mode] enable_safety_check": {
+								"title": "Enable Safety Check",
+								"description": "Check the obstacle for safety"
+							},
+							"[docking_mode] disable_safety_distance": {
+								"title": "Disable Safety Distance",
+								"description": "The distance (to the target point) for disable safety"
+							},
+							"[rotate_mode] max_angular_velocity": {
+								"title": "Max Angular Velocity",
+								"description": "The maximum velocity for angular direction"
+							},
+							"[rotate_mode] rotation_goal_reach_tolerance": {
+								"title": "Rotation Goal Reach Tolerance",
+								"description": "The control error tolerance for rotation"
+							}
+						},
+						"localization": {
+							"localization_max_reference_range": {
+								"title": "Localization Max Reference Range",
+								"description": "The laser range is used for lidar localization."
+							}
+						},
+						"network": {
+							"bridge_mode": {
+								"title": "Cross LAN mode",
+								"description": ""
+							},
+							"swarm_core_ip": {
+								"title": "Swarm Core IP",
+								"description": ""
+							}
+						},
+						"planning": {
+							"abort_stop_time": {
+								"title": "Abort Stop Time",
+								"description": "The time for trigger rerouting or navigation failed when obstacles exist"
+							},
+							"safety_time_for_move": {
+								"title": "Safety Time for Move",
+								"description": "The time for the robot restarts to move when stopping"
+							},
+							"footprint": {
+								"title": "Footprint",
+								"description": "The size of the robot. format: [[m,m],[m,m],[m,m],[m,m]]"
+							},
+							"[safety_zone] stop_longitudinal_distance": {
+								"title": "Stop Longitudinal Distance",
+								"description": "The distance for creating a stop area in the longitudinal direction"
+							},
+							"[safety_zone] stop_lateral_distance": {
+								"title": "Stop Lateral Distance",
+								"description": "The distance for creating a stop area in the latitudinal direction"
+							},
+							"[safety_zone] slow_lateral_distance": {
+								"title": "Slow Lateral Distance",
+								"description": "The distance for creating a slow area in the latitudinal direction"
+							}
+						},
+						"perception": {
+							"[rack] detect_tolerance": {
+								"title": "Detect Tolerance",
+								"description": "Tolerance between detect position and cell position"
+							},
+							"[rack] distance_tolerance": {
+								"title": "Distance Tolerance",
+								"description": "Tolerance for filtering point which is far from cell position"
+							},
+							"[rack] check_size_tolerance": {
+								"title": "Check Size Tolerance",
+								"description": "Comparison between real rack size and detect rack size."
+							}
+						}
+					},
+					"swarm_core_settings": {
+						"version": "1.0.0",
+						"plan": {
+							"low_battery_threshold": {
+								"title": "Low battery threshold",
+								"description": "When the AMR is not in the charging mode, it will be assigned the charging task if its battery level is lower than this threshold."
+							},
+							"full_battery_threshold": {
+								"title": "Full battery threshold",
+								"description": "When the AMR is in the charging mode, the charging task will be canceled if its battery level is above this threshold."
+							},
+							"auto_charging": {
+								"title": "Auto charging",
+								"description": "Enable or disable auto charging function"
+							},
+							"charging_due_time": {
+								"title": "Charging due time",
+								"description": "When the AMR is in the charging mode, the charging task will be canceled if exceeding its battery charging time."
+							},
+							"schedule_optimization": {
+								"title": "Schedule optimization",
+								"description": "Enable or disable schedule optimization"
+							}
+						},
+						"battery_log": {
+							"battery_log_time": {
+								"title": "Battery log time",
+								"description": "Time Period to record battery conditions of each SMR."
+							},
+							"battery_log_threshold": {
+								"title": "Battery log threshold",
+								"description": "Time limit to store battery log each SMR."
+							}
+						},
+						"system": {
+							"system_restart": {
+								"title": "System restart",
+								"description": "Restart swarm core system"
+							}
+						},
+						"network": {
+							"bridge_mode": {
+								"title": "Cross LAN mode",
+								"description": ""
+							},
+							"swarm_core_ip": {
+								"title": "IP",
+								"description": ""
+							}
+						},
+						"btn_SystemRestart": "restart",
+						"btn_SaveSettings": "Save"
+					}
+				}
+			}
+		}
+	}
+}

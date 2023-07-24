@@ -1,0 +1,45 @@
+site_name: RedisJSON - a JSON data type for Redis
+site_url: http://redisjson.io
+repo_url: https://github.com/RedisJSON/RedisJSON
+repo_name: RedisJSON/RedisJSON
+
+google_analytics:
+    - 'UA-92003007-1'
+    - 'auto'
+
+extra_javascript:
+    - gtm.js
+
+theme:
+  name: 'material'
+  language: 'en'
+  logo: 'images/logo.svg'
+  favicon: 'images/favicon.png'
+  palette:
+    primary: 'indigo'
+    accent: 'red'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  feature:
+    tabs: false
+
+nav:
+  - 'Quickstart': 'index.md'
+  - 'Commands': 'commands.md'
+  - 'Path syntax': 'path.md'
+  - 'Performance': 'performance.md'
+  - 'RAM usage': 'ram.md'
+  - 'Developer notes': 'developer.md'
+  - 'Contributor agreement': 'contrib.md'
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: False
+  - toc:
+      permalink: True
+
+plugins:
+  - search
+  - versions-menu

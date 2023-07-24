@@ -1,0 +1,236 @@
+@import url("../../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../../plugins/fontawesome-free/css/all.min.css");
+@import url("../adminlte.min.css");
+@import url("../notification.css");
+@import url("../toastify.min.css");
+@import url("general-style.css");
+
+@layer device {
+  @layer desktop {
+    @media only screen and (min-width: 1025px) {}
+  }
+
+  @layer tablet {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {}
+
+    @media only screen and (min-width: 505px) and (max-width: 767px) {
+      #create-map-header {
+        height: 128px;
+      }
+    }
+  }
+
+  @layer phone {
+    @media only screen and (max-width: 504px) {
+      #create-map-header {
+        height: 128px;
+      }
+    }
+  }
+}
+
+body{
+  margin:0;
+  background-color: #00A0FB;
+}
+.LeftButton{
+  position:absolute;
+  top:73px;
+  right:84px;
+  width:50px;
+  height:56px;
+  display:block;
+  bottom:0px;
+  left:0px;
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  background-color:#000000;
+  border:5px groove #FF5021;
+  font-weight:900;
+}
+.DownButton{
+  float:none;
+  position:absolute;
+  top:73px;
+  bottom:0px;
+  left:52px;
+  right:0px;
+  width:62px;
+  height:56px;
+  font-family:Courier New, Courier, monospace;
+  color: #FF5021;
+  background-color:#000000;
+  border:5px groove #FF5021;
+  font-weight:900;
+}
+.UpButton{
+  flex-direction:row;
+  justify-content:flex-start;
+  align-items:center;
+  align-self:auto;
+  left:52px;
+  right:0px;
+  position:absolute;
+  width:62px;
+  height:52px;
+  top:21px;
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  background-color:#000000;
+  border:5px groove #FF5021;
+  line-height:0px;
+  font-weight:900;
+}
+.MoveButtonsForm{
+  position:static;
+}
+.RightButton{
+  left:116px;
+  right:0px;
+  position:absolute;
+  top:73px;
+  width:49px;
+  height:56px;
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  text-align:left;
+  opacity:1;
+  background-color:#000000;
+  border:5px groove #FF5021;
+  font-weight:900;
+  letter-spacing:-1px;
+  text-decoration:none;
+  font-size:12px;
+}
+.OpenMessage{
+  font-family:Courier New, Courier, monospace;
+  color: #FF5021;
+  position:absolute;
+  float:none;
+  top:2px;
+}
+.feedbackText{
+  position:absolute;
+  top:147px;
+  font-weight:900;
+  color:#09ff00; 
+  font-family:Courier New, Courier, monospace;
+}
+.PoseY{
+  position:absolute;
+  left:171px;
+  top:46px;
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  font-weight:900;
+}
+.PoseX{
+  position:absolute;
+  left:171px;
+  top:26px;
+  color: #FF5021;
+  font-weight:900;
+  font-family:Courier New, Courier, monospace;
+}
+.PoseTheta{
+  position:absolute;
+  top:66px;
+  left:171px;
+  color:#09ff00;
+  font-family:Courier New, Courier, monospace;
+  font-weight:900;
+}
+.PoseLinVel{
+  position:absolute;
+  top:85px;
+  left:171px;
+  color:#09ff00;
+  font-family:Courier New, Courier, monospace;
+  font-weight:900;
+}
+.PoseAngVel{
+  position:absolute;
+  top:105px;
+  left:171px;
+  font-family:Courier New, Courier, monospace;
+  font-weight:900;
+  color:#09ff00;
+}
+
+.MoveBaseStatusText{
+  position:absolute;
+  top:145px;
+  font-weight:900;
+  /* color:#09ff00; */
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+}
+
+.nav2dmapCanvas {
+  position:absolute;
+  background-color:#09ff00;
+  top:200px;
+  left:1px;
+  border:2px groove #000000;
+}
+/* .MapButtonsForm{
+  position:fixed;
+  top:20px;
+  right:450px;
+} */
+.MapPanButton{
+  position:absolute;
+  left:200px;
+  right:0px;
+  top:73px;
+  width:50px;
+  height:56px;
+
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  background-color:#000000;
+  border:5px groove  #FF5021;
+  font-weight:900;
+}
+.MapZoomButton{
+  position:absolute;
+  left:255px;
+  right:0px;
+  top:73px;
+  width:50px;
+  height:56px;
+
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  background-color:#000000;
+  border:5px groove  #FF5021;
+  font-weight:900;
+}
+.CancelGoalButton{
+  position:absolute;
+  left:310px;
+  right:0px;
+  top:73px;
+  width:80px;
+  height:56px;
+
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  background-color:#000000;
+  border:5px groove  #FF5021;
+  font-weight:900;
+}
+.GetImageButton{
+  position:absolute;
+  left:420px;
+  right:0px;
+  top:73px;
+  width:100px;
+  height:56px;
+
+  color: #FF5021;
+  font-family:Courier New, Courier, monospace;
+  background-color:#000000;
+  border:5px groove  #FF5021;
+  font-weight:900;
+}

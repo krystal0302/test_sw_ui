@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Log</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="dist/css/log-style.css">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn"
+            onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class="fas fa-globe"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <div class="" style="padding-top: 20px;"></div>
+
+      <div class="row">
+        <section class="col-lg-12">
+
+          <div class="card">
+            <div class="card-header farobot-view-header-bg-dark">
+              <h3 class="card-title">
+                <i class="fas fa-file"></i>
+                <span data-i18n="log.ttl_BatteryLog">Battery Log</span>
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div id="export-battery-log-card" class="card-body d-flex align-items-center">
+              <button class="btn btn-secondary farobot-md-btn d-flex align-items-center justify-content-center"
+                type="button" id="export-battery-log">
+                <div class="farobot-loader" id="battery-log-loader" style="display: none; margin-right: 5px;"></div>
+                <span data-i18n="log.btn_BatteryLogExport">Export</span>
+              </button>
+            </div>
+            <div id="export-battery-progressbar" class="progress-bar progress-bar-striped" role="progressbar"
+              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%; display: none;"></div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+          <div class="card">
+            <div class="card-header farobot-view-header-bg-dark">
+              <h3 class="card-title">
+                <i class="fas fa-file"></i>
+                <span data-i18n="log.ttl_DebugLog">Debug Log</span>
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div id="export-debug-log-card" class="card-body d-flex align-items-center">
+              <button class="btn btn-secondary farobot-md-btn d-flex align-items-center justify-content-center"
+                type="button" id="export-debug-log">
+                <div class="farobot-loader" id="debug-log-loader" style="display: none; margin-right: 5px;"></div>
+                <span data-i18n="log.btn_DebugLogExport">Export</span>
+              </button>
+            </div>
+            <div id="export-debug-progressbar" class="progress-bar progress-bar-striped" role="progressbar"
+              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%; display: none;"></div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+          <div class="card">
+            <div class="card-header farobot-view-header-bg-dark">
+              <h3 class="card-title">
+                <i class="fas fa-file"></i>
+                <span data-i18n="log.ttl_EventLog">Event Log</span>
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <div class="form-inline col-md-6 mx-auto" style="margin-top: 20px;">
+                <div class="input-group col-md-8">
+                  <!-- <input type="search" class="form-control" placeholder="Search for any keyword" id="search-keyword"> -->
+                  <input type="search" class="form-control log-input" data-i18n="[placeholder]log.editor.plh_Keywords"
+                    id="search-keyword">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button" id="full-text-search">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="input-group col-md-4">
+                  <button class="btn btn-primary farobot-lg-btn" id="search-advanced" type="button">
+                    <span data-i18n="log.btn_AdvancedOptions">Advanced Options</span>
+                  </button>
+                </div>
+              </div>
+
+              <section class="content" style="margin-top: 20px;">
+                <div class="container-fluid" id="options-container" style="display: none;">
+                  <div id="options-content">
+
+                    <div class="form-row">
+                      <div class="form-group col-sm-6">
+                        <label id="lb-event">
+                          <span data-i18n="log.editor.lbl_Event">Event</span>
+                        </label>
+                        <div class="row">
+                          <div class="col-6 col-sm-6">
+                            <input type="text" class="form-control log-input" id="event-id" placeholder="ID">
+                          </div>
+                          <div class="col-6 col-sm-6">
+                            <input type="text" class="form-control log-input" id="event-type" placeholder="Type">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label id="lb-module">
+                          <span data-i18n="log.editor.lbl_Module">Module</span>
+                        </label>
+                        <div class="row">
+                          <div class="col-6 col-sm-6">
+                            <input type="text" class="form-control log-input" id="module-pub" placeholder="Publish">
+                          </div>
+                          <div class="col-6 col-sm-6">
+                            <input type="text" class="form-control log-input" id="module-sub" placeholder="Subscribe">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="col-md-12">
+                        <label id="lb-others">
+                          <span data-i18n="log.editor.lbl_Others">Others</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <input type="text" class="form-control log-input" id="level" placeholder="Level">
+                        <!-- <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="level-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                          <span>Level</span>
+                                          <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu checkbox-menu keep-open" aria-labelledby="level-dropdown">
+                                          <li>
+                                            <label>
+                                              <input type="checkbox" name="chk-level" id="selectAll"> Select All
+                                            </label>
+                                          </li>
+                                          <li>
+                                            <label>
+                                              <input type="checkbox" name="chk-level" id="info"> INFO
+                                            </label>
+                                          </li>
+                                          <li>
+                                            <label>
+                                              <input type="checkbox" name="chk-level" id="warn"> WARN
+                                            </label>
+                                          </li>
+                                          <li class="col text-center">
+                                            <button type="button" id="apply-level" class="btn btn-primary font-weight-bold">Done</button>
+                                          </li>
+                                        </ul>
+                                        </div> -->
+                      </div>
+                      <div class="form-group col-md-3">
+                        <input type="text" class="form-control log-input" id="device-id" placeholder="Device ID">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control log-input" id="msg_content"
+                          placeholder="Message Content">
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-sm-12">
+                        <label id="lb-date">
+                          <span data-i18n="log.editor.lbl_DateTime">Date & Time</span>
+                        </label>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <div class="datepicker date input-group p-0 shadow-sm">
+                              <input type="text" placeholder="YYYY/MM/DD" class="form-control py-2 px-2 log-input"
+                                id="startDate">
+                              <div class="input-group-append"><span class="input-group-text px-2"><i
+                                    class="fas fa-calendar-alt"></i></span></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-2">
+                            <div class="input-group bootstrap-timepicker timepicker">
+                              <input id="startTime" type="text" class="form-control px-2 log-input">
+                              <div class="input-group-append"><span class="input-group-text px-2"><i
+                                    class="far fa-clock"></i></span>
+                              </div>
+                            </div>
+                          </div>
+                          -
+                          <div class="col-sm-3">
+                            <div class="datepicker date input-group p-0 shadow-sm">
+                              <input type="text" placeholder="YYYY/MM/DD" class="form-control py-2 px-2 log-input"
+                                id="endDate">
+                              <div class="input-group-append"><span class="input-group-text px-2"><i
+                                    class="fas fa-calendar-alt"></i></span></div>
+                            </div>
+                          </div>
+                          <div class="col-sm-2">
+                            <div class="input-group bootstrap-timepicker timepicker">
+                              <input id="endTime" type="text" class="form-control px-2 log-input">
+                              <div class="input-group-append"><span class="input-group-text px-2"><i
+                                    class="far fa-clock"></i></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col align-self-end">
+                        <div class="row">
+                          <div class="col text-right">
+                            <button type="button" id="cancel-options" class="btn btn-default farobot-sm-btn">
+                              <span data-i18n="log.editor.btn_Cancel">Cancel</span>
+                            </button>
+                            <button type="button" id="clear-options" class="btn btn-secondary farobot-sm-btn">
+                              <span data-i18n="log.editor.btn_Clear">Clear</span>
+                            </button>
+                            <button type="button" id="apply-options" class="btn btn-primary farobot-sm-btn">
+                              <span data-i18n="log.editor.btn_Apply">Apply</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer table-responsive">
+              <div class="row d-flex align-items-right justify-content-right">
+                <div class="col-lg-10 col-md-8"></div>
+                <div class="col-lg-2 col-md-4" id="export-div"></div>
+              </div>
+              <table class="table table-striped" id="log-table">
+                <thead>
+                  <tr>
+                    <!-- <th style="width: 10px">#</th> -->
+                    <th data-i18n="log.col_Time" style="min-width: 100px">Time</th>
+                    <th data-i18n="log.col_EventType" style="min-width: 110px">Event Type</th>
+                    <th data-i18n="log.col_EventId">Event ID</th>
+                    <th data-i18n="log.col_ModPub">Module Publish</th>
+                    <th data-i18n="log.col_ModSub" style="min-width: 120px">Module Subscribe</th>
+                    <th data-i18n="log.col_Level" style="min-width: 100px">Level</th>
+                    <th data-i18n="log.col_Msg">Message Content</th>
+                    <th data-i18n="log.col_DeviceId">Device ID</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+        </section>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Sparkline -->
+  <script src="plugins/sparklines/sparkline.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.js"></script>
+  <!-- Bootstrap Datetimepicker -->
+  <script src="dist/js/pages/lib/bootstrap-datepicker.min.js"></script>
+  <script src="dist/js/pages/lib/moment.min.js"></script>
+  <script src="dist/js/pages/lib/bootstrap-timepicker.min.js"></script>
+  <!-- PapaParse -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script> -->
+  <!-- Lodash App -->
+  <script src="dist/js/pages/lib/lodash.min.js"></script>
+  <!-- Notification -->
+  <script src="dist/js/pages/lib/notification.js"></script>
+  <!-- i18Next -->
+  <script src="dist/js/pages/lib/i18next.min.js"></script>
+  <script src="dist/js/pages/lib/jquery-i18next.min.js"></script>
+  <!-- Powertip 1.3.2 -->
+  <script src="plugins/powertip/jquery.powertip.min.js"></script>
+  <!-- Axios 1.4.0 -->
+  <script src="dist/js/pages/lib/axios.min.js"></script>
+
+  <!-- FARobot Log Page -->
+  <script src="dist/js/pages/util_validation.js"></script>
+  <script src="dist/js/pages/far_log.js"></script>
+  <script src="dist/js/pages/far_utilities.js"></script>
+  <script src="dist/js/pages/far_requests.js"></script>
+  <script src="dist/js/pages/far_requests_rmt.js"></script>
+  <script src="dist/js/pages/far_requests_axios_rfc.js"></script>
+  <script src="dist/js/pages/far_comm.js"></script>
+  <script src="dist/js/pages/far_comm_data.js"></script>
+  <script src="dist/js/pages/util_hollywood.js"></script>
+  <!-- DataTables -->
+  <script src="dist/js/pages/lib/jquery.dataTables.min.js"></script>
+  <script src="dist/js/pages/lib/dataTables.bootstrap4.min.js"></script>
+  <script src="dist/js/pages/lib/dataTables.buttons.min.js"></script>
+  <script src="dist/js/pages/lib/buttons.html5.min.js"></script>
+</body>
+
+</html>

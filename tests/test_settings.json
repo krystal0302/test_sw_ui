@@ -1,0 +1,35 @@
+{
+    "user_account":"admin",
+    "user_password":"admin",
+    "app_data_path": "/home/user/farobot_dev_env/data/far_app_data",
+    "settings2": {
+        "data": {
+            "swarm_core": [
+                {
+                    "low_battery_threshold": "50",
+                    "full_battery_threshold": "90",
+                    "charging_due_time": "4800",
+                    "battery_log_time": "80",
+                    "battery_log_threshold": "48080"
+                }
+            ]
+        }        
+    },
+    "role": { 
+        "data": "random@4"         
+    },
+    "map": {
+        "data": {
+            "vertex": "random@1",
+            "cell": "random@10",
+            "function_type": "random@1"
+        }
+    },
+    "operation": {
+        "data": "random@1" 
+    },
+    "fleet": {
+        "data": "random@1"
+    }
+
+ }

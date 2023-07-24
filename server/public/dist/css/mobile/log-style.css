@@ -1,0 +1,109 @@
+@import url("../../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../../plugins/fontawesome-free/css/all.min.css");
+@import url("../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
+@import url("../adminlte.min.css");
+@import url("../bootstrap-datepicker.css");
+@import url("../bootstrap-timepicker.min.css");
+@import url("../dataTables.bootstrap4.min.css");
+@import url("../notification.css");
+@import url("general-style.css");
+
+
+.form-control {
+  border-color: gray;
+}
+
+div#options-container {
+  border-radius: 15px;
+  width: 85%;
+  padding: 30px;
+}
+
+.dropdown button#level-dropdown {
+  width: 100%;
+  background-color: white;
+}
+
+#level-dropdown span:first-child {
+  color: gray;
+  float: left;
+}
+
+#level-dropdown::after {
+  float: right;
+  margin-top: 10px;
+}
+
+.checkbox-menu {
+  width: 100%;
+}
+
+.checkbox-menu li label {
+  width: 50%;
+  display: block;
+  padding: 3px 10px;
+  clear: both;
+  font-family: Arial;
+  font-weight: normal;
+  color: #333;
+  margin:0;
+}
+
+.checkbox-menu li button {
+  width: 95%;
+}
+
+.datepicker td, .datepicker th {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.85rem;
+}
+
+.datepicker {
+  margin-bottom: 3rem;
+}
+
+.datepicker-dropdown {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+  opacity: .3;
+}
+
+.fa-question-circle::before {
+  color: #aaa;
+  margin-left: 5px;
+}
+
+/* Tooltip */
+.tooltip >.tooltip-inner {
+  background-color: #ddd;
+  color: #3d425f;
+  border: 2px solid #6C6C6C;
+  font-weight: 300;
+  font-size: 17px;
+  border-radius: 10px;
+  max-width: 180px;
+}
+
+.bs-tooltip-auto[x-placement^=top] .arrow::before, .bs-tooltip-top .arrow::before {
+  border-top-color: transparent;
+}
+.bs-tooltip-auto[x-placement^=right] .arrow::before, .bs-tooltip-right .arrow::before {
+  border-right-color: transparent;
+}
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .bs-tooltip-bottom .arrow::before {
+  border-bottom-color: transparent;
+}
+.bs-tooltip-auto[x-placement^=left] .arrow::before, .bs-tooltip-left .arrow::before {
+  border-left-color: transparent;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  flex-flow: row wrap;
+}

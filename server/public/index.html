@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Dashboard</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="dist/css/dashboard-style.css">
+
+  <script type="text/javascript" src="dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn" onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class='country_flags' country=''></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <div class="sidebar">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <section class="content">
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  <span data-i18n="dashboard.ttl_AgntStcs">AGENTS STATISTICS</span>
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item" style="font-size: 13px;">
+                      <!-- <a class="nav-link active" href="#agent-pie-tab" data-toggle="tab">Pie Chart</a> -->
+                      <!-- <a class="nav-link active" data-toggle="tab">Pie Chart</a> -->
+                    </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" href="#agent-line-tab" data-toggle="tab">Line Chart</a>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body" id="agent-statistic-body">
+                <div class="tab-content">
+                  <div class="chart tab-pane chart-responsive active" id="agent-pie-tab">
+                    <canvas id="agent-pie-chart" height="150" style="margin-left: -20px;"></canvas>
+                  </div>
+                  <div class="chart tab-pane chart-responsive" id="agent-line-tab">
+                    <div id="agent-line-chart" style="height: 180px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-4 -->
+
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  <span data-i18n="dashboard.ttl_ArtfStcs">ARTIFACTS STATISTICS</span>
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item" style="font-size: 13px;">
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body" id="artifact-statistic-body">
+                <div class="tab-content">
+                  <div class="chart tab-pane chart-responsive active" id="artifact-pie-tab">
+                    <canvas id="artifact-pie-chart" height="150"></canvas>
+                  </div>
+                  <div class="chart tab-pane chart-responsive" id="artifact-line-tab">
+                    <div id="artifact-line-chart" style="height: 180px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-4 -->
+
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie"></i>
+                  <span data-i18n='dashboard.ttl_FlowStcs'>FLOWS STATISTICS<span>
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item" style="font-size: 13px;padding-top:.2rem">
+                      <!-- <a class="nav-link active" id="flow-pie-btn" href="#flow-pie-tab" data-toggle="tab">Pie Chart</a> -->
+                      <a class="nav-link active" style="display: inline;" id="flow-switch-tab" href="#flow-pie-tab"
+                        data-toggle="tab"><span data-i18n="dashboard.tabs.flow">Flow</span></a>
+                    </li>
+                    <li class="nav-item" style="font-size: 13px;padding-top:.2rem">
+                      <a class="nav-link" style="display: inline;" id="task-switch-tab" href="#task-pie-tab"
+                        data-toggle="tab"><span data-i18n="dashboard.tabs.task">Task</span></a>
+                    </li>
+                    <!-- <li class="nav-item" style="font-size: 13px;">
+                      <a class="nav-link" id="flow-line-btn" href="#flow-line-tab" data-toggle="tab">Line Chart</a>
+                    </li> -->
+                    <!-- <div class="btn-group" id="realtime" data-toggle="btn-toggle" style="display:none;">
+                      <button type="button" class="btn btn-default btn-sm active" data-toggle="on">On</button>
+                      <button type="button" class="btn btn-default btn-sm" data-toggle="off">Off</button>
+                      <button type="button" class="btn btn-tool" onclick="expandLineChartPanel();">
+                        <i class="fas fa-info-circle"></i>
+                      </button>
+                    </div> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body" id="flow-statistic-body">
+                <div class="tab-content">
+                  <div class="chart tab-pane chart-responsive active" id="flow-pie-tab">
+                    <canvas id="flow-pie-chart" height="150" style="margin-left: -20px;"></canvas>
+                  </div>
+                  <div class="chart tab-pane chart-responsive" id="task-pie-tab">
+                    <canvas id="task-pie-chart" height="150" style="margin-left: -20px;"></canvas>
+                  </div>
+                  <div class="chart tab-pane chart-responsive" id="flow-line-tab">
+                    <div id="flow-line-chart" style="height: 180px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-4 -->
+
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.Left col -->
+
+      <div class="row" style="padding: 0 0.6rem;">
+        <section class="col-lg-12 connectedSortable">
+          <!-- <div class="card col-5"> -->
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h2 class="card-title">
+                <i class="fas fa-list mr-1"></i>
+                <span data-i18n="dashboard.ttl_FlowList">FLOWS LIST</span>
+              </h2>
+              <div class="card-tools">
+                <!-- <button id="cardview" type="button" class="btn btn-tool switcher">
+                  <i class="fas fa-th" alt="Grid"></i>
+                </button>
+                <button id="tableview" type="button" class="btn btn-tool switcher active">
+                  <i class="fas fa-list" alt="List"></i>
+                </button> -->
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button> -->
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body flow-list-panel" style="font-size: 16px; height: 280px; overflow-y: scroll;">
+              <div class="table-responsive">
+                <table id="flows-table"></table>
+                <!-- <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                      <th>Progress</th>
+                    </tr>
+                  </thead>
+                  <tbody id="fleet-flows-body"></tbody>
+                </table> -->
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <!-- <a class="btn btn-sm btn-secondary">Show All Flows</a> -->
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          <!-- /.card -->
+        </section>
+
+        <section class="col-lg-6 connectedSortable">
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h2 class="card-title">
+                <i class="fas fa-list mr-1"></i>
+                <span data-i18n="dashboard.ttl_AgntList">AGENTS LIST</sapn>
+              </h2>
+
+              <div class="card-tools">
+                <button id="gridview" type="button" class="btn btn-tool switcher">
+                  <i class="fas fa-th" alt="Grid"></i>
+                </button>
+                <button id="listview" type="button" class="btn btn-tool switcher">
+                  <i class="fas fa-list" alt="List"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button> -->
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0" style="height:480px; overflow-y:scroll;">
+              <ul id="fleet-agents-body" class="list clearfix"></ul>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <!-- <a class="btn btn-sm btn-secondary">Show All Agents</a> -->
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          <!-- /.card -->
+        </section>
+
+        <section class="col-lg-6 connectedSortable">
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h2 class="card-title">
+                <i class="fas fa-list mr-1"></i>
+                <span data-i18n="dashboard.ttl_ArtfList">ARTIFACTS LIST</sapn>
+              </h2>
+
+              <div class="card-tools">
+                <button id="artifact_gridview" type="button" class="btn btn-tool artifact_switcher">
+                  <i class="fas fa-th" alt="Grid"></i>
+                </button>
+                <button id="artifact_listview" type="button" class="btn btn-tool artifact_switcher">
+                  <i class="fas fa-list" alt="List"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button> -->
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0" style="height:480px; overflow-y:scroll;">
+              <ul id="fleet-artifacts-body" class="list clearfix"></ul>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <!-- <a class="btn btn-sm btn-secondary">Show All Agents</a> -->
+            </div>
+            <!-- /.card-footer -->
+          </div>
+          <!-- /.card -->
+        </section>
+      </div>
+    </div>
+
+    <aside class="control-sidebar control-sidebar-dark farobot-sidemenu"></aside>
+    <!-- /.control-sidebar -->
+
+    <div class="modal fade" id="agent-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" data-i18n="dashboard.modal.ttl_AgntDetail">Agent Details</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- /.modal-header -->
+          <div class="modal-body">
+            <div class="container col-md-12">
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntId">ID</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-id" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntName">Name</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-name" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntStts">Status</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-status" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntMode">Mode</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-mode" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntModel">Model</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-model" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntVers">Version</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-version" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntIp">IP</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-ip" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntMac">Mac</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-mac" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p>Task ID :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-task-id" class="d-flex align-items-center"></p>
+                </div>
+              </div> -->
+              <div class="row">
+                <div style="float: left;" class="col-md-4">
+                  <p><span data-i18n="dashboard.modal.col_AgntBatt">Battery</span> :</p>
+                </div>
+                <div style="float: right;" class="col-md-8">
+                  <p id="r-agent-battery" class="d-flex p-content align-items-center"></p>
+                </div>
+              </div>
+            </div>
+            <!-- /.container -->
+          </div>
+          <!-- /.modal-body -->
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+  </div>
+  <!-- ./wrapper -->
+
+  <template id="no-agent-row">
+    <div id="no-agents" class="no-agents-caption"
+      style="padding: 2rem; font-weight: bold; font-size: 1.5rem; text-align: center;">
+      <span data-i18n="dashboard.tmpl.col_NoAgnts">No Agents in this fleet</span>
+    </div>
+  </template>
+
+  <template id="agent-row">
+    <li class="clearfix" style="font-size: 1.0rem;">
+      <section class="left">
+        <img src="dist/img/sprites/smr250-75x75.png" alt="default thumb" class="thumb">
+        <div><span data-i18n="dashboard.tmpl.col_AgntName">Agent Name</span>: <span class="agent-name"></span></div>
+        <div><span data-i18n="dashboard.tmpl.col_AgntTask">Task</span>: <span class="agent-task-id"></span></div>
+        <div><span data-i18n="dashboard.tmpl.col_AgntBatt">Battery</span>: <span class="agent-battery"></span></div>
+        <div class="agent-id" style="visibility:hidden">Name: </div>
+      </section>
+
+      <section class="right">
+        <span class="darkview agent-more" style="float: left">
+          <!-- <a class="firstbtn" data-toggle="modal"><img src="dist/img/read-more-btn.png" alt="More"></a> -->
+          <a class="firstbtn" data-toggle="modal"><button class="btn btn-secondary">MORE</button></a>
+        </span>
+        <span class="agent-status" style="display:inline-block;vertical-align:middle;"></span>
+      </section>
+    </li>
+  </template>
+
+  <template id="no-flow-row">
+    <div id="no-flows" class="no-flows-caption"
+      style="padding: 1rem; font-weight: bold; font-size: 1.5rem; text-align: center;">
+      <span data-i18n="dashboard.tmpl.col_NoFlows">No Flows in this fleet</span>
+    </div>
+  </template>
+
+  <template id="flow-row">
+    <tr>
+      <td><a class="flow-id"></a></td>
+      <td><span class="flow-name"></span></td>
+      <td><span class="flow-status badge badge-info"></span></td>
+      <td>
+        <div class="progress progress-striped active">
+          <div class="flow-progress progress-bar progress-bar-striped bg-secondary" style="width: 100%"></div>
+        </div>
+      </td>
+    </tr>
+  </template>
+
+  <template id="no-artifacts-row">
+    <div id="no-artifacts" class="no-artifacts-caption"
+      style="padding: 2rem; font-weight: bold; font-size: 1.5rem; text-align: center;">
+      <span data-i18n="dashboard.tmpl.col_NoArtfs">No Artifacts in this fleet</span>
+    </div>
+  </template>
+
+  <template id="artifacts-row">
+    <li class="clearfix" style="font-size: 1.0rem;">
+      <section class="left">
+        <img src="dist/img/sprites/smr250-75x75.png" alt="default thumb" class="thumb">
+        <div><span data-i18n="dashboard.tmpl.col_ArtfName">Artifact Name</span>: <span class="artifact-name"></span>
+        </div>
+        <div class="artifact-id" style="visibility:hidden">Name: </div>
+      </section>
+
+      <section class="right">
+        <!-- <span class="darkview artifact-more" style="float: left">
+          <a class="firstbtn" data-toggle="modal"><button class="btn btn-secondary">MORE</button></a>
+        </span> -->
+        <span class="artifact-status" style="display:inline-block;vertical-align:middle;"></span>
+      </section>
+    </li>
+  </template>
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- jquery-validation -->
+  <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script scr="plugins/jquery-validation/additional-methods.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ChartJS -->
+  <script src="plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="plugins/sparklines/sparkline.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- FLOT CHARTS -->
+  <script src="plugins/flot/jquery.flot.js"></script>
+  <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+  <script src="plugins/flot-old/jquery.flot.resize.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.js"></script>
+  <!-- Lodash App -->
+  <script src="dist/js/pages/lib/lodash.min.js"></script>
+  <!-- Notification -->
+  <script src="dist/js/pages/lib/notification.js"></script>
+  <!-- i18Next -->
+  <script src="dist/js/pages/lib/i18next.min.js"></script>
+  <script src="dist/js/pages/lib/jquery-i18next.min.js"></script>
+
+  <!-- jquery tree grid view -->
+  <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <script src="plugins/bootstrap-table/bootstrap-table-treegrid.js"></script>
+  <script src="plugins/bootstrap-table/jquery.treegrid.min.js"></script>
+
+  <!-- FARobot Dashboard Page -->
+  <script src="dist/js/pages/far_chart.js"></script>
+  <script src="dist/js/pages/far_utilities.js"></script>
+  <script src="dist/js/pages/far_requests.js"></script>
+  <script src="dist/js/pages/far_requests_rmt.js"></script>
+  <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+  <script src="dist/js/pages/far_comm.js"></script>
+  <script src="dist/js/pages/far_comm_data.js"></script>
+  <script src="dist/js/pages/far_dashboard.js"></script>
+  <script src="dist/js/pages/util_hollywood.js"></script>
+</body>
+
+</html>

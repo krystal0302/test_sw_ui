@@ -1,0 +1,89 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#typeSelect {
+    background-color: rgb(238, 232 ,213);
+}
+
+.button, .input {
+    font-size: 1em;
+    font-family: Consolas, monospace;
+    /* background-color: rgb(238, 232 ,213); */
+    color: #666;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.button {
+    cursor: pointer;
+}
+
+.editor {
+    width: 100%;
+    height: 100%;
+}
+
+.CodeMirror {
+    font-size: 16px;
+    font-family: Consolas, monospace;
+    width: 100%;
+    height: 98% !important;
+}
+
+.mainCont{
+    width:100%;
+    margin: 0;
+}
+
+.terminalCont{
+    background: black;
+    width: 100%;
+    border-radius: 4px;
+    padding: 12px 0 0 0;
+    margin-top:-20px;
+    font-family: 'Roboto Mono' monospace;
+    opacity: 1;
+}
+
+.userEnteredText{
+	color: rgb(255,255,255,0.5);
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+
+#terminalResultsCont{
+	width: 100%;
+	height: 200px;
+	padding: 12px;
+	overflow-y: auto;
+	resize: none;
+	border:none;
+	font-size:14px;
+	line-height: 28px;
+	display: block;
+	color:rgb(255,255,255,0.9)
+}
+
+#terminalResultsCont a{
+	color: rgb(255,255,255,0.9);
+	text-decoration: underline;
+}
+
+#terminalTextInput{
+	background:black;
+	display: block;
+	border: none;
+	border-top: 1px solid rgb(255,255,255,0.2);
+	border-radius: 0 0 4px 4px;
+	width: 100%;
+	color: white;
+	padding:18px;
+	font-size: 14px;
+	outline: none;
+	font-family: 'Roboto Mono' monospace;
+}

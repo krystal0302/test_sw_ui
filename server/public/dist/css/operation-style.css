@@ -1,0 +1,308 @@
+@import url("../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../plugins/fontawesome-free/css/all.min.css");
+@import url("../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
+@import url("adminlte.min.css");
+@import url("notification.css");
+@import url("toastify.min.css");
+@import url("bootstrap-datepicker.css");
+/* Flow */
+@import url("drawflow.min.css");
+@import url("beautiful.css");
+@import url("general-style.css");
+
+
+html, body {
+  overflow: auto;
+}
+
+.form-group {
+  margin: 0px;
+}
+
+#task-row {
+  margin-bottom: 15px;
+}
+
+#add-list {
+  margin-top: 15px;
+}
+
+#add-btn, #open-role-btn {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.task-div, .flow-div {
+  border-radius: 8px;
+  /* background-color: #393f52; */
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.task-div input[type=text]:focus, .flow-div input[type=text]:focus {
+  color: white;
+  font-weight: bold;
+}
+
+.text-col {
+  border: 0px;
+  overflow: hidden;
+}
+
+.btn-link {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.unavailable {
+  background-color: #3d425f !important;
+  color: white;
+  border-color: green !important;
+  /* filter: drop-shadow(0 0 0.25rem rgba(40, 167, 69, 0.5)); */
+}
+
+.available {
+  background-color: #3d425f !important;
+  color: white;
+  border-color: red !important;
+  filter: drop-shadow(0 0 0.75rem rgba(190, 65, 12, 0.5));
+}
+
+#task-deck {
+  display: none;
+}
+
+#task-deck .card-header:first-child, #flow-deck .card-header:first-child {
+  /* border-color: white; */
+  border-color: transparent;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#task-field-table {
+  width: 80%;
+  margin: 0px auto;
+  float: none;
+  border-collapse: collapse;
+}
+
+.title-td {
+  font-size: 19px;
+  color: white;
+}
+
+.params-title-td {
+  text-indent: 30%;
+}
+
+.role_title_tr {
+  margin-top: 100px;
+  text-indent: 20px;
+  font-size: 18px;
+  background-color: white;
+  color: black;
+}
+
+.role_title_tr:last-child {
+  border-bottom-left-radius: 10px;
+}
+
+.role_title_tr th {
+  padding: 10px;
+  font-weight: normal;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.role_title_tr th span {
+  display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.role_params_tr {
+  background-color: white;
+  color: black;
+}
+
+.role_params_tr td {
+  padding: 20px;
+}
+
+select[id$='_area_select'] {
+  display: inline;
+}
+
+select[id$='_cell_select'] {
+  margin-left: 10px;
+  display: inline;
+}
+
+.light-icon-color {
+  color: white;
+}
+
+.dark-icon-color {
+  color: rgb(0, 0, 0);
+}
+
+.fixed-30 {
+  width: 30px;
+}
+
+.fixed-40 {
+  width: 40px;
+}
+
+#taskTab .nav-item .nav-link.active {
+  color: white;
+  background-color: #3d425f;
+  border-color: #4b545c;
+}
+
+#taskTab .nav-item .nav-link {
+  color: gray;
+  background-color: #393f52;
+  border-color: #3d425f;
+}
+
+.op-c {
+  width: 50%;
+}
+
+#flowTab .nav-item .nav-link.active {
+  color: white;
+  background-color: #3d425f;
+  border-color: #4b545c; 
+}
+
+#flowTab .nav-item .nav-link {
+  color: gray;
+  background-color: #393f52;
+  border-color: #3d425f;  
+}
+
+#myTab .nav-item .nav-link.active {
+  color: rgb(53, 57, 65);
+  background-color: #ffffff;
+  /* border-color: #dee2e6 #dee2e6 #fff; */
+  border-color: transparent;
+  border-bottom-color: #dee2e6;  
+}
+
+#myTab .nav-item .nav-link{
+  color: #ffffff;
+  background-color: rgb(53, 57, 65);
+  border-color: transparent;
+  border-bottom-color: #dee2e6;  
+}
+
+.delete-trigger-btn {
+  position: absolute;
+  background: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  top: -10px;
+  right: -10px;
+  padding: 0px;
+}
+
+.delete-trigger-btn:focus {
+  outline: 0;
+}
+
+.bg-queued {
+  background-color: #343a40;
+  color: white;
+}
+
+.edit_flow_name_btn {
+  font-size: 0.9rem;
+  padding: 5px 6px;
+  background-color: #393f52;
+  border: none;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-left: 2px;
+  outline: none !important;
+}
+
+/* FARobot Customization */
+.card-deck-badge {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: gray;
+  right: 40px;
+  top: -25px;
+  text-align: center;
+  display: table;
+}
+
+.round-rect {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  background: gray;
+  right: 80px;
+  top: 40%;
+  opacity: 0.8;
+  text-align: center;
+  display: table;
+}
+
+.content_wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.my-button:hover {
+  opacity: 1.0;
+}
+
+.my-button:active {
+  /*background-color: #3e8e41;*/
+  transform: translateY(2px);
+}
+
+/* license authorization area */
+#drop-area {
+  text-align: center;
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 95%;
+  margin: 5px auto;
+  padding: 20px;
+}
+#drop-area.highlight {
+  border-color: gold;
+}
+.license-form {
+  margin-bottom: 10px;
+}
+.button {
+  display: inline-block;
+  padding: 10px;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+} 
+.button:hover {
+  background: #ddd;
+}
+.outputs > .output_1 {
+  background: greenyellow;
+}
+.outputs > .output_2 {
+  background: red;
+}

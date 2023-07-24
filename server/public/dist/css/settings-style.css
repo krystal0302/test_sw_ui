@@ -1,0 +1,90 @@
+@import url("../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../plugins/fontawesome-free/css/all.min.css");
+@import url("../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
+@import url("adminlte.min.css");
+@import url("notification.css");
+@import url("toastify.min.css");
+@import url("jsgrid.min.css");
+@import url("jsgrid-theme.min.css");
+@import url("bs-stepper.min.css");
+@import url("general-style.css");
+
+
+
+.card-deck-badge {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: gray;
+  right: 40px;
+  top: -25px;
+  text-align: center;
+  display: table;
+}
+
+.round-rect {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 10%;
+  background: gray;
+  right: 80px;
+  top: 40%;
+  opacity: 0.8;
+  text-align: center;
+  display: table;
+}
+
+.content_wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.my-button:hover {
+  opacity: 1.0;
+}
+
+.my-button:active {
+  /*background-color: #3e8e41;*/
+  transform: translateY(2px);
+}
+
+/* license authorization area */
+#drop-area {
+  text-align: center;
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 95%;
+  margin: 5px auto;
+  padding: 20px;
+}
+
+#drop-area.highlight {
+  border-color: gold;
+}
+
+.license-form {
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button:hover {
+  background: #ddd;
+}
+
+#agent-table-body tr:nth-child(even)>td {
+  border: none;
+}
+
+#agent-jsGrid .jsgrid-cell {
+  word-break: break-word;
+}

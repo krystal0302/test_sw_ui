@@ -1,0 +1,40 @@
+.cropped-image {
+  height: 220px;
+  width: auto;
+}
+
+.cropped-image-container {
+  /* margin-top: 20px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+._coverImage-holder  {
+  padding: 25px 40px;
+  /* background-color:black; */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* margin-top: 25px; */
+}
+
+.crop-container {
+  height: 300px;
+  width: 300px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  /* width: 600px; */
+  width: 100%;
+  position: absolute;
+  bottom: -15px;
+}

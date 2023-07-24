@@ -1,0 +1,671 @@
+{
+	"lng": "zh-TW",
+	"resources": {
+		"zh": {
+			"translation": {
+				"general": {
+					"btn_Cancel": "取消",
+					"btn_Confirm": "確認"
+				},
+				"nav": {
+					"dashboard": "儀表板",
+					"live_view": "即時監看",
+					"fleet_configuration": "車隊組建",
+					"flow_configuration": "任務組建",
+					"flow_trigger": "任務觸發",
+					"scheduled_task viewer": "排程器視圖",
+					"map": "地圖",
+					"create_map": "新建地圖",
+					"edit_map": "編輯地圖",
+					"role": "角色",
+					"system_settings": "系統設定",
+					"log": "日誌",
+					"user_management": "使用者管理",
+					"api_info": "API 界面",
+					"sign_out": "登出",
+					"footer": {
+						"version": "版本"
+					}
+				},
+				"dashboard": {
+					"ttl_AgntStcs": "機器人統計數據",
+					"ttl_ArtfStcs": "裝置統計數據",
+					"ttl_FlowStcs": "任務統計數據",
+					"ttl_AgntList": "機器人列表",
+					"ttl_ArtfList": "裝置列表",
+					"ttl_FlowList": "任務列表",
+					"tabs": {
+						"flow": "工作流",
+						"task": "工作"
+					},
+					"modal": {
+						"ttl_AgntDetail": "詳細資料",
+						"col_AgntId": "識別碼",
+						"col_AgntName": "機器人",
+						"col_AgntStts": "狀態",
+						"col_AgntMode": "模式",
+						"col_AgntModel": "型號",
+						"col_AgntVers": "版本",
+						"col_AgntIp": "IP",
+						"col_AgntMac": "Mac",
+						"col_AgntBatt": "電量"
+					},
+					"tmpl": {
+						"col_AgntName": "機器人",
+						"col_AgntTask": "任務",
+						"col_AgntBatt": "電池",
+						"col_ArtfName": "裝置名稱",
+						"col_NoFlows": "車隊無任務",
+						"chart": {
+							"arr_AgntStates": [
+								"閒置",
+								"充電",
+								"使用中",
+								"暫停",
+								"等待中",
+								"緊急",
+								"未初始化",
+								"離線"
+							],
+							"arr_ArtfStates": [
+								"服務中",
+								"無接收數據",
+								"錯誤",
+								"離線"
+							],
+							"arr_FlowStates": [
+								"佇列",
+								"使用中",
+								"完成",
+								"失敗",
+								"暫停"
+							]
+						},
+						"list": {
+							"agnt": {
+								"lbl_Name": "機器人名",
+								"lbl_Task": "任務",
+								"lbl_Batt": "電量",
+								"row_Empty": "當前無機器人"
+							},
+							"artf": {
+								"lbl_Name": "裝置名",
+								"row_Empty": "當前無裝置"
+							},
+							"flow": {
+								"lbl_Name": "任務名",
+								"lbl_Id": "識別碼",
+								"lbl_Assignee": "指派給",
+								"lbl_Status": "狀態",
+								"lbl_Progress": "進度",
+								"lbl_Operation": "操作",
+								"row_Empty": "當前無任務"
+							}
+						}
+					}
+				},
+				"live_view": {
+					"ttl_LiveView": "即時監看",
+					"lbl_Map": "地圖",
+					"spn_MapFileName": "檔案名稱"
+				},
+				"fleet_config": {
+					"btn_CreateNewFleet": "新建車隊",
+					"btn_DeleteFleet": "刪除車隊",
+					"btn_SaveFleet": "儲存",
+					"ttl_AgntFltStts": "機器人狀態",
+					"ttl_ArtfFltStts": "裝置狀態",
+					"ttl_Maps": "地圖",
+					"ttl_Roles": "角色",
+					"sidebar": {
+						"lbl_AgntArtfName": "名稱",
+						"lbl_AgntArtfId": "識別碼",
+						"lbl_AgntArtfMode": "模式",
+						"lbl_AgntArtfModel": "型號",
+						"lbl_AgntArtfSw": "軟體版本",
+						"lbl_AgntArtfUl": "升級列表",
+						"btn_AgntLink": "機器人連結頁面",
+						"btn_AgntInitP": "初始方位",
+						"btn_AgntReboot": "重啟",
+						"tab_PortData": "匯入/匯出数据",
+						"tab_FactorySet": "原廠設定"
+					},
+					"tmpl": {
+						"btn_SidebarImport": "匯入",
+						"btn_SidebarExport": "匯出",
+						"agnt": {
+							"lbl_SidebarName": "機器人名",
+							"lbl_AvailTitle": "可選擇的機器人",
+							"ttp_SidebarDesc": "說明",
+							"ttp_SidebarRange": "範圍",
+							"ttp_SidebarUnit": "單位",
+							"btn_Load": "載入中...",
+							"btn_Ready": "待命",
+							"btn_Init": "初始化機器人方位"
+						},
+						"artf": {
+							"lbl_SidebarName": "裝置名",
+							"lbl_AvailTitle": "可選擇的裝置",
+							"lbl_SidebarDesc": "說明",
+							"lbl_SidebarRange": "範圍",
+							"lbl_SidebarUnit": "單位"
+						},
+						"maps": {
+							"lbl_AvailTitle": "可選擇的地圖"
+						},
+						"role": {
+							"lbl_AvailTitle": "可選擇的角色"
+						}
+					}
+				},
+				"flow_config": {
+					"ttl_Flows": "任務流",
+					"ttl_PlanArtfStts": "規劃裝置狀態",
+					"btn_createFlow": "創建任務流",
+					"btn_ToRoleEditor": "編輯角色",
+					"editor": {
+						"btn_Back": "返回",
+						"btn_SaveFlow": "儲存",
+						"lbl_FlowTrig": "觸發方式",
+						"tab_Role": "角色",
+						"btn_Run": "運行",
+						"btn_ClearPanel": "清除畫面"
+					},
+					"tmpl": {
+						"list": {
+							"artf": {
+								"lbl_Title": "可選擇裝置"
+							}
+						}
+					}
+				},
+				"task_schedule_viewer": {
+					"lbl_ViewBy": "檢視 由",
+					"btn_ApplyDate": "應用日期",
+					"btn_Reset": "重新設定",
+					"tmpl": {
+						"chart": {
+							"ldn_Complete": "正常",
+							"ldn_Queue": "預測",
+							"ldn_Fail": "失敗/取消/手動/中斷",
+							"ldn_Active": "進行中"
+						}
+					}
+				},
+				"create_map": {
+					"ttl_CreateMap": "新建地圖",
+					"btn_SaveMap": "儲存地圖",
+					"editor": {
+						"btn_SelAgnt": "機器人",
+						"tab_CreateMap": "新建",
+						"lbl_StartMap": "開始建圖",
+						"col_Param": "參數",
+						"col_Value": "數值",
+						"col_ParamRes": "解析度",
+						"col_ParamOrigin": "原點",
+						"col_ParamHeight": "高度",
+						"col_ParamWidth": "寬度",
+						"lbl_RotateMap": "旋轉地圖"
+					}
+				},
+				"edit_map": {
+					"ttl_MapEditor": "編輯地圖",
+					"ttl_PropView": "屬性視圖",
+					"opt_MapImg": "地圖",
+					"opt_MapOrig": "原點",
+					"opt_Routes": "路線",
+					"opt_Cells": "儲位",
+					"tgl_EditProp": "編輯屬性",
+					"tgl_MapImg": "地圖",
+					"tgl_Routes": "路線",
+					"tgl_Cells": "儲位",
+					"tgl_ConnCells": "關聯儲位管理",
+					"tgl_Reflectors": "反光板",
+					"tgl_MultiFuncZone": "多重功能區",
+					"modal": {
+						"ttl_RenameMap": "重新命名",
+						"btn_Cancel": "取消",
+						"btn_Confirm": "確認",
+						"ttl_DeleteMap": "刪除地圖",
+						"lbl_ConfirmMsg": "確認刪除"
+					},
+					"editor": {
+						"ttl_MapEditPropTools": "編輯屬性工具",
+						"ttl_LineWidth": "線寬",
+						"btn_MapView": "視圖",
+						"btn_MapLine": "線段",
+						"btn_MapEraser": "清除",
+						"btn_MapEditOrigin": "編輯原點",
+						"btn_SetOrigin": "設定原點",
+						"btn_CancelSetOrigin": "取消設定原點",
+						"btn_FitView": "全圖",
+						"btn_AddVertex": "新增頂點",
+						"btn_EndAddVertex": "結束節點編輯",
+						"btn_EditVertex": "編輯頂點",
+						"btn_DeleteVertex": "刪除節點",
+						"btn_AddEdge": "新增連接線",
+						"btn_EditEdge": "編輯連接線",
+						"btn_AddCell": "新增儲位",
+						"btn_EditCell": "編輯儲位",
+						"btn_DeleteCell": "刪除儲位",
+						"btn_FunctionType": "儲位屬性清單",
+						"btn_CreateNewZone": "新建 Zone",
+						"btn_DrawZone": "繪製 Zone",
+						"btn_DeleteZone": "刪除 Zone",
+						"btn_Create": "新建",
+						"btn_Cancel": "取消",
+						"btn_Undo": "上一步",
+						"btn_Save": "儲存",
+						"btn_Delete": "刪除",
+						"btn_PanZoom": "平移與縮放",
+						"lbl_Label": "標牌",
+						"lbl_Weight": "權重",
+						"lbl_FunctionType": "儲位屬性",
+						"lbl_Area": "區域",
+						"lbl_Direction": "方向",
+						"opt_Forward": "前",
+						"opt_Backward": "後",
+						"opt_Left": "左",
+						"opt_Right": "有",
+						"lbl_Load": "負載",
+						"opt_Empty": "空",
+						"opt_Occupied": "佔用",
+						"lbl_Markers": "特徵",
+						"opt_Pattern": "模式",
+						"opt_None": "無",
+						"lbl_MarkerOffset": "特徵偏移量",
+						"lbl_CellSize": "儲位尺寸",
+						"lbl_ZoneList": "Zone 清單",
+						"lbl_ZoneType": "Zone 類型",
+						"lbl_ZoneName": "Zone 名稱",
+						"lbl_ZonePriority": "Zone 優先權",
+						"lbl_ZoneModel": "Model 篩選",
+						"tab_ZoneEdit": "Zone 編輯",
+						"tab_Setting": "設定",
+						"btn_AddConfig": "加入設置"
+					},
+					"tmpl": {
+						"editor": {
+							"btn_Delete": "刪除",
+							"ttp_Desc": "描述",
+							"ttp_Range": "範圍",
+							"ttp_Unit": "單位"
+						},
+						"modal": {
+							"ttl_AddConfig": "加入設置"
+						}
+					}
+				},
+				"role": {
+					"ttl_RolesOverview": "角色總覽",
+					"btn_CreateNewRole": "新建角色",
+					"btn_BackToPrev": "返回",
+					"btn_SaveRole": "儲存",
+					"btn_Create": "新建",
+					"btn_Cancel": "刪除"
+				},
+				"sys_set": {
+					"tab_SwarmCore": "Swarm Core",
+					"tab_UsrSetting": "使用者設定",
+					"tab_UiSetting": "界面設定",
+					"tab_Others": "其他",
+					"swarm_core": {
+						"title_LowBatteryThresh": "低電量水平",
+						"text_LowBatteryThresh": "When the AMR is not in the charging mode, it will be assigned the charging task if its battery level is lower than this threshold",
+						"btn_SaveSettings": "儲存"
+					},
+					"usr_set": {
+						"lbl_Account": "帳號",
+						"lbl_Pwd": "密碼",
+						"lbl_ContactNumber": "手機號碼",
+						"lbl_Email": "電子郵箱",
+						"btn_Apply": "應用",
+						"ttl_ChangePwd": "變更密碼",
+						"txt_Pwd": "密碼",
+						"txt_ConfirmPwd": "確認密碼",
+						"btn_Cancel": "取消",
+						"btn_Confirm": "確認"
+					},
+					"ui_set": {
+						"lbl_Theme": "主題",
+						"opt_Dark": "暗",
+						"opt_Light": "亮",
+						"lbl_FontSize": "字體大小",
+						"opt_Small": "小",
+						"opt_Medium": "中",
+						"opt_Large": "大",
+						"lbl_LangEnv": "語言環境",
+						"btn_Apply": "應用"
+					},
+					"others": {
+						"lbl_SwVer": "軟體版本",
+						"lbl_CurrVer": "當前軟體版本",
+						"lbl_LocoUpdateSC": "Local update of Swarm Core",
+						"lbl_LocoRepo": "軟體到本地庫",
+						"lbl_LocoUpdateAgnt": "SMR本地更新",
+						"lbl_OtaConnCheck": "OTA 伺服器連線測試",
+						"lbl_OtaStatus": "OTA 狀態",
+						"lbl_OtaUpdateSC": "Swarm Core OTA更新",
+						"lbl_OtaUpdateAgnt": "SMR OTA更新",
+						"btn_Sw2Loco": "軟體到本地庫",
+						"btn_Deploy": "Deploy",
+						"btn_LocoUpdateAgnt": "SMR 本地更新",
+						"btn_OtaUpdateAgnt": "SMR 連線更新",
+						"lbl_LGN": "LINE群通知",
+						"lbl_LineToken": "代幣",
+						"lbl_LogLevel": "日誌層級",
+						"lbl_LogContent": "日誌內容",
+						"plh_LineToken": "輸入代幣",
+						"plh_LogKeywords": "輸入查找關鍵詞",
+						"btn_Update": "更新",
+						"lbl_LicAuth": "憑證授權",
+						"lbl_LicStatus": "憑證狀態",
+						"lbl_LicType": "憑證類型",
+						"lbl_LicExpire": "憑證有效期",
+						"lbl_ContainerId": "Container ID",
+						"lbl_HwSig": "硬體簽名",
+						"btn_Activate": "使能",
+						"btn_Remove": "移除",
+						"btn_ExportHwSig": "匯出硬體簽名",
+						"lbl_EulaStatus": "EULA 狀態",
+						"btn_OpenEula": "開啟 EULA",
+						"lbl_FacSet": "數據匯入/匯出 - 原廠設定",
+						"btn_ImportData": "匯入數據",
+						"btn_ExportData": "匯出數據",
+						"lbl_EraseData": "清除數據",
+						"btn_Delete": "刪除",
+						"btn_Export": "匯出",
+						"btn_Upload": "上傳",
+						"btn_Download": "下載"
+					}
+				},
+				"log": {
+					"ttl_BatteryLog": "電池日誌",
+					"btn_BatteryLogExport": "匯出",
+					"ttl_DebugLog": "除錯日誌",
+					"btn_DebugLogExport": "匯出",
+					"ttl_EventLog": "事件日誌",
+					"btn_AdvancedOptions": "進階選項",
+					"btn_DownloadCSV": "下載CSV",
+					"col_Time": "時間",
+					"col_EventType": "事件類型",
+					"col_EventId": "事件識別碼",
+					"col_ModPub": "發佈模組",
+					"col_ModSub": "接收模組",
+					"col_Level": "層級",
+					"col_Msg": "訊息內容",
+					"col_DeviceId": "裝置識別碼",
+					"editor": {
+						"plh_Keywords": "輸入關鍵字",
+						"lbl_Event": "事件",
+						"lbl_Module": "模組",
+						"lbl_Others": "其他",
+						"lbl_DateTime": "日期 與 時間",
+						"btn_Cancel": "取消",
+						"btn_Clear": "清除",
+						"btn_Apply": "應用"
+					}
+				},
+				"usr_man": {
+					"ttl_ManageUser": "使用者管理",
+					"btn_CreateNewUser": "創建使用者",
+					"col_Edit": "編輯",
+					"col_UserName": "使用者",
+					"col_UserAccount": "帳號",
+					"col_Admin": "管理者",
+					"col_PhoneNumber": "手機號",
+					"col_Email": "郵件地址",
+					"col_Membership": "到期日期",
+					"col_Options": "選項",
+					"btn_DeleteUser": "移除",
+					"btn_SaveUser": "保存",
+					"editor": {
+						"ttl_AddUser": "新增使用者",
+						"lbl_Account": "帳號",
+						"lbl_PhoneNumber": "手機號碼",
+						"lbl_Pwd": "密碼",
+						"lbl_Email": "電子信箱",
+						"lbl_Name": "名稱",
+						"lbl_Auth": "授權層級",
+						"btn_Cancel": "取消",
+						"btn_Create": "新建"
+					}
+				},
+				"api": {
+					"agent_settings": {
+						"version": "1.0.0",
+						"category": {
+							"system": "系統",
+							"control": "控制",
+							"localization": "定位",
+							"network": "網路",
+							"perception": "感知",
+							"planning": "計畫"
+						},
+						"system": {
+							"map": {
+								"title": "地圖",
+								"description": "機器人使用地圖"
+							},
+							"fleet_name": {
+								"title": "車隊名",
+								"description": "機器人所屬車隊"
+							},
+							"agent_name": {
+								"title": "機器人名",
+								"description": "使用者定義機器人名"
+							},
+							"initial_pose_x": {
+								"title": "初始方位 X",
+								"description": ""
+							},
+							"initial_pose_y": {
+								"title": "初始方位 Y",
+								"description": ""
+							},
+							"initial_pose_yaw": {
+								"title": "初始方位旋轉角",
+								"description": ""
+							},
+							"initial_pose_confirmed": {
+								"title": "初始方位確認",
+								"description": ""
+							},
+							"mapping_mode": {
+								"title": "建圖模式",
+								"description": "真：使能SLAM, 偽：禁用SLAM"
+							}
+						},
+						"control": {
+							"[move_mode] max_velocity": {
+								"title": "最大速度",
+								"description": "直線速度最大值"
+							},
+							"[move_mode] goal_tolerance_distance": {
+								"title": "與目標誤差距離",
+								"description": "縱向控制誤差"
+							},
+							"[move_mode] goal_tolerance_angle": {
+								"title": "與目標誤差角度",
+								"description": "旋轉控制誤差值"
+							},
+							"[move_mode] max_angular_velocity": {
+								"title": "最大角速度",
+								"description": "角速度最大值"
+							},
+							"[move_mode] distance_threshold_high_velocity": {
+								"title": "高速距離誤差",
+								"description": "高速距離誤差值"
+							},
+							"[move_mode] distance_threshold_low_velocity": {
+								"title": "低速距離誤差",
+								"description": "低速距離誤差"
+							},
+							"[docking_mode] abort_distance": {
+								"title": "中止距離",
+								"description": "中止距離"
+							},
+							"[docking_mode] num_of_retries": {
+								"title": "重試次數",
+								"description": "重試次數"
+							},
+							"[docking_mode] docking_time_limit": {
+								"title": "對接次數限制",
+								"description": "對接次數限制"
+							},
+							"[docking_mode] detect_time_limit": {
+								"title": "偵測次數限制",
+								"description": "偵測次數限制"
+							},
+							"[docking_mode] max_velocity": {
+								"title": "最高速度",
+								"description": "最高速度"
+							},
+							"[docking_mode] max_angular_velocity": {
+								"title": "最高角速度",
+								"description": "最高角速度"
+							},
+							"[docking_mode] tolerance_longitudinal_distance": {
+								"title": "縱向距離誤差",
+								"description": "側向距離控制誤差"
+							},
+							"[docking_mode] tolerance_lateral_distance": {
+								"title": "側向距離誤差",
+								"description": "側向距離控制誤差"
+							},
+							"[docking_mode] tolerance_rotation": {
+								"title": "旋轉誤差",
+								"description": "旋轉控制誤差"
+							},
+							"[docking_mode] enable_safety_check": {
+								"title": "對位防護機制",
+								"description": "對位防護機制"
+							},
+							"[docking_mode] disable_safety_distance": {
+								"title": "防護檢測距離",
+								"description": "防護檢測距離"
+							},
+							"[rotate_mode] max_angular_velocity": {
+								"title": "最大角速度",
+								"description": "旋轉速度最大值"
+							},
+							"[rotate_mode] rotation_goal_reach_tolerance": {
+								"title": "與目標的旋轉誤差",
+								"description": "旋轉控制誤差"
+							}
+						},
+						"localization": {
+							"localization_max_reference_range": {
+								"title": "定位最大參考範圍",
+								"description": "雷射定位範圍"
+							}
+						},
+						"network": {
+							"bridge_mode": {
+								"title": "跨區域網",
+								"description": ""
+							},
+							"swarm_core_ip": {
+								"title": "Swarm Core IP",
+								"description": ""
+							}
+						},
+						"planning": {
+							"abort_stop_time": {
+								"title": "中止停止時間",
+								"description": "The time for trigger rerouting or navigation failed when obstacles exist"
+							},
+							"safety_time_for_move": {
+								"title": "移動安全時間",
+								"description": "機器人停止後重新啟動時間"
+							},
+							"footprint": {
+								"title": "腳印",
+								"description": "機器人尺寸大小。格式: [[m,m],[m,m],[m,m],[m,m]]"
+							},
+							"[safety_zone] stop_longitudinal_distance": {
+								"title": "縱向停止距離",
+								"description": "The distance for creating a stop area in the longitudinal direction"
+							},
+							"[safety_zone] stop_lateral_distance": {
+								"title": "側向停止距離",
+								"description": "The distance for creating a stop area in the latitudinal direction"
+							},
+							"[safety_zone] slow_lateral_distance": {
+								"title": "緩慢側向距離",
+								"description": "The distance for creating a slow area in the latitudinal direction"
+							}
+						},
+						"perception": {
+							"[rack] detect_tolerance": {
+								"title": "偵測誤差",
+								"description": "偵測到儲位點的距離誤差"
+							},
+							"[rack] distance_tolerance": {
+								"title": "距離誤差",
+								"description": "偵測儲位點距離距離誤差"
+							},
+							"[rack] check_size_tolerance": {
+								"title": "確認大小誤差",
+								"description": "比較物理架子與偵測到的架子差值"
+							}
+						}
+					},
+					"swarm_core_settings": {
+						"version": "1.0.0",
+						"plan": {
+							"low_battery_threshold": {
+								"title": "低電量閥值",
+								"description": "當機器人非充電模式下且電池電量低於此閥值，系統會自動分配機器人充電任務"
+							},
+							"full_battery_threshold": {
+								"title": "滿電量閥值",
+								"description": "當機器人在充電模式下且電池電量高於此閥值，系統會自動取消機器人充電任務"
+							},
+							"auto_charging": {
+								"title": "自動充電",
+								"description": "自動充電功能開關"
+							},
+							"charging_due_time": {
+								"title": "充電到期時間",
+								"description": "當機器人在充電模式下且超過充電時間，系統會自動取消機器人充電任務"
+							},
+							"schedule_optimization": {
+								"title": "工作排程最佳化",
+								"description": "開啟或關閉工作排程最佳化"
+							}
+						},
+						"battery_log": {
+							"battery_log_time": {
+								"title": "電池日誌時間",
+								"description": "機器人日誌紀錄時間間隔"
+							},
+							"battery_log_threshold": {
+								"title": "電池日誌閥值",
+								"description": "機器人日誌紀錄限制"
+							}
+						},
+						"system": {
+							"system_restart": {
+								"title": "系統重啟",
+								"description": "重啟 swarm core 系統"
+							}
+						},
+						"network": {
+							"bridge_mode": {
+								"title": "跨區域網",
+								"description": ""
+							},
+							"swarm_core_ip": {
+								"title": "IP",
+								"description": ""
+							}
+						},
+						"btn_SystemRestart": "重啟",
+						"btn_SaveSettings": "儲存"
+					}
+				}
+			}
+		}
+	}
+}

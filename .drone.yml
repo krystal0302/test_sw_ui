@@ -1,0 +1,78 @@
+kind: pipeline
+type: docker
+name: Version check
+node:
+  machine: ci-server
+
+trigger:
+  branch:
+    include:
+      - V1.1
+      - FAR-*
+
+steps:
+  - name: Prepare CICD tools
+    image: farobot/far_clang-format-10:latest
+    environment:
+      SSH_KEY:
+        from_secret: BITBUCKET_SSH_KEY
+      REPO_URL: git@bitbucket.org:farobot/far_swarm_ui.git
+    commands:
+      - mkdir $HOME/.ssh && echo "$SSH_KEY" > $HOME/.ssh/id_rsa && chmod 600 $HOME/.ssh/id_rsa && ssh-keyscan -t rsa bitbucket.org >> $HOME/.ssh/known_hosts
+      - RELEASE_BRANCH=$(grep -oPm1 "(?<=<release>)[^<]+" version.xml)
+      - echo "Release branch:\ $RELEASE_BRANCH"
+      - git clone -b $RELEASE_BRANCH --depth=1 $REPO_URL main_branch
+
+  - name: Check Workspace Version
+    image: farobot/drone_plugin_version_check:latest
+    settings:
+      SOURCE_VERSION_XML_PATH: version.xml
+      TARGET_VERSION_XML_PATH: main_branch/version.xml
+    depends_on:
+      - Prepare CICD tools
+
+---
+
+kind: pipeline
+type: docker
+name: Delivery (build-push-image)
+node:
+  machine: ci-server
+
+trigger:
+  branch:
+    include:
+      - V1.1
+      - FAR-*
+
+steps:
+- name: Delivery (build-push-image)
+  image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  environment:
+    ACR_CICD_PASSWORD:
+      from_secret: ACR_CICD_PASSWORD
+    ACR_REGISTRY_NAME:
+      from_secret: ACR_REGISTRY_NAME
+    ACR_CICD_USERNAME:
+      from_secret: ACR_CICD_USERNAME
+  commands:
+  - echo $ACR_CICD_PASSWORD | docker login $ACR_REGISTRY_NAME --username $ACR_CICD_USERNAME --password-stdin
+  - docker info
+  - BRANCH_NAME=$DRONE_BRANCH
+  - COMMIT_SHORT_HASH=${DRONE_COMMIT:0:7}
+  - TIMESTAMP=$(date --utc +"%Y-%m-%dT%H-%M-%SZ")
+  - IMAGE_NAME=$ACR_REGISTRY_NAME/$DRONE_REPO_NAME
+  - TAG=$IMAGE_NAME:$BRANCH_NAME.$TIMESTAMP.$COMMIT_SHORT_HASH
+  - LATEST_TAG=$IMAGE_NAME:$BRANCH_NAME.latest
+  - docker build -t $LATEST_TAG -t $TAG --build-arg BUILDKIT_INLINE_CACHE=1 -f ./Dockerfile .
+  - docker images
+  - docker push $TAG
+  - docker push $LATEST_TAG
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock

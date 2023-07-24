@@ -1,0 +1,165 @@
+{
+    "cell.detectionTypes": [
+        {
+            "name": "RackDetection",
+            "label": " ⬛ Rack",
+            "color": {
+                "bgColor": "rgba(0, 0, 0, 0.5)",
+                "borderColor": "lightgray",
+                "color": "lightgray",
+                "focusColor": "black",
+                "tooltipColor": "black"
+            }
+        },
+        {
+            "name": "ChargerDetection",
+            "label": " 🟩 Charger",
+            "color": {
+                "bgColor": "rgba(100, 160, 71, 0.7)",
+                "borderColor": "#79b574",
+                "color": "#c1e6cc",
+                "focusColor": "rgba(100, 160, 71, 0.9)",
+                "tooltipColor": "#79b574"
+            }
+        },
+        {
+            "name": "QRcode",
+            "label": " ⬜ QR code",
+            "color": {
+                "bgColor": "rgba(255, 255, 255, 0.5)",
+                "borderColor": "gray",
+                "color": "gray",
+                "focusColor": "rgba(0, 0, 0, 0.2)",
+                "tooltipColor": "gray"
+            }
+        },
+        {
+            "name": "Position",
+            "label": " 🟦 Position",
+            "color": {
+                "bgColor": "rgba(43, 118, 183, 0.5)",
+                "borderColor": "rgba(45, 83, 107, 0.5)",
+                "color": "#d1e3f0",
+                "focusColor": "rgba(45, 83, 107, 0.5)",
+                "tooltipColor": "#2b76b7"
+            }
+        }
+    ],
+    "agentAssets": {
+        "br": {
+            "avatar": "bbr-440x220.png",
+            "thumbnail": "bbr-75x75.png",
+            "topview": "bbr_topview-128x128.png"
+        },
+        "smr1000": {
+            "avatar": "smr1000-440x220.png",
+            "thumbnail": "smr1000-75x75.png",
+            "topview": "smr1000_topview-128x128.png"
+        },
+        "smr1000_300mm": {
+            "avatar": "smr1000_300mm-440x220.png",
+            "thumbnail": "smr1000_300mm-75x75.png",
+            "topview": "smr1000_300mm_topview-128x128.png"
+        },
+        "SMR250": {
+            "avatar": "smr250-440x220.png",
+            "thumbnail": "smr250-75x75.png",
+            "topview": "smr250_topview-128x128.png"
+        },
+        "smr250black": {
+            "avatar": "smr250black-440x220.png",
+            "thumbnail": "smr250black-75x75.png",
+            "topview": "smr250black_topview-128x128.png"
+        },
+        "hik600": {
+            "avatar": "hik-440x220.png",
+            "thumbnail": "hik-75x75.png",
+            "topview": "hik_topview-128x128.png"
+        },
+        "mir250": {
+            "avatar": "mir-440x220.png",
+            "thumbnail": "mir-75x75.png",
+            "topview": "mir_topview-128x128.png"
+        },
+        "none": {
+            "avatar": "smr250-440x220.png",
+            "thumbnail": "smr250-75x75.png",
+            "topview": "bbr_topview-128x128.png"
+        }
+    },
+    "artifactAssets": {
+        "none": {
+            "avatar": "lift_module-440x220.png",
+            "thumbnail": "lift_module-150x150.png",
+            "topview": ""
+        },
+        "conveyoer": {
+            "avatar": "conveyor-440x220.png",
+            "thumbnail": "conveyor-150x150.png",
+            "topview": ""
+        },
+        "conveyor": {
+            "avatar": "conveyor-440x220.png",
+            "thumbnail": "conveyor-150x150.png",
+            "topview": ""
+        },
+        "top_module": {
+            "avatar": "top_module-440x220.png",
+            "thumbnail": "top_module-150x150.png",
+            "topview": ""
+        },
+        "juluen_top_module": {
+            "avatar": "juluen_top_module-440x220.png",
+            "thumbnail": "juluen_top_module-150x150.png",
+            "topview": ""
+        },
+        "lift_module": {
+            "avatar": "lift_module-440x220.png",
+            "thumbnail": "lift_module-75x75.png",
+            "topview": ""
+        },
+        "lift_module_black": {
+            "avatar": "lift_module_black-440x220.png",
+            "thumbnail": "lift_module_black-150x150.png",
+            "topview": ""
+        },
+        "lift": {
+            "avatar": "lift_module-440x220.png",
+            "thumbnail": "lift_module-150x150.png",
+            "topview": ""
+        },
+        "auo_eq": {
+            "avatar": "lift_module-440x220.png",
+            "thumbnail": "lift_module-75x75.png",
+            "topview": ""
+        },
+        "auo_cv": {
+            "avatar": "lift_module-440x220.png",
+            "thumbnail": "lift_module-75x75.png",
+            "topview": ""
+        },
+        "juluen_worktable": {
+            "avatar": "juluen_worktable-440x220.png",
+            "thumbnail": "juluen_worktable-150x150.png",
+            "topview": ""
+        },
+        "tektro_worktable": {
+            "avatar": "tektro_worktable-440x220.png",
+            "thumbnail": "tektro_worktable-150x150.png",
+            "topview": ""
+        },
+        "far_robot_arm": {
+            "avatar": "far_robot_arm-440x220.png",
+            "thumbnail": "far_robot_arm-150x150.png"   ,
+            "topview": ""
+        },
+        "leda_camera": {
+            "avatar": "lead_camera-440x220.png",
+            "thumbnail": "lead_camera-150x150.png",
+            "topview": ""
+        }
+    },
+    "tooltips": {
+        "role.roles.overview.title": "Role is a sequence of Behavior without any parameter.\nIn this page, user can define its sequence of behavior and required Capabilities for task execution."
+    }
+}

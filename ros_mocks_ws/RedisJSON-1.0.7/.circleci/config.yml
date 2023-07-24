@@ -1,0 +1,154 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: redisfab/rmbuilder:6.0.7-x64-buster
+    steps:
+      - checkout
+
+      - run: 
+          name: Checkout submodules
+          command: git submodule update --init --recursive
+      - run:
+          name: Build
+          command: make -j 8
+      - run:
+          name: Test
+          command: make test
+      - run:
+          name: Persist Artifacts
+          command: |
+            mkdir -p /workspace/build
+            cp src/$MODULE_ARTIFACT /workspace/
+            cp ramp.yml /workspace/
+
+      - persist_to_workspace:
+          root: /workspace
+          paths:
+            - '*.so'
+            - ramp.yml
+            - build
+  package_branch:
+    docker:
+      - image: redisfab/rmbuilder:6.0.7-x64-buster
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Package
+          command: >-
+            ramp pack -m /workspace/ramp.yml -o
+            /workspace/build/$PACKAGE_NAME.{os}-{architecture}.$CIRCLE_BRANCH.zip
+            /workspace/$MODULE_ARTIFACT
+      - persist_to_workspace:
+          root: /workspace
+          paths:
+            - build
+      - store_artifacts:
+          path: /workspace/build
+
+  package_release:
+    docker:
+      - image: redisfab/rmbuilder:6.0.7-x64-buster
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Package
+          command: >-
+            ramp pack -m /workspace/ramp.yml -o
+            /workspace/build/$PACKAGE_NAME.{os}-{architecture}.{semantic_version}.zip
+            /workspace/$MODULE_ARTIFACT
+      - run:
+          name: Package
+          command: >-
+            ramp pack -m /workspace/ramp.yml -o
+            /workspace/build/$PACKAGE_NAME.{os}-{architecture}.latest.zip
+            /workspace/$MODULE_ARTIFACT
+      - persist_to_workspace:
+          root: /workspace
+          paths:
+            - build
+      - store_artifacts:
+          path: /workspace/build
+
+  deploy_branch:
+    docker:
+      - image: redisfab/rmbuilder:6.0.7-x64-buster
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Deploy to S3
+          command: |
+            aws s3 cp /workspace/build/ s3://redismodules/$PACKAGE_NAME/ --acl public-read --recursive --exclude "*" --include "*.zip"
+
+  deploy_release:
+    docker:
+      - image: redisfab/rmbuilder:6.0.7-x64-buster
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Deploy to S3
+          command: |
+            aws s3 cp /workspace/build/ s3://redismodules/$PACKAGE_NAME/ --acl public-read --recursive --exclude "*" --include "*.zip"
+
+
+on-any-branch: &on-any-branch
+  filters:
+    branches:
+      only: /.*/
+    tags:
+      only: /.*/
+
+never: &never
+  filters:
+    branches:
+      ignore: /.*/
+    tags:
+      ignore: /.*/
+
+on-master: &on-master
+  filters:
+    branches:
+      only: master
+
+on-version-tags: &on-version-tags
+  filters:
+    branches:
+      ignore: /.*/
+    tags:
+      only: /^v[0-9].*/
+
+on-master-and-version-tags: &on-master-and-version-tags
+  filters:
+    branches:
+      only:
+        - master
+    tags:
+      only: /^v[0-9].*/
+
+
+workflows:
+  version: 2
+  build_and_package:
+    jobs:
+      - build:
+          <<: *on-any-branch
+      - package_branch:
+          <<: *on-master
+          requires:
+            - build
+      - package_release:
+          <<: *on-version-tags
+          requires:
+            - build
+      - deploy_branch:
+          <<: *on-master
+          requires:
+            - package_branch
+      - deploy_release:
+          <<: *on-version-tags
+          requires:
+            - package_release

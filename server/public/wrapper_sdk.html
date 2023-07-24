@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Wrapper SDK</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Notification -->
+  <link rel="stylesheet" href="dist/css/notification.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- toastify -->
+  <link rel="stylesheet" type="text/css" href="dist/css/toastify.min.css" />
+
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="dist/css/general-style.css">
+  <link rel="stylesheet" href="dist/css/role-style.css">
+
+  <script src="dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class="fas fa-th-large"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <div class="" style="padding-top: 2rem"></div>
+
+      <section class="content" style="margin-left: 1.5rem;">
+        <!-- <div class="container-fluid" id="roles-showcase" style="display:none"> -->
+        <div class="container-fluid" id="roles-showcase">
+
+          <div class="row">
+
+            <div class="content-header" style="margin-top:0.0rem;">
+              <div class="col-sm-12">
+                <h4 class="m-0">Artifacts</h4>
+              </div>
+              <!-- /.col-sm-12 -->
+            </div>
+            <!-- /.content-header -->
+
+            <div class="row col-lg-12">
+              <div class="card-deck col-lg-12 farobot-card-deck" id="artifacts-deck"
+                style="border-radius: 15px;min-height:15em">
+                <!-- ARTIFACT-CARD-HERE -->
+              </div>
+              <!-- /.card-deck -->
+            </div>
+            <!-- /.col-12 (agent fleet status) -->
+
+            <div class="content-header" style="margin-top:1.5rem;">
+              <div class="col-sm-12">
+                <h4 class="m-0">Artifact Wrappers</h4>
+              </div>
+              <!-- /.col-sm-12 -->
+            </div>
+            <!-- /.content-header -->
+
+            <div class="row col-lg-12">
+
+              <div class="card-deck col-lg-12 farobot-card-deck" id="wrappers-deck"
+                style="border-radius: 15px;min-height: 300px;">
+                <div class="card-body row col-lg-12 justify-content-center" id="wrappers-list"
+                  style="margin-top: 20px; overflow-y:scroll; height: 300px;"></div>
+                <div class="card-footer row col-lg-12 justify-content-center"
+                  style="margin-top: 10px; padding-bottom: 10px;">
+                  <button class="btn btn-secondary" type="button" id="add-btn" data-toggle="modal"
+                    data-target="#wrapper-modal" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-plus"></i> Add
+                  </button>
+                </div>
+              </div>
+
+            </div>
+            <!--/.col-lg-12 (left) -->
+
+          </div>
+
+        </div>
+
+      </section>
+      <!-- /.row container-fluid -->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <aside class="control-sidebar control-sidebar-dark farobot-sidemenu">
+      <div class="p-3 control-sidebar-content">
+
+        <div class="row card-deck" style="border-radius: 15px; height:5%; padding-left:1rem; justify-content: left;">
+          <div id="hide-sidebar"><i class="fas fa-angle-double-right fa-2x"></i></div>
+        </div>
+        <!-- /. hide-sidebar row -->
+
+        <div type="text" style="text-align: center; font-size: 1.6rem;">
+          <span id="sb-wrapper-name"> #Wrapper# </span> : <b><span id="sb-wrapper-type">#type#</span></b> Services
+        </div>
+
+        <div class="col-md-12" style="padding-top: 1rem;">
+          <div class="card card-dark card-outline" id="sidebar-param-card">
+            <div class="card-body" id="service-deck" style="overflow-y:scroll; height:600px;">
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+
+      </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <div class="modal fade" id="wrapper-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form>
+              <div class="form-inline justify-content-center">
+                <div class="row col-12">
+                  <label for="wrapper-name" class="col-form-label space-right col-4">Wrapper Name : </label>
+                  <input type="text" class="form-control col-8" id="wrapper-name" placeholder="Wrapper Test" value="">
+                </div>
+                <div class="row col-12" style="padding-top: 0.5rem;">
+                  <label for="wrapper-type" class="col-form-label space-right col-4">Wrapper Type : </label>
+                  <select name="w-types" class="col-8" id="sel-wrapper-type">
+                    <!-- <option value="conveyor">Conveyor</option>
+                    <option value="elevator">Elevator</option>
+                    <option value="autoDoor">Automatic Door</option>
+                    <option value="robotArm">Robot Arm</option> -->
+                  </select>
+                </div>
+                <div style="padding-top: 0.5rem;">
+                  <button type="button" class="btn btn-primary" id="add-wrapper"
+                    onclick="createWrapper();">Create</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <div class="modal fade" id="modal-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="available-items-title"></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="products-list product-list-in-card pl-2 pr-2" id="available-items-list">
+            </ul>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Save as a filename -->
+    <div class="modal fade" id="new-role-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Create a New Role</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="role-filename" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="createRole();">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Button trigger modal end -->
+
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- <div id="confirm-modal" class="farobot-bg-dark text-white text-right"></div> -->
+
+  <template id="sb-capability-row">
+    <div class="card card-default">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-3">
+            <input type="text" class="form-control cap-name" placeholder="cap." readonly=true>
+          </div>
+          <div class="col-3">
+            <select type="text" class="form-control cap-type" disabled=true>
+              <option>Required</option>
+              <option>Preferred</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <input type="text" class="form-control cap-value" placeholder="val." readonly=true>
+          </div>
+          <div class="col-1">
+            <a class="btn btn-default cap-edit"><i class="fas fa-pen fa-1x"></i></a>
+          </div>
+          <div class="col-1">
+            <a class="btn btn-default cap-remove"><i class="fas fa-trash fa-1x"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="artifact-card">
+    <div class="card col-lg-3" style="margin:1rem;">
+      <img class="card-img-top" src="dist/img/sprites/conveyor-440x220.png" alt="Card image cap">
+      <div class="card-body">
+
+        <div class="info-box-content">
+          <div style="text-align: center;">
+            ID: <span class="info-box-number artifact-id" style="font-size: 18px;">Artifact ID</span>
+          </div>
+          <br>
+          <div class="row" style="justify-content: center;">
+            <select name="wrappers" class="wrappers-sel"></select>
+            <button type="button" class="btn wrapper-deploy" style="float:right;"><i
+                class="nav-icon fas fa-cloud-download-alt"></i></button>
+          </div>
+          <div style="text-align: center; font-size: 0.8rem; padding-top: 0.8rem;">
+            Last Deployed: <span class="info-box-number deploy-time">2021-10-19 11:50:10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="wrapper-card">
+    <div class="row col-12 form-inline" style="padding-bottom: 15px;">
+      <div class="card card-default">
+        <div class="card-body p-0">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle;">
+                  <div class="wrapper-name" style="font-size:1.4rem;">Wrapper Name</div>
+                </td>
+                <td style="vertical-align: middle; font-size:0.8rem;">
+                  <div class="edited-timestamp">Last Edited: <span>2021-10-19 11:50:10</span></div>
+                </td>
+                <td class="text-right py-0 align-middle">
+                  <div class="btn-group btn-group-sm">
+                    <a class="btn config-role" data-widget="control-sidebar"><i class="fas fa-cog fa-2x"></i></a> 
+                    <a class="btn remove-role"><i class="fas fa-trash fa-2x"></i></a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="wrapper-service-card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-11">
+          <input type="text" class="form-control service-name" value="MoveForward Service" readonly="true">
+        </div>
+        <div class="col-1">
+          <a class="btn service-edit"><i class="fas fa-pen fa-1x"></i></a>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Sparkline -->
+  <script src="plugins/sparklines/sparkline.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.js"></script>
+  <!-- Notification -->
+  <script src="dist/js/pages/lib/notification.js"></script>
+
+  <script src="dist/js/pages/lib/jquery.cookie.min.js"></script>
+  <script src="dist/js/pages/far_utilities.js"></script>
+  <script src="dist/js/pages/far_requests.js"></script>
+  <script src="dist/js/pages/far_requests_rmt.js"></script>
+  <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+  <script src="dist/js/pages/far_comm.js"></script>
+  <script src="dist/js/pages/far_comm_data.js"></script>
+  <script src="dist/js/pages/far_wrapper_sdk.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | User Management</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="public/dist/css/mobile/manage_user-style.css">
+
+  <script type="text/javascript" src="public/dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|&emsp;</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn" onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <!-- <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"> -->
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class='country_flags' country=''></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <div class="" style="padding-top: 1rem"></div>
+      <!-- Main content -->
+      <section class="content">
+        <div class="card">
+          <div class="card-header row d-flex align-items-center farobot-view-header-bg-dark">
+            <h3 class="card-title col-12 col-sm-8"><span data-i18n="usr_man.ttl_ManageUser">Manage User</span></h3>
+            <div class="col-12 col-sm-4 text-right">
+              <button type="button" class="btn btn-secondary farobot-lg-btn" id="open-user-modal-btn" data-toggle="modal"
+                data-target="#create-user-modal"><i class="fas fa-plus"></i>&ensp;<span
+                  data-i18n="usr_man.btn_CreateNewUser">Create New User</span></button>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="user-jsGrid"></div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer text-center">
+            <div class="row">
+              <div class="col-12">
+                <button type="button" id="delete-users-btn" class="btn btn-default farobot-sm-btn" disabled
+                  onclick="deleteUsers()"><span data-i18n="usr_man.btn_DeleteUser">Delete</span></button>
+                <button type="button" id="save-users-btn" class="btn btn-primary farobot-sm-btn" disabled
+                  onclick="saveUsers()"><span data-i18n="usr_man.btn_SaveUser">Save</span></button>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-footer -->
+          <!-- /.card -->
+      </section>
+      <!-- /.content -->
+    </div>
+
+    <div class="modal fade" id="create-user-modal" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">
+              <span data-i18n="usr_man.editor.ttl_AddUser">Add a new user</span>
+            </h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+          </div>
+          <!-- form start -->
+          <form id="create-user-form" method="post">
+            <div class="modal-body">
+
+              <div class="row">
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="account-id"><i class="fas fa-user"></i>&ensp;
+                      <span data-i18n="usr_man.editor.lbl_Account">Account</span>
+                    </label>
+                    <input type="text" class="form-control create-user-input" id="account-id" name="accountID" placeholder=""
+                      maxlength="20">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="phone-num"><i class="fas fa-phone-alt"></i>&ensp;
+                      <span data-i18n="usr_man.editor.lbl_PhoneNumber">Contact Number</span>
+                    </label>
+                    <input type="text" class="form-control create-user-input" id="phoneNum" name="phoneNum" placeholder="" maxlength="13">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="account-pwd"><i class="fas fa-lock"></i>&ensp;
+                      <span data-i18n="usr_man.editor.lbl_Pwd">Password</span>
+                    </label>
+                    <input type="password" class="form-control create-user-input" id="account-pwd" name="accountPwd" placeholder=""
+                      maxlength="16">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="mail-address"><i class="fas fa-envelope"></i>&ensp;
+                      <span data-i18n="usr_man.editor.lbl_Email">E-mail</span>
+                    </label>
+                    <input type="text" class="form-control create-user-input" id="mail-address" name="email" placeholder="">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="user-name"><i class="fas fa-user-tag"></i>&ensp;
+                      <span data-i18n="usr_man.editor.lbl_Name">Name</span>
+                    </label>
+                    <input type="text" class="form-control create-user-input" id="user-name" name="userName" placeholder=""
+                      maxlength="30">
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="user-auth"><i class="fas fa-user-shield"></i>&ensp;
+                      <span data-i18n="usr_man.editor.lbl_Auth">Authority</span>
+                    </label>
+                    <select id="user-auth" name="userAuth" class="form-control select-bold-text" style="width: 100%;">
+                      <option value="general">General</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                <span data-i18n="usr_man.editor.btn_Cancel">Cancel</span>
+              </button>
+              <button type="submit" class="btn btn-primary" id="create-user-btn">
+                <span data-i18n="usr_man.editor.btn_Create">Create</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="public/plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> <!-- ChartJS -->
+  <script src="public/plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="public/plugins/sparklines/sparkline.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- jsGrid -->
+  <script src="public/dist/js/pages/lib/jsgrid.min.js"></script>
+  <!-- jquery-validation -->
+  <script src="public/plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script scr="public/plugins/jquery-validation/additional-methods.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="public/dist/js/adminlte.js"></script>
+  <!-- Lodash App -->
+  <script src="public/dist/js/pages/lib/lodash.min.js"></script>
+  <!-- Notification -->
+  <script src="public/dist/js/pages/lib/notification.js"></script>
+  <!-- i18Next -->
+  <script src="public/dist/js/pages/lib/i18next.min.js"></script>
+  <script src="public/dist/js/pages/lib/jquery-i18next.min.js"></script>
+
+  <!-- Powertip 1.3.2 -->
+  <script src="public/plugins/powertip/jquery.powertip.min.js"></script>  
+
+  <!-- FARobot Manage User Page-->
+  <script src="public/dist/js/pages/far_utilities.js"></script>
+  <script src="public/dist/js/pages/util_validation.js"></script>
+  <script src="public/dist/js/pages/far_requests.js"></script>
+  <script src="public/dist/js/pages/far_requests_rmt.js"></script>
+  <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+  <script src="public/dist/js/pages/far_comm.js"></script>
+  <script src="public/dist/js/pages/far_comm_data.js"></script>
+  <script src="public/dist/js/pages/far_manage_user.js"></script>
+  <script src="public/dist/js/pages/util_hollywood.js"></script>
+</body>
+
+</html>

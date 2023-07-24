@@ -1,0 +1,14 @@
+{
+    "artifact_id":"liftmodule_01",
+    "artifact_name":"none",
+    "type": "liftmodule",
+    "sim": "false",
+    "services":
+    {
+        "lift":{
+            "position": 0.0,
+            "status":"finish"
+        }
+    }
+}
+  

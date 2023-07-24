@@ -1,0 +1,120 @@
+[0.326s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/sc/workspace/artifact_cli_tool-main']
+[0.326s] DEBUG:colcon:Parsed command line arguments: Namespace(base_paths=['/home/sc/workspace/artifact_cli_tool-main'], build_base='build', ignore_user_meta=False, log_base=None, log_level=None, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x7f579c892d30>>, metas=['./colcon.meta'], names_only=False, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, paths=None, paths_only=True, topological_graph=False, topological_graph_density=False, topological_graph_dot=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, topological_graph_legend=False, topological_order=False, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x7f579c892d30>, verb_name='list', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f579c788790>)
+[0.441s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.441s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.441s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.441s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.442s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/sc/workspace/artifact_cli_tool-main'
+[0.442s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extensions ['ignore', 'ignore_ament_install']
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'ignore'
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'ignore_ament_install'
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extensions ['colcon_pkg']
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'colcon_pkg'
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extensions ['colcon_meta']
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'colcon_meta'
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extensions ['ros']
+[0.443s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'ros'
+[0.488s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extensions ['cmake', 'python']
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'cmake'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'python'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extensions ['python_setup_py']
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main) by extension 'python_setup_py'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/log) by extensions ['ignore', 'ignore_ament_install']
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/log) by extension 'ignore'
+[0.489s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/log) ignored
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extensions ['ignore', 'ignore_ament_install']
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'ignore'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'ignore_ament_install'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extensions ['colcon_pkg']
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'colcon_pkg'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extensions ['colcon_meta']
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'colcon_meta'
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extensions ['ros']
+[0.490s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'ros'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extensions ['cmake', 'python']
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'cmake'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'python'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extensions ['python_setup_py']
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types) by extension 'python_setup_py'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extensions ['ignore', 'ignore_ament_install']
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'ignore'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'ignore_ament_install'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extensions ['colcon_pkg']
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'colcon_pkg'
+[0.491s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extensions ['colcon_meta']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'colcon_meta'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extensions ['ros']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'ros'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extensions ['cmake', 'python']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'cmake'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'python'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extensions ['python_setup_py']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor) by extension 'python_setup_py'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extensions ['ignore', 'ignore_ament_install']
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'ignore'
+[0.492s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'ignore_ament_install'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extensions ['colcon_pkg']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'colcon_pkg'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extensions ['colcon_meta']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'colcon_meta'
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extensions ['ros']
+[0.493s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'ros'
+[0.501s] DEBUG:colcon.colcon_core.package_identification:Found ROS schema reference in package manifest in '/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper'
+[0.501s] WARNING:colcon.colcon_core.package_identification:Failed to parse ROS package manifest in '/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper': Error(s) in package '/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper/package.xml':
+The package node must contain at least one "license" tag
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extensions ['cmake', 'python']
+[0.503s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'cmake'
+[0.504s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'python'
+[0.504s] DEBUG:colcon.colcon_core.package_identification:Python package in '/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper' passes arguments to the setup() function which requires a different identification extension than 'python'
+[0.504s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extensions ['python_setup_py']
+[0.504s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper) by extension 'python_setup_py'
+[0.918s] DEBUG:colcon.colcon_core.package_identification:Package '/home/sc/workspace/artifact_cli_tool-main/types/conveyor/conveyor_wrapper' with type 'python' and name 'conveyor_wrapper'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extensions ['ignore', 'ignore_ament_install']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'ignore'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'ignore_ament_install'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extensions ['colcon_pkg']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'colcon_pkg'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extensions ['colcon_meta']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'colcon_meta'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extensions ['ros']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'ros'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extensions ['cmake', 'python']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'cmake'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'python'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extensions ['python_setup_py']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule) by extension 'python_setup_py'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extensions ['ignore', 'ignore_ament_install']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'ignore'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'ignore_ament_install'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extensions ['colcon_pkg']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'colcon_pkg'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extensions ['colcon_meta']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'colcon_meta'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extensions ['ros']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'ros'
+[0.921s] DEBUG:colcon.colcon_core.package_identification:Found ROS schema reference in package manifest in '/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper'
+[0.922s] WARNING:colcon.colcon_core.package_identification:Failed to parse ROS package manifest in '/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper': Error(s) in package '/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper/package.xml':
+The package node must contain at least one "license" tag
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extensions ['cmake', 'python']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'cmake'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'python'
+[0.922s] DEBUG:colcon.colcon_core.package_identification:Python package in '/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper' passes arguments to the setup() function which requires a different identification extension than 'python'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extensions ['python_setup_py']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper) by extension 'python_setup_py'
+[1.374s] DEBUG:colcon.colcon_core.package_identification:Package '/home/sc/workspace/artifact_cli_tool-main/types/liftmodule/liftmodule_wrapper' with type 'python' and name 'liftmodule_wrapper'
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extensions ['ignore', 'ignore_ament_install']
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'ignore'
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'ignore_ament_install'
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extensions ['colcon_pkg']
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'colcon_pkg'
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extensions ['colcon_meta']
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'colcon_meta'
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extensions ['ros']
+[1.375s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'ros'
+[1.376s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extensions ['cmake', 'python']
+[1.376s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'cmake'
+[1.376s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'python'
+[1.376s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extensions ['python_setup_py']
+[1.376s] Level 1:colcon.colcon_core.package_identification:_identify(/home/sc/workspace/artifact_cli_tool-main/wrappers) by extension 'python_setup_py'
+[1.376s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults

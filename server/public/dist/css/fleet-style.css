@@ -1,0 +1,64 @@
+@import url("../../plugins/powertip/css/jquery.powertip.css");
+@import url("../../plugins/fontawesome-free/css/all.min.css");
+@import url("../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
+@import url("adminlte.min.css");
+@import url("notification.css");
+@import url("toastify.min.css");
+@import url("general-style.css");
+
+
+.card-deck-badge {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: gray;
+  right: 40px;
+  top: -25px;
+  text-align: center;
+  display: table;
+}
+
+.round-rect {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 20%;
+  background: gray;
+  right: 80px;
+  top: 40%;
+  opacity: 0.8;
+  text-align: center;
+  display: table;
+}
+
+.content_wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.my-button:hover {
+  opacity: 1.0;
+}
+
+.my-button:active {
+  /*background-color: #3e8e41;*/
+  transform: translateY(2px);
+}
+
+#overlay-div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.search-box {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}

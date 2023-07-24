@@ -1,0 +1,194 @@
+@import url("../../plugins/fontawesome-free/css/all.min.css");
+@import url("../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css");
+@import url("adminlte.min.css");
+@import url("notification.css");
+@import url("toastify.min.css");
+@import url("jquery.treegrid.min.css");
+@import url("general-style.css");
+
+
+* { margin: 0; padding: 0; }
+
+.content-wrapper { background: #1b1f2b; font-size: 62.5%; font-family: Tahoma, Arial, sans-serif; color: #333; padding-bottom: 25px; }
+
+img { border:0; }
+
+.content-wrapper p { font-size: 1.2em; line-height: 1.3em; margin-bottom: 10px; }
+
+.content-wrapper h1 { font-weight: normal; font-size: 1.9em; line-height: 2.0em; color: #545454; letter-spacing: -0.04em; }
+
+
+/** list view **/
+ul.list { list-style: none; width: 100%; }
+ul.list li { display: block; background: rgba(40, 45, 55, 0.55); padding: 10px 15px; }
+ul.list li.alt { background: rgba(40, 45, 55, 0.25);}
+
+/* ul.list li section.left { display: block; float: left; width: 350px; position: relative; padding-left: 20px; } */
+ul.list li section.left { display: block; float: left; width: 35%; position: relative; padding-left: 0px; }
+
+.agent-name {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ul.list li section.right { display: block; float: right; margin-right: 10px; width: 205px; text-align: right; } */
+/* ul.list li section.right { float: right; margin-right: 10px; width: 205px; text-align: right; } */
+ul.list li section.right { 
+  float: right; 
+  text-align: right; 
+
+  margin:20px 0; 
+  width: 65%;
+  align-items: center;
+}
+
+ul.list li section.left img.thumb { float: left; margin-right: 10px; }
+ul.list li section.left img.featured-banner { position: absolute; left: -18px; top: 35px; }
+
+ul.list li section.left h3 { font-family: "Trebuchet MS", Arial, sans-serif; font-weight: bold; color: #707375; font-size: 1.4em; line-height: 1.6em; } 
+ul.list li section.left span.meta { color: #93989b; font-weight: normal; font-size: 1.1em; }
+
+
+/* ul.list li section.right span.price { font-weight: bold; display: block; margin-bottom: 15px; color: #ad3939; font-size: 1.2em; text-align: right; } */
+ul.list li section.right span.status-idle { font-weight: bold; margin: 0.3rem 0 15px 0; color: #c4c4c4; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-charging { font-weight: bold; margin: 0.3rem 0 15px 0; color: #00d600; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-moving { font-weight: bold; margin: 0.3rem 0 15px 0; color: #00a0ff; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-paused { font-weight: bold; margin: 0.3rem 0 15px 0; color: #f39c12; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-waiting { font-weight: bold; margin: 0.3rem 0 15px 0; color: #3c8dbc; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-emergency { font-weight: bold; margin: 0.3rem 0 15px 0; color: #dc3545; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-going_home { font-weight: bold; margin: 0.3rem 0 15px 0; color: #17a2b8; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-docking { font-weight: bold; margin: 0.3rem 0 15px 0; color: #ffc107; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-uninitialized { font-weight: bold; margin: 0.3rem 0 15px 0; color: #6c757d; font-size: 1.2em; text-align: right; }
+
+/* artifact status color*/
+ul.list li section.right span.status-inservice { font-weight: bold; margin: 0.3rem 0 15px 0; color: #00d600; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-no-data-received { font-weight: bold; margin: 0.3rem 0 15px 0; color: #f39c12; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-error { font-weight: bold; margin: 0.3rem 0 15px 0; color: #dc3545; font-size: 1.2em; text-align: right; }
+ul.list li section.right span.status-disconnected { font-weight: bold; margin: 0.3rem 0 15px 0; color: #d2d6d3; font-size: 1.2em; text-align: right; }
+
+/** flow status color **/
+.color-queued { font-weight: bold; color: #000; background-color: #6c757d; }
+.color-active { font-weight: bold; color:#000; background-color: #00a0ff; }
+.color-completed { font-weight: bold; color:#000; background-color: #00d600;  }
+.color-failed { font-weight: bold; color:#000; background-color: #dc3545; }
+.color-paused { font-weight: bold; color:#000; background-color: #f39c12;  }
+
+ul.list li section.right a.firstbtn { margin-right: 7px; }
+
+/** grid view **/
+ul.grid { list-style: none; margin: 0 auto; padding-left: 25px; }
+/* ul.grid li { position: relative; display: block; float: left; width: 220px; height: 200px; border-right: 1px solid #b6bdbe; padding: 5px 22px; margin-bottom: 20px; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; } */
+ul.grid li { position: relative; display: block; float: left; width: 220px; height: 200px; padding: 5px 22px; margin-bottom: 20px; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; text-align: center;}
+ul.grid li.third { border: 0; }
+
+ul.grid li section.left { position: relative; }
+/* ul.grid li section.right { } */
+
+ul.grid li section.left img.featured-banner { position: absolute; top: 0; }
+
+/* ul.grid li section.left h3 { font-family: "Trebuchet MS", Arial, sans-serif; font-weight: bold; text-transform: uppercase; color: #707375; font-size: 1.4em; line-height: 1.5em; }  */
+ul.grid li section.left h3 { font-family: "Trebuchet MS", Arial, sans-serif; font-weight: bold; color: #707375; font-size: 1.4em; line-height: 1.5em; } 
+ul.grid li section.left span.meta { display: block; color: #93989b; font-weight: normal; font-size: 1.1em; margin-bottom: 7px; }
+
+/* ul.grid li section.right span.price { font-weight: bold; display: block; margin-bottom: 5px; color: #ad3939; font-size: 1.75em; } */
+ul.grid li section.right span.status-alert { font-weight: bold; display: block; margin-bottom: 5px; color: #ad3939; font-size: 1.75em; }
+ul.grid li section.right span.status-success { font-weight: bold; display: block; margin-bottom: 5px; color: #46ad39; font-size: 1.75em; }
+ul.grid li section.right span.status-warn { font-weight: bold; display: block; margin-bottom: 5px; color: #b4b215; font-size: 1.75em; }
+
+ul.grid li section.right {
+  margin: auto;
+  width: auto;
+}
+ul.grid li section.right span.status-idle { font-weight: bold; margin: 0 0 15px 0; color: #c4c4c4; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-charging { font-weight: bold; margin: 0 0 15px 0; color: #00d600; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-moving { font-weight: bold; margin: 0 0 15px 0; color: #00a0ff; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-paused { font-weight: bold; margin: 0 0 15px 0; color: #f39c12; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-waiting { font-weight: bold; margin: 0 0 15px 0; color: #3c8dbc; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-emergency { font-weight: bold; margin: 0 0 15px 0; color: #dc3545; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-going_home { font-weight: bold; margin: 0 0 15px 0; color: #17a2b8; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-docking { font-weight: bold; margin: 0 0 15px 0; color: #ffc107; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-uninitialized { font-weight: bold; margin: 0 0 15px 0; color: #6c757d; font-size: 1.2em; text-align: right; }
+
+/* artifact status color*/
+ul.grid li section.right span.status-inservice { font-weight: bold; margin: 0.3rem 0 15px 0; color: #00d600; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-no-data-received { font-weight: bold; margin: 0.3rem 0 15px 0; color: #f39c12; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-error { font-weight: bold; margin: 0.3rem 0 15px 0; color: #dc3545; font-size: 1.2em; text-align: right; }
+ul.grid li section.right span.status-disconnected { font-weight: bold; margin: 0.3rem 0 15px 0; color: #d2d6d3; font-size: 1.2em; text-align: right; }
+
+ul.grid li section.right span.darkview { 
+  opacity: 0;
+  margin: 0; 
+  position: absolute;
+  float: middle;
+  top: 15px; 
+  left: 0; 
+  width: 190px; 
+  height: 220px;
+  margin: 0 15px; 
+  border-radius: 6px;
+  background: rgba(40, 45, 55, 0.75); 
+  overflow: hidden;
+  text-align: center;
+  padding-top: 00px;
+  box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box;
+  transition: opacity 0.2s linear 0s;
+  -webkit-transition: opacity 0.2s linear 0s;
+  -moz-transition: opacity 0.25s linear 0s;
+  -o-transition: opacity 0.25s linear 0s;  
+}
+ul.grid li:hover section.right span.darkview { opacity: 1; }
+
+/* ul.grid li section.right span.darkview a.firstbtn { display: block; margin-top: 45px; } */
+ul.grid li section.right span.darkview a.firstbtn { display: block; margin: 50% 0; }
+
+/** clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; } 
+
+
+/** FARobot customizations **/
+.delete-trigger-btn {
+  position: absolute;
+  background: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  top: -10px;
+  right: -10px;
+  padding: 0px;
+}
+
+.delete-trigger-btn:focus {
+  outline: 0;
+}
+
+.x1Axis, .y1Axis {
+  fill: white;
+  font-size: 25px;
+}
+
+.x1LabelLayer, .y1LabelLayer {
+  fill: white;
+  font-size: 14px;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+}
+
+#table td{
+  vertical-align: middle;
+}

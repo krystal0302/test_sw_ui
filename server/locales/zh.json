@@ -1,0 +1,671 @@
+{
+	"lng": "zh-CN",
+	"resources": {
+		"zh": {
+			"translation": {
+				"general": {
+					"btn_Cancel": "取消",
+					"btn_Confirm": "确认"
+				},
+				"nav": {
+					"dashboard": "仪表盘",
+					"live_view": "实时监看",
+					"fleet_configuration": "车队组态",
+					"flow_configuration": "工作组态",
+					"flow_trigger": "工作触发",
+					"scheduled_task viewer": "排程器视图",
+					"map": "地图",
+					"create_map": "创建地图",
+					"edit_map": "编辑地图",
+					"role": "角色",
+					"system_settings": "系统设定",
+					"log": "日志",
+					"user_management": "用户管理",
+					"api_info": "接口资讯",
+					"sign_out": "退出",
+					"footer": {
+						"version": "版本号"
+					}
+				},
+				"dashboard": {
+					"ttl_AgntStcs": "机器人统计数据",
+					"ttl_ArtfStcs": "装置统计数据",
+					"ttl_FlowStcs": "工作统计数据",
+					"ttl_AgntList": "机器人列表",
+					"ttl_ArtfList": "装置列表",
+					"ttl_FlowList": "工作列表",
+					"tabs": {
+						"flow": "工作流",
+						"task": "工作"
+					},
+					"modal": {
+						"ttl_AgntDetail": "详细列举",
+						"col_AgntId": "识别码",
+						"col_AgntName": "名称",
+						"col_AgntStts": "状况",
+						"col_AgntMode": "模式",
+						"col_AgntModel": "型号",
+						"col_AgntVers": "版本号",
+						"col_AgntIp": "IP",
+						"col_AgntMac": "Mac",
+						"col_AgntBatt": "电池"
+					},
+					"tmpl": {
+						"col_AgntName": "机器人名",
+						"col_AgntTask": "工作",
+						"col_AgntBatt": "电池",
+						"col_ArtfName": "装置名称",
+						"col_NoFlows": "车队无任务",
+						"chart": {
+							"arr_AgntStates": [
+								"闲置",
+								"充电",
+								"作动中",
+								"暂停",
+								"等待中",
+								"紧急",
+								"未初始化",
+								"离线"
+							],
+							"arr_ArtfStates": [
+								"服务中",
+								"无接收数据",
+								"错误",
+								"离线"
+							],
+							"arr_FlowStates": [
+								"队列",
+								"作动中",
+								"完成",
+								"失败",
+								"暂停"
+							]
+						},
+						"list": {
+							"agnt": {
+								"lbl_Name": "机器人名",
+								"lbl_Task": "任务",
+								"lbl_Batt": "电量",
+								"row_Empty": "当前无机器人"
+							},
+							"artf": {
+								"lbl_Name": "装置名",
+								"row_Empty": "当前无装置"
+							},
+							"flow": {
+								"lbl_Name": "任务名",
+								"lbl_Id": "识别码",
+								"lbl_Assignee": "指派给",
+								"lbl_Status": "状态",
+								"lbl_Progress": "进度条",
+								"lbl_Operation": "操作",
+								"row_Empty": "当前无任务"
+							}
+						}
+					}
+				},
+				"live_view": {
+					"ttl_LiveView": "实时监看",
+					"lbl_Map": "地图",
+					"lbl_MapFileName": "文件名"
+				},
+				"fleet_config": {
+					"btn_CreateNewFleet": "创建车队",
+					"btn_DeleteFleet": "移除车队",
+					"btn_SaveFleet": "保存",
+					"ttl_AgntFltStts": "机器人状态",
+					"ttl_ArtfFltStts": "装置状态",
+					"ttl_Maps": "地图",
+					"ttl_Roles": "角色",
+					"sidebar": {
+						"lbl_AgntArtfName": "名称",
+						"lbl_AgntArtfId": "识别码",
+						"lbl_AgntArtfMode": "模式",
+						"lbl_AgntArtfModel": "型号",
+						"lbl_AgntArtfSw": "软件版本",
+						"lbl_AgntArtfUl": "升级列表",
+						"btn_AgntLink": "机器人链接",
+						"btn_AgntInitP": "初始方位",
+						"btn_AgntReboot": "重启",
+						"tab_PortData": "导入/导出数据",
+						"tab_FactorySet": "出厂设置"
+					},
+					"tmpl": {
+						"btn_SidebarImport": "导入",
+						"btn_SidebarExport": "导出",
+						"agnt": {
+							"lbl_SidebarName": "机器人名",
+							"lbl_AvailTitle": "可选的机器人",
+							"ttp_SidebarDesc": "说明",
+							"ttp_SidebarRange": "范围",
+							"ttp_SidebarUnit": "单位",
+							"btn_Load": "载入中...",
+							"btn_Ready": "待命",
+							"btn_Init": "初始化机器人方位"
+						},
+						"artf": {
+							"lbl_SidebarName": "装置名",
+							"lbl_AvailTitle": "可选的装置",
+							"lbl_SidebarDesc": "说明",
+							"lbl_SidebarRange": "范围",
+							"lbl_SidebarUnit": "单位"
+						},
+						"maps": {
+							"lbl_AvailTitle": "可选的地图"
+						},
+						"role": {
+							"lbl_AvailTitle": "可选的角色"
+						}
+					}
+				},
+				"flow_config": {
+					"ttl_Flows": "工作流",
+					"ttl_PlanArtfStts": "规划装置状态",
+					"btn_createFlow": "创建工作流",
+					"btn_ToRoleEditor": "编辑角色",
+					"editor": {
+						"btn_Back": "退回",
+						"btn_SaveFlow": "保存",
+						"lbl_FlowTrig": "触发方式",
+						"tab_Role": "角色",
+						"btn_Run": "运行",
+						"btn_ClearPanel": "清除面板"
+					},
+					"tmpl": {
+						"list": {
+							"artf": {
+								"lbl_Title": "可选装置"
+							}
+						}
+					}
+				},
+				"task_schedule_viewer": {
+					"lbl_ViewBy": "检视 由",
+					"btn_ApplyDate": "实行日期",
+					"btn_Reset": "重置",
+					"tmpl": {
+						"chart": {
+							"ldn_Complete": "正常",
+							"ldn_Queue": "预测",
+							"ldn_Fail": "故障/取消/手动/介入",
+							"ldn_Active": "进行中"
+						}
+					}
+				},
+				"create_map": {
+					"ttl_CreateMap": "创建地图",
+					"btn_SaveMap": "保存地图",
+					"editor": {
+						"btn_SelAgnt": "机器人",
+						"tab_CreateMap": "创建",
+						"lbl_StartMap": "开始建图",
+						"col_Param": "參数",
+						"col_Value": "数值",
+						"col_ParamRes": "分辨率",
+						"col_ParamOrigin": "零点",
+						"col_ParamHeight": "高度",
+						"col_ParamWidth": "宽度",
+						"lbl_RotateMap": "旋转地图"
+					}
+				},
+				"edit_map": {
+					"ttl_MapEditor": "编辑地图",
+					"ttl_PropView": "属性图层",
+					"opt_MapImg": "地图",
+					"opt_MapOrig": "原点",
+					"opt_Routes": "路线",
+					"opt_Cells": "储位",
+					"tgl_EditProp": "编辑属性",
+					"tgl_MapImg": "地图",
+					"tgl_Routes": "路线",
+					"tgl_Cells": "储位",
+					"tgl_ConnCells": "连接储位管理",
+					"tgl_Reflectors": "反光条",
+					"tgl_MultiFuncZone": "多重功能区",
+					"modal": {
+						"ttl_RenameMap": "重命名地图",
+						"btn_Cancel": "取消",
+						"btn_Confirm": "确认",
+						"ttl_DeleteMap": "删除此地图",
+						"lbl_ConfirmMsg": "确认删除此地图"
+					},
+					"editor": {
+						"ttl_MapEditPropTools": "编辑属性工具",
+						"ttl_LineWidth": "线宽",
+						"btn_MapView": "视图",
+						"btn_MapLine": "线段",
+						"btn_MapEraser": "清除",
+						"btn_MapEditOrigin": "编辑零点",
+						"btn_SetOrigin": "设置零点",
+						"btn_CancelSetOrigin": "取消设置零点",
+						"btn_FitView": "全图",
+						"btn_AddVertex": "添加顶点",
+						"btn_EndAddVertex": "结束加入节点",
+						"btn_EditVertex": "编辑顶点",
+						"btn_DeleteVertex": "删除节点",
+						"btn_AddEdge": "添加连接线",
+						"btn_EditEdge": "编辑连接线",
+						"btn_AddCell": "添加储位",
+						"btn_EditCell": "编辑储位",
+						"btn_DeleteCell": "删除储位",
+						"btn_FunctionType": "储位属性菜单",
+						"btn_CreateNewZone": "创建新区域",
+						"btn_DrawZone": "绘制区域",
+						"btn_DeleteZone": "删除区域",
+						"btn_Create": "创建",
+						"btn_Cancel": "取消",
+						"btn_Undo": "上一步",
+						"btn_Save": "保存",
+						"btn_Delete": "删除",
+						"btn_PanZoom": "平移 & 缩放",
+						"lbl_Label": "标签",
+						"lbl_Weight": "权重",
+						"lbl_FunctionType": "储位属性",
+						"lbl_Area": "区域",
+						"lbl_Direction": "方向",
+						"opt_Forward": "前",
+						"opt_Backward": "后",
+						"opt_Left": "左",
+						"opt_Right": "右",
+						"lbl_Load": "负载",
+						"opt_Empty": "空",
+						"opt_Occupied": "占用",
+						"lbl_Markers": "记号",
+						"opt_Pattern": "模式",
+						"opt_None": "无",
+						"lbl_MarkerOffset": "记号偏移量",
+						"lbl_CellSize": "储位大小",
+						"lbl_ZoneList": "Zone 菜单",
+						"lbl_ZoneType": "Zone 类型",
+						"lbl_ZoneName": "Zone 名字",
+						"lbl_ZonePriority": "Zone 优先权",
+						"lbl_ZoneModel": "Model 过滤器",
+						"tab_ZoneEdit": "Zone 编辑",
+						"tab_Setting": "设定",
+						"btn_AddConfig": "加入配置"
+					},
+					"tmpl": {
+						"editor": {
+							"btn_Delete": "删除",
+							"ttp_Desc": "描述",
+							"ttp_Range": "范围",
+							"ttp_Unit": "单位"
+						},
+						"modal": {
+							"ttl_AddConfig": "加入配置"
+						}
+					}
+				},
+				"role": {
+					"ttl_RolesOverview": "角色概览",
+					"btn_CreateNewRole": "创建角色",
+					"btn_BackToPrev": "返回",
+					"btn_SaveRole": "保存",
+					"btn_Create": "创建",
+					"btn_Cancel": "取消"
+				},
+				"sys_set": {
+					"tab_SwarmCore": "Swarm Core",
+					"tab_UsrSetting": "用户设置",
+					"tab_UiSetting": "介面设置",
+					"tab_Others": "其它",
+					"swarm_core": {
+						"title_LowBatteryThresh": "低电量阈值",
+						"text_LowBatteryThresh": "When the AMR is not in the charging mode, it will be assigned the charging task if its battery level is lower than this threshold",
+						"btn_SaveSettings": "保存"
+					},
+					"usr_set": {
+						"lbl_Account": "帐号",
+						"lbl_Pwd": "密码",
+						"lbl_ContactNumber": "手机号",
+						"lbl_Email": "邮箱",
+						"btn_Apply": "应用",
+						"ttl_ChangePwd": "变更密码",
+						"txt_Pwd": "密码",
+						"txt_ConfirmPwd": "确认密码",
+						"btn_Cancel": "取消",
+						"btn_Confirm": "确认"
+					},
+					"ui_set": {
+						"lbl_Theme": "主题",
+						"opt_Dark": "暗",
+						"opt_Light": "亮",
+						"lbl_FontSize": "字体大小",
+						"opt_Small": "小",
+						"opt_Medium": "中",
+						"opt_Large": "大",
+						"lbl_LangEnv": "语言环境",
+						"btn_Apply": "应用"
+					},
+					"others": {
+						"lbl_SwVer": "软件版本",
+						"lbl_CurrVer": "当前软件版本",
+						"lbl_LocoUpdateSC": "Swarm Core本地更新",
+						"lbl_LocoRepo": "软件到本地库",
+						"lbl_LocoUpdateAgnt": "SMR本地更新",
+						"lbl_OtaConnCheck": "OTA服务器 连线确认",
+						"lbl_OtaStatus": "OTA 状态",
+						"lbl_OtaUpdateSC": "Swarm Core OTA更新",
+						"lbl_OtaUpdateAgnt": "SMR OTA更新",
+						"btn_Sw2Loco": "软件到本地库",
+						"btn_Deploy": "Deploy",
+						"btn_LocoUpdateAgnt": "SMR本地更新",
+						"btn_OtaUpdateAgnt": "SMR OTA更新",
+						"lbl_LGN": "LINE群通知",
+						"lbl_LineToken": "代币",
+						"lbl_LogLevel": "日志层级",
+						"lbl_LogContent": "日志内文",
+						"plh_LineToken": "输入代币",
+						"plh_LogKeywords": "输入查找关键词",
+						"btn_Update": "更新",
+						"lbl_LicAuth": "凭证授权",
+						"lbl_LicStatus": "凭证状态",
+						"lbl_LicType": "凭证类型",
+						"lbl_LicExpire": "凭证到期日",
+						"lbl_ContainerId": "Container ID",
+						"lbl_HwSig": "硬件签名",
+						"btn_Activate": "使能",
+						"btn_Remove": "移除",
+						"btn_ExportHwSig": "导出硬件签名",
+						"lbl_EulaStatus": "EULA 状态",
+						"btn_OpenEula": "打开 EULA",
+						"lbl_FacSet": "数据导入/导出 - 出厂设置",
+						"btn_ImportData": "导入数据",
+						"btn_ExportData": "导出数据",
+						"lbl_EraseData": "清除数据",
+						"btn_Delete": "删除",
+						"btn_Export": "导出",
+						"btn_Upload": "上载",
+						"btn_Download": "下载"
+					}
+				},
+				"log": {
+					"ttl_BatteryLog": "电池日志",
+					"btn_BatteryLogExport": "导出",
+					"ttl_DebugLog": "除错日志",
+					"btn_DebugLogExport": "导出",
+					"ttl_EventLog": "事件日志",
+					"btn_AdvancedOptions": "高级选项",
+					"btn_DownloadCSV": "下载CSV",
+					"col_Time": "时间",
+					"col_EventType": "事件类型",
+					"col_EventId": "事件识别码",
+					"col_ModPub": "发布模组",
+					"col_ModSub": "接收模组",
+					"col_Level": "层级",
+					"col_Msg": "讯息内容",
+					"col_DeviceId": "装置识别码",
+					"editor": {
+						"plh_Keywords": "输入关键词",
+						"lbl_Event": "事件",
+						"lbl_Module": "模组",
+						"lbl_Others": "其它",
+						"lbl_DateTime": "日期 与 时间",
+						"btn_Cancel": "取消",
+						"btn_Clear": "清除",
+						"btn_Apply": "应用"
+					}
+				},
+				"usr_man": {
+					"ttl_ManageUser": "用户管理",
+					"btn_CreateNewUser": "创建用户",
+					"col_Edit": "编辑",
+					"col_UserName": "用户",
+					"col_UserAccount": "帐号",
+					"col_Admin": "管理者",
+					"col_PhoneNumber": "手机号",
+					"col_Email": "邮箱",
+					"col_Membership": "到期日",
+					"col_Options": "选项",
+					"btn_DeleteUser": "移除",
+					"btn_SaveUser": "保存",
+					"editor": {
+						"ttl_AddUser": "添加用户",
+						"lbl_Account": "帐号",
+						"lbl_PhoneNumber": "手机号",
+						"lbl_Pwd": "密码",
+						"lbl_Email": "邮箱",
+						"lbl_Name": "名称",
+						"lbl_Auth": "授权层级",
+						"btn_Cancel": "取消",
+						"btn_Create": "创建"
+					}
+				},
+				"api": {
+					"agent_settings": {
+						"version": "1.0.0",
+						"category": {
+							"system": "系统",
+							"control": "控制",
+							"localization": "定位",
+							"network": "网路",
+							"perception": "感知",
+							"planning": "计划"
+						},
+						"system": {
+							"map": {
+								"title": "地图",
+								"description": "机器人使用中地图"
+							},
+							"fleet_name": {
+								"title": "车队名",
+								"description": "机器人所属车队"
+							},
+							"agent_name": {
+								"title": "机器人名",
+								"description": "用户定义机器人名"
+							},
+							"initial_pose_x": {
+								"title": "初始方位 X",
+								"description": ""
+							},
+							"initial_pose_y": {
+								"title": "初始方位 Y",
+								"description": ""
+							},
+							"initial_pose_yaw": {
+								"title": "初始方位旋转角",
+								"description": ""
+							},
+							"initial_pose_confirmed": {
+								"title": "初始方位确认",
+								"description": ""
+							},
+							"mapping_mode": {
+								"title": "建图模式",
+								"description": "真：使能SLAM, 伪：禁用SLAM"
+							}
+						},
+						"control": {
+							"[move_mode] max_velocity": {
+								"title": "最大速度",
+								"description": "直线速度最大值"
+							},
+							"[move_mode] goal_tolerance_distance": {
+								"title": "目标容错距离",
+								"description": "纵向控制错误容错"
+							},
+							"[move_mode] goal_tolerance_angle": {
+								"title": "目标容错角",
+								"description": "旋转控制错误容错"
+							},
+							"[move_mode] max_angular_velocity": {
+								"title": "最大角速度",
+								"description": "角速度最大值"
+							},
+							"[move_mode] distance_threshold_high_velocity": {
+								"title": "高速距离容错值",
+								"description": "高速距离容错值"
+							},
+							"[move_mode] distance_threshold_low_velocity": {
+								"title": "低速距离容错值",
+								"description": "低速距离容错值"
+							},
+							"[docking_mode] abort_distance": {
+								"title": "中止距离",
+								"description": "中止距离"
+							},
+							"[docking_mode] num_of_retries": {
+								"title": "重试次数",
+								"description": "重试次数"
+							},
+							"[docking_mode] docking_time_limit": {
+								"title": "对接次数限制",
+								"description": "对接次数限制"
+							},
+							"[docking_mode] detect_time_limit": {
+								"title": "感知次数限制",
+								"description": "感知次数限制"
+							},
+							"[docking_mode] max_velocity": {
+								"title": "最高速度",
+								"description": "最高速度"
+							},
+							"[docking_mode] max_angular_velocity": {
+								"title": "最高角速度",
+								"description": "最高角速度"
+							},
+							"[docking_mode] tolerance_longitudinal_distance": {
+								"title": "纵向距离容错",
+								"description": "纵向控制错误容错"
+							},
+							"[docking_mode] tolerance_lateral_distance": {
+								"title": "侧向距离容错",
+								"description": "侧向控制错误容错"
+							},
+							"[docking_mode] tolerance_rotation": {
+								"title": "转项容错",
+								"description": "旋转控制错误容错"
+							},
+							"[docking_mode] enable_safety_check": {
+								"title": "对位防护机制",
+								"description": "对位防护机制"
+							},
+							"[docking_mode] disable_safety_distance": {
+								"title": "防护检测距离",
+								"description": "防护检测距离"
+							},
+							"[rotate_mode] max_angular_velocity": {
+								"title": "最高角速度",
+								"description": "旋转速度最大值"
+							},
+							"[rotate_mode] rotation_goal_reach_tolerance": {
+								"title": "旋转目标抵达容错",
+								"description": "旋转控制错误容错"
+							}
+						},
+						"localization": {
+							"localization_max_reference_range": {
+								"title": "定位最大參考范围",
+								"description": "激光定位范围"
+							}
+						},
+						"network": {
+							"bridge_mode": {
+								"title": "跨局域网",
+								"description": ""
+							},
+							"swarm_core_ip": {
+								"title": "Swarm Core IP",
+								"description": ""
+							}
+						},
+						"planning": {
+							"abort_stop_time": {
+								"title": "中止停止时间",
+								"description": "The time for trigger rerouting or navigation failed when obstacles exist"
+							},
+							"safety_time_for_move": {
+								"title": "移动安全时间",
+								"description": "The time for the robot restarts to move when stopping"
+							},
+							"footprint": {
+								"title": "脚印",
+								"description": "The size of the robot. format: [[m,m],[m,m],[m,m],[m,m]]"
+							},
+							"[safety_zone] stop_longitudinal_distance": {
+								"title": "纵向停止距离",
+								"description": "The distance for creating a stop area in the longitudinal direction"
+							},
+							"[safety_zone] stop_lateral_distance": {
+								"title": "侧向停止距离",
+								"description": "The distance for creating a stop area in the latitudinal direction"
+							},
+							"[safety_zone] slow_lateral_distance": {
+								"title": "缓慢侧向距离",
+								"description": "The distance for creating a slow area in the latitudinal direction"
+							}
+						},
+						"perception": {
+							"[rack] detect_tolerance": {
+								"title": "侦测容错",
+								"description": "侦测位到储位距离容错"
+							},
+							"[rack] distance_tolerance": {
+								"title": "距离容错",
+								"description": "侦测储位点距离容错"
+							},
+							"[rack] check_size_tolerance": {
+								"title": "确认大小容错",
+								"description": "比较真实架子与侦测架子大小"
+							}
+						}
+					},
+					"swarm_core_settings": {
+						"version": "1.0.0",
+						"plan": {
+							"low_battery_threshold": {
+								"title": "低电量阀值",
+								"description": "当机器人不是充电模式且电池电量低于此阀值，系统会自动派发充电任务给机器人"
+							},
+							"full_battery_threshold": {
+								"title": "高电量阀值",
+								"description": "当机器人是充电模式且电池电量高于此阀值，系统会自动取消机器人充电任务"
+							},
+							"auto_charging": {
+								"title": "自动充电",
+								"description": "自动充电功能开关"
+							},
+							"charging_due_time": {
+								"title": "充电到期时间",
+								"description": "当机器人是充电模式且超出该充电时间，系统会自动取消机器人充电任务"
+							},
+							"schedule_optimization": {
+								"title": "工作排程最佳化",
+								"description": "开启或关闭工作排程最佳化"
+							}
+						},
+						"battery_log": {
+							"battery_log_time": {
+								"title": "电池日志时间",
+								"description": "机器人日志记录时间间隔"
+							},
+							"battery_log_threshold": {
+								"title": "电池日志阀值",
+								"description": "机器人日志记录限制"
+							}
+						},
+						"system": {
+							"system_restart": {
+								"title": "系统重启",
+								"description": "重启 swarm core 系统"
+							}
+						},
+						"network": {
+							"bridge_mode": {
+								"title": "跨局域网",
+								"description": ""
+							},
+							"swarm_core_ip": {
+								"title": "IP",
+								"description": ""
+							}
+						},
+						"btn_SystemRestart": "重启",
+						"btn_SaveSettings": "保存"
+					}
+				}
+			}
+		}
+	}
+}

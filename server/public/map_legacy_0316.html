@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FARobot | Map</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="dist/css/map-style.css" />
+
+  <script src="dist/js/pages/lib/codemirror@5.52.0/codemirror.min.js"></script>
+  <script src="dist/js/pages/lib/codemirror@5.52.0/mode/javascript.js"></script>
+  <script src="dist/js/pages/lib/codemirror@5.52.0/mode/xml.js"></script>
+  <script src="dist/js/pages/lib/codemirror@5.52.0/mode/yaml.js"></script>
+  <script type="text/javascript" src="dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn"
+            onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class='country_flags' country=''></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <!-- Main content -->
+
+      <!-- Content Header (Page header) -->
+      <div class="content-header"></div>
+      <!-- /.content-header -->
+
+      <section class="content text-white">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header d-flex p-0 farobot-view-header-bg-dark">
+                  <h3 class="card-title p-3"><span data-i18n="edit_map.ttl_MapEditor">Map Editor</span></h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-12">
+
+                      <div class="row">
+                        <div class="col-3" style="padding-left: 2em; padding-top: 2em;">
+                          <div class="input-group">
+                            <select class="form-control" id="map-select" onchange="updateSelectedMap()"></select>
+                            <span class="input-group-append">
+                              <button id="rename_map" class="btn btn-default" data-target="#rename-map-modal">
+                                <i class="nav-icon fas fa-edit"></i>
+                              </button>
+                              <button id="delete_map" class="btn btn-default" data-target="#delete-map-modal">
+                                <i class="nav-icon fas fa-trash"></i>
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-3" style="padding-left: 2em">
+                          <div id="data_view" class="form-group" style="padding-bottom: 1em">
+                            <h4 class="switch-title-size" data-i18n="edit_map.ttl_PropView">Properties View</h4>
+                            <div id="property-view-group" class="farobot-view-bg" style="padding-left: 0.5em;">
+                              <div class="custom-control custom-switch">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox1" checked
+                                  onclick="toggleMap(this.checked);" />
+                                <label for="customCheckbox1" class="custom-control-label"
+                                  data-i18n="edit_map.opt_MapImg">Map Image</label>
+                              </div>
+                              <div class="custom-control custom-switch">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox4" checked
+                                  onclick="toggleOrigin(this.checked);" />
+                                <label for="customCheckbox4" class="custom-control-label"
+                                  data-i18n="edit_map.opt_MapOrig">Map Origin</label>
+                              </div>
+                              <div class="custom-control custom-switch">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox2" checked
+                                  onclick="toggleNavGraph(this.checked);" />
+                                <label for="customCheckbox2" class="custom-control-label"
+                                  data-i18n="edit_map.opt_Routes">Route</label>
+                              </div>
+                              <div class="custom-control custom-switch">
+                                <input class="custom-control-input" type="checkbox" id="customCheckbox3" checked
+                                  onclick="toggleCells(this.checked);" />
+                                <label for="customCheckbox3" class="custom-control-label"
+                                  data-i18n="edit_map.opt_Cells">Storage Cells</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3">
+                          <div id="data_edit" class="form-group">
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" id="customCheckbox"
+                                onclick="toggleEdit(this.checked);" />
+                              <label for="customCheckbox" class="custom-control-label">
+                                <h4 class="switch-title-size">
+                                  <span data-i18n="edit_map.tgl_EditProp">Edit Properties</span>
+                                </h4>
+                              </label>
+                            </div>
+                            <div id="property-group" class="farobot-view-bg" style="padding-left: 0.5em">
+                              <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio"
+                                  value="rdMapImg" />
+                                <label for="customRadio1" class="custom-control-label"
+                                  data-i18n="edit_map.tgl_MapImg">Map Image</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio"
+                                  value="rdRoute" />
+                                <label for="customRadio2" class="custom-control-label"
+                                  data-i18n="edit_map.tgl_Routes">Route</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="customRadio3" name="customRadio"
+                                  value="rdCell" />
+                                <label for="customRadio3" class="custom-control-label"
+                                  data-i18n="edit_map.tgl_Cells">Storage Cells</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="customRadio4" name="customRadio"
+                                  value="rdConnCell" />
+                                <label for="customRadio4" class="custom-control-label">Connected cell management</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="customRadio5" name="customRadio"
+                                  value="rdZone" />
+                                <label for="customRadio5" class="custom-control-label"
+                                  data-i18n="edit_map.tgl_MultiFuncZone">Multiple function zone</label>
+                              </div>
+                              <!-- <div class="custom-control custom-radio">
+                                  <input class="custom-control-input" type="radio" id="customRadio4" name="customRadio" value="rdConfig"/>
+                                  <label for="customRadio4" class="custom-control-label" >Visualization Config.</label>
+                                </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-content">
+                        <div class="tab-pane" id="sub_tab_1">
+                          <!-- <div id="visual-config" class="btn-group" style="display:none">
+                                  <div class="btn-group">
+                                    <div style="display:inline" >Cell Size: <input type='text' id='grid-span' style="width:3em"/>m</div>&nbsp;
+                                    <button id="set-grid-scale" type="button" onclick="btnSetMapGridScale()"> Set </button>
+                                    <button type="button" id="show-rect" onclick="btnFocusView();"> focus view </button>
+                                  </div>
+                                  <button type="button" id="" onclick=""> Save </button>
+                                </div> -->
+
+                          <div class="col-12 text-center">
+                            <div id="far-network2" class="card-body text-center" style="height: 760px"></div>
+                            <!-- <div> -->
+                            <!-- <canvas id="c2" width="900" height="120"></canvas> -->
+                            <!-- </div> -->
+                          </div>
+                          <div id="hidden-map2" class="card-body text-center"></div>
+                        </div>
+                        <!-- /. sub_tab_1 panel -->
+
+                        <div class="tab-pane active" id="sub_tab_2">
+                          <!-- <select id="iFileSelect" onchange="restGetSelectedMap_fb()"></select>
+                                <input type="button" id="edit-mode" value="Selection mode" /> -->
+                          <!-- <div class="btn-group">
+                                  <button id="crop-show" type="button" onclick="btnShowCropTool()"> Show Crop Region </button>
+                                  <button id="crop-map" type="button" onclick="btnCropMap()" style="display:none"> Crop </button>
+                                </div> -->
+                          <!-- <button id="save-png" type="button" data-toggle="modal" data-target="#exampleModal">
+                                    Export As PNG
+                                  </button>
+                                  <button id="save-json" type="button" data-toggle="modal" data-target="#exampleModal">
+                                    Export As JSON
+                                  </button> -->
+                          <!-- </div> -->
+                          <!-- </br> -->
+                          <!-- <div id="tool-panel" class="btn-group" style="display:none">
+                                </div>
+                                <div id="tool-panel2" class="btn-group" style="display:none">
+                                  <select id="zone-tool">
+                                    <option value='preferred'>Preferred zones</option>
+                                    <option value='forbidden'>Forbidden zones</option>
+                                  </select>
+                                  <button id='add-object' class="btn btn-primary" alt="Add"><i
+                                      class="fas fa-area-chart"></i>&nbsp;Add Zone</button>
+                                  <button id='remove-object' class="btn btn-primary" alt="Delete"><i
+                                      class="fas fa-trash"></i>&nbsp;Remove Zone</button>
+                                </div> -->
+                          <!-- <div id="map-tool" class="btn-group"> -->
+
+                          <!-- <div id="visual-config" class="btn-group"> -->
+                          <div id="config-tool" class="btn-group" style="display: none">
+                            <div class="btn-group">
+                              <button class="" alt="Fit" onclick="fitToViewport();">
+                                <i class="fas fa-arrows-alt"></i>&nbsp;<span>Fit</span>
+                              </button>
+                            </div>
+
+                            <div class="btn-group">
+                              <div style="display: inline">
+                                Cell Size:
+                                <input type="text" id="grid-span" style="width: 3em" value="1.0" />m
+                              </div>
+                              &nbsp;
+                              <button id="set-grid-scale" type="button" onclick="btnSetMapGridScale()">
+                                Set
+                              </button>
+                              <!-- <button type="button" id="show-rect" onclick="btnFocusView();"> focus view </button> -->
+                            </div>
+
+                            <div class="btn-group">
+                              <button type="button" id="get-roi" onclick="btnGetRoiTool();">
+                                Get ROI tool
+                              </button>
+                              <button type="button" id="set-roi" onclick="btnSetRoiView();" style="display: none">
+                                Set ROI
+                              </button>
+                              <button type="button" id="cancel-roi" onclick="btnCancelRoiView();" style="display: none">
+                                Cancel
+                              </button>
+                            </div>
+
+                            <div class="btn-group">
+                              <button type="button" id="" onclick="">
+                                Save
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="card-body text-center">
+                            <div class="card-body text-center cont">
+                              <!-- <canvas id="grid"></canvas> -->
+                              <canvas id="c"></canvas>
+                            </div>
+                          </div>
+                          <!-- <canvas id="c2" width="600" height="600"></canvas> -->
+                          <!-- major panel for fabric canvas -->
+                        </div>
+                        <!-- /. sub_tab_2 panel -->
+
+                        <div class="tab-pane" id="sub_tab_3">
+                          <div class="card-body text-center">
+                            <div class="card-body text-center cont">
+                              <canvas id="zoneCanvas"></canvas>
+                              <!-- <img id="zoneCanvasImg" style="display: none;"> -->
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /. sub_tab_3 panel -->
+                      </div>
+                      <!-- /. tab content -->
+                    </div>
+                    <!-- /. col-lg-12 major_panel -->
+
+                    <!-- <img id="canvasImg"> -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- ./card -->
+            </div>
+            <!-- ./col-12 -->
+
+            <div class="col-lg-3" style="display: none">
+              <div class="card">
+                <div class="card-body">
+                  <div>original</div>
+                  <textarea id="ta-graph" style="height: 750px; width: 330px"></textarea>
+                </div>
+                <!-- /.card -->
+              </div>
+            </div>
+            <!-- /.network-card -->
+            <div class="col-lg-3" style="display: none">
+              <div class="card">
+                <div class="card-body">
+                  <div>updated</div>
+                  <textarea id="ta-graph-updated" style="height: 750px; width: 330px"></textarea>
+                  <input type="button" value="Update" onclick="getGraph();" />
+                  <input type="button" value="changeWMS" onclick="updateVisWMS();" />
+                </div>
+                <!-- /.card -->
+              </div>
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- container-fluid -->
+
+        <div id="edit-tools-list" class="btn-group" style="display: none">
+          <div id="edit-tools-card" class="card bg-gradient-dark">
+            <div class="card-header text-center">
+              <h3 class="card-title">
+                <i class="fas fa-tools"></i>&nbsp;<span data-i18n="edit_map.editor.ttl_MapEditPropTools">Edit Properties
+                  Tools</span>
+              </h3>
+              <div class="card-tools">
+                <!-- Create Connections Button -->
+                <!-- <button class="btn btn-tool" type="button" onclick="btnCreateConnection();" style="display: none"> -->
+                <button class="btn btn-tool" id="btn-create-cell-conn" type="button" onclick="btnCreateCellConn();">
+                  <span><i class="fas fa-plus"></i>&nbsp;Create new cell connections</span>
+                </button>
+
+                <!-- Collapse Button -->
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                    class="fas fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="card-body" style="padding-bottom: 0">
+              <div id="edit-tools-info" class="border-bottom">
+                <div class="mb-3 row" id="nav-agent">
+                  <label for="nav-agent-select" class="col-sm-5 col-form-label"><i
+                      class="fas fa-anchor"></i>&nbsp;Nav.</label>
+                  <div class="col-sm-7">
+                    <select class="form-control" id="nav-agent-select"></select>
+                  </div>
+                </div>
+                <div class="mb-3 row" id="edit-status" style="display: none;">
+                  <label for="edit-status-badge" class="col-sm-5 col-form-label" id="edit-status-title"></label>
+                  <div class="col-sm-7 my-auto">
+                    <span class="badge badge-primary" style="font-size: 90%;" id="edit-status-badge"></span>
+                  </div>
+                </div>
+              </div>
+              <div id="additional-tools" class="border-bottom" style="display: none;">
+                <div class="my-3 row align-items-center slidecontainer">
+                  <label for="line-width-slider" class="col-4 text-center">
+                    <span data-i18n="edit_map.editor.ttl_LineWidth">Line Width</span>
+
+                  </label>
+                  <div class=col-8>
+                    <input id="line-width-slider" type="range" min="1" max="10" value="5"
+                      oninput="widthNum.value = this.value">&nbsp;
+                    <output id="widthNum">5</output>
+                  </div>
+                </div>
+              </div>
+              <div id="edit-tools-func" class="text-center">
+                <!-- zone-tool -->
+                <div id="zone-tool" style="display: none">
+                  <div class="card card-default border-bottom">
+                    <div class="card-header">
+                      <h3 class="card-title"><span data-i18n="edit_map.editor.lbl_ZoneList">Zone list</span></h3>
+                    </div>
+                    <div class="card-body" id="zones-deck" style="overflow-x:hidden; overflow-y:scroll; height:150px;">
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                      <button type="button" data-i18n="edit_map.editor.btn_CreateNewZone" class="btn btn-primary"
+                        id="create-zone-btn">Create new zone</button>
+                    </div>
+                  </div>
+                  <div id="zone-editor" style="display: none;">
+                    <div class="row mb-2">
+                      <label for="zone-type-select" class="col-5 col-form-label"
+                        data-i18n="edit_map.editor.lbl_ZoneType">Zone type</label>
+                      <div class="col-7">
+                        <select class="form-control" id="zone-type-select">
+                          <option value="0" selected disabled>Please select type</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="zone-name" class="col-5 col-form-label" data-i18n="edit_map.editor.lbl_ZoneName">Zone
+                        name</label>
+                      <div class="col-7 input-group">
+                        <input type="text" class="form-control zone-input" readonly="true" id="zone-name" value="Zone">
+                        <div class="input-group-append switch-edit-mode">
+                          <div class="input-group-text"><i class="fas fa-pen"></i></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label for="zone-priority-select" class="col-5 col-form-label"
+                        data-i18n="edit_map.editor.lbl_ZonePriority">Zone priority</label>
+                      <div class="col-7">
+                        <select class="form-control" id="zone-priority-select">
+                          <option value="0">normal</option>
+                          <option value="1">high</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row card-deck" style="border-radius: 15px; padding: .5rem 0;">
+                      <div class="col-12 px-0" style="padding-bottom: 1rem;">
+                        <div class="card card-dark" id="zone-tabs-card">
+                          <div class="card-header p-2">
+                            <ul class="nav nav-tabs">
+                              <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" font-size="1.5rem" href="#draw-zone">
+                                  <span data-i18n="edit_map.editor.tab_ZoneEdit">Zone edit</span>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" font-size="1.5rem" href="#zone-settings">
+                                  <span data-i18n="edit_map.editor.tab_Setting">Setting</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body farobot-view-bg px-0">
+                            <div id="overlay-div" style="display: none;"></div>
+                            <div class="tab-content">
+                              <div class="tab-pane active" id="draw-zone">
+                                <ul class="mt-3 px-3">
+                                  <li>
+                                    <button class="btn btn-default" id="add-zone-polygon" type="button"
+                                      onclick="btnAddZonePolygon();">
+                                      <span data-i18n="edit_map.editor.btn_DrawZone">Draw Zone</span>
+                                    </button>
+                                    <button class="btn btn-default" id="edit-zone-polygon" type="button"
+                                      onclick="btnEditZonePolygon();">
+                                      <span data-i18n="edit_map.editor.btn_EditVertex">Edit Vertex</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-default" id="add-zone-vertex" type="button"
+                                      onclick="btnAddZoneVertex();" style="display: none">
+                                      <span data-i18n="edit_map.editor.btn_AddVertex">Add Vertex</span>
+                                    </button>
+                                    <button class="btn btn-default" id="end-zone-vertex" type="button"
+                                      onclick="btnEndZoneVertex();" style="display: none">
+                                      <span data-i18n="edit_map.editor.btn_EndAddVertex">End Add Vertex</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-default" id="delete-zone-vertex" type="button"
+                                      onclick="btnDeleteZoneVertex();" style="display: none">
+                                      <span data-i18n="edit_map.editor.btn_DeleteVertex">Delete Vertex</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-default" id="delete-zone-polygon" type="button"
+                                      onclick="btnDeleteZonePolygon();">
+                                      <span data-i18n="edit_map.editor.btn_DeleteZone">Delete Zone</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-default" type="button" id="cancel-zone-edit"
+                                      onclick="btnCancelZoneEdit();" style="display: none">
+                                      <span data-i18n="edit_map.editor.btn_Cancel">Cancel</span>
+                                    </button>
+                                  </li>
+                                  <!-- <li>
+                                    <button class="btn btn-default" type="button" id="add-zone-node"
+                                      onclick="btnAddNode();">
+                                      <span>Add Node</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-default" type="button" id="add-zone-boundary"
+                                      onclick="btnAddBoundary();">
+                                      <span>Add Boundary</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button class="btn btn-default" type="button" id="delete-zone-node"
+                                      onclick="btnDeleteSelected();" style="display: none">
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                  <li> 
+                                    <button class="btn btn-default" type="button" onclick="btnUndoZone();">
+                                      <i class="fas fa-undo"></i>&nbsp;<span
+                                        data-i18n="edit_map.editor.btn_Undo">Undo</span>
+                                    </button>
+                                  </li> -->
+                                </ul>
+                              </div>
+                              <div class="tab-pane" id="zone-settings">
+
+                                <div class="btn-group w-100">
+                                  <div id="zone-params-card" class="card bg-dark collapsed-card">
+                                    <div class="card-header text-center">
+                                      <div class="card-title">
+                                        <button type="button" class="btn btn-secondary" id="open-zone-configs"
+                                          disabled><i class="fas fa-plus" data-toggle="modal"></i></button>&nbsp;
+                                        <span data-i18n="edit_map.editor.btn_AddConfig">Add configuration</span>
+                                      </div>
+                                      <div class="card-tools">
+                                        <!-- Collapse Button -->
+                                        <button type="button" class="btn btn-tool btn-colapse"
+                                          data-card-widget="collapse" data-expand-icon="fa-chevron-down"
+                                          data-collapse-icon="fa-chevron-up"><i
+                                            class="fas fa-chevron-down"></i></button>
+                                      </div>
+                                    </div>
+                                    <div class="card-body p-0"
+                                      style="overflow-x:hidden; overflow-y:auto; height:150px;">
+                                      <div id="edit-config-deck"></div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                            <!-- /.tab-content -->
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card-->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.card-deck-->
+                  </div>
+                  <!-- /#zone-editor-->
+                </div>
+
+                <!-- conn-cell-tool -->
+                <div id="conn-cell-tool" style="display: none">
+                  <div class="overlay-wrapper" id="preload-overlay" style="height: 100px;">
+                    <div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                      <div class="text-bold pt-2">Loading...</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- cell-tool -->
+                <div id="cell-tool" style="display: none">
+                  <ul class="mt-3">
+                    <li>
+                      <button class="btn btn-default" type="button" id="cancel-cell-edit" onclick="cancelEdit(this.id);"
+                        style="display: none">
+                        Cancel
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="add-cell" onclick="btnAddCell();">
+                        <span data-i18n="edit_map.editor.btn_AddCell">Add Cell</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="edit-cell" onclick="btnEditCell();"
+                        style="display: none">
+                        <span datai-18n="edit_map.editor.btn_EditCell">Edit Cell</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="delete-cell" onclick="btnDeleteSelected();"
+                        style="display: none">
+                        <span datai-18n="edit_map.editor.btn_DeleteCell">Delete Cell</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" onclick="btnUndoCell();">
+                        <i class="fas fa-undo"></i>&nbsp;<span data-i18n="edit_map.editor.btn_Undo">Undo</span></button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" data-widget="control-sidebar" id="function-type-btn"
+                        onclick="popSidebarCellTypes();">
+                        <!-- <i class="nav-icon fas fa-cog"></i>&nbsp;Types Menu -->
+                        <i class="nav-icon fas fa-cog"></i>&nbsp;<span
+                          data-i18n="edit_map.editor.btn_FunctionType">function_type Menu</span>
+                      </button>
+                    </li>
+                    <li class="d-flex align-items-center justify-content-center">
+                      <div class="row">
+                        <div class="col-7">
+                          <button class="btn btn-default w-100" type="button" alt="Live">
+                            <i class="fas fa-eye-slash" style="color:darkgray"></i>
+                            &nbsp;<span id="live-btn-text">Live Status Off</span>
+                          </button>
+                        </div>
+                        <div class="col-5">
+                          <div class="input-group">
+                            <input type="text" id="live-status-text" class="form-control" value="off" readonly="true">
+                            <div class="input-group-append w-60">
+                              <button id="set-live-btn" class="btn btn-sm btn-secondary" type="button"
+                                onclick="toggleCellStatus();">Set On</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- route-tool -->
+                <div id="route-tool" style="display: none">
+                  <ul class="mt-3">
+                    <!-- <li>
+                      <button class="btn btn-default" type="button" id="triton-enable" onclick="btnEnableTriton();"
+                        data-toggle="modal" data-target="#modal-lg">
+                        Triton
+                      </button>
+                    </li> -->
+                    <li>
+                      <button class="btn btn-default" type="button" id="cancel-route-edit"
+                        onclick="cancelEdit(this.id);" style="display: none">
+                        <span data-i18n="edit_map.editor.btn_Cancel">Cancel</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="add-node" onclick="btnAddVertex();">
+                        <span data-i18n="edit_map.editor.btn_AddVertex">Add Vertex</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="edit-node" onclick="btnEditVertex();"
+                        style="display: none">
+                        <span data-i18n="edit_map.editor.btn_EditVertex">Edit Vertex</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="add-edge" onclick="btnAddEdge();">
+                        <span data-i18n="edit_map.editor.btn_AddEdge">Add Edge</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="edit-edge" onclick="btnEditEdge();"
+                        style="display: none">
+                        <span data-i18n="edit_map.editor.btn_EditEdge">Edit Edge</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="delete-node" onclick="btnDeleteSelected();"
+                        style="display: none">
+                        <span data-i18n="edit_map.editor.btn_Delete">Delete</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" onclick="btnUndoRoute();">
+                        <i class="fas fa-undo"></i>&nbsp;<span data-i18n="edit_map.editor.btn_Undo">Undo</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <!-- map-tool -->
+                <div id="map-tool" style="display: none">
+                  <ul class="mt-3">
+                    <li>
+                      <button class="btn btn-default" alt="Fit" onclick="viewMode();">
+                        <i class="fas fa-eye"></i>&nbsp;<span data-i18n="edit_map.editor.btn_MapView">View</span>
+                      </button>
+                    </li>
+                    <!-- <li>
+                            font size: <input type='text' id='font-size' min="0" max="150" style="width:3em" value='6' />
+                            <button id='pen-draw' class="btn btn-default" alt="Pen"><i
+                                class="fas fa-pen"></i>&nbsp;Pen</button>
+                          </li> -->
+                    <li>
+                      <button id="line-draw" class="btn btn-default" alt="Line">
+                        <i class="fas fa-slash"></i>&nbsp;<span data-i18n="edit_map.editor.btn_MapLine">Line</span>
+                      </button>
+                    </li>
+                    <!-- <li>
+                            <button id="rect-draw" class="btn btn-default" alt="Rect">
+                              <i class="fas fa-square"></i>&nbsp;Rect
+                            </button>
+                          </li> -->
+                    <li>
+                      <button id="erase-draw" class="btn btn-default" alt="Eraser">
+                        <i class="fas fa-eraser"></i>&nbsp;<span data-i18n="edit_map.editor.btn_MapEraser">Eraser</span>
+                      </button>
+                    </li>
+                    <li><button id='undo-draw' class="btn btn-default" alt="Undo"><i class="fas fa-undo">
+                        </i>&nbsp;<span data-i18n="edit_map.editor.btn_Undo">Undo</span></button></li>
+                    <!-- <li><button id='undo-draw' class="btn btn-default" alt="Undo"><i class="fas fa-redo"></i>&nbsp;Redo</button></li> -->
+                    <li>
+                      <button class="btn btn-default" type="button" id="get-origin" onclick="btnEditOrigin();">
+                        <span data-i18n="edit_map.editor.btn_MapEditOrigin">Edit Origin</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="set-origin" onclick="btnSetOrigin();"
+                        style="display: none">
+                        <span data-i18n="edit_map.editor.btn_SetOrigin">Set Origin</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-default" type="button" id="cancel-origin" onclick="btnCancelSetOrigin();"
+                        style="display: none">
+                        <span data-i18n="edit_map.editor.btn_CancelSetOrigin">Cancel Set Origin</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="edit-tools-footer" class="card-footer text-center border-top">
+              <button class="btn btn-default" type="button" alt="Fit" onclick="fitToViewport();">
+                <i class="fas fa-arrows-alt"></i>&nbsp;<span data-i18n="edit_map.editor.btn_FitView">Fit</span>
+              </button>
+              <div id="delete-btn-placeholder" style="display: inline;"></div>
+              <button class="btn btn-default" type="button" id="save-changes" onclick="btnSaveChanges();">
+                <span data-i18n="edit_map.editor.btn_Save">Save</span>
+              </button>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- edit-tools-list -->
+      </section>
+      <!-- /.content -->
+
+      <!-- Rename a map -->
+      <div class="modal fade" id="rename-map-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="rename-map-form">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                  <span data-i18n="edit_map.modal.ttl_RenameMap">Rename the Map</span>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                    class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body">
+                <input type="text" id="new-mapname" name="newMapName" required="" class="valid rename-map-input"
+                  aria-invalid="false">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <span data-i18n="edit_map.modal.btn_Cancel">Cancel</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="rename_confirm">
+                  <span data-i18n="edit_map.modal.btn_Confirm">Confirm</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete a map -->
+      <div class="modal fade" id="delete-map-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" data-i18n="edit_map.modal.ttl_DeleteMap" id="myModalLabel">Delete the Map</h4>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label><span data-i18n="edit_map.modal.lbl_ConfirmMsg">Are you sure to delete the map</span>?</label>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-i18n="edit_map.modal.btn_Cancel" data-dismiss="modal">
+                Cancel
+              </button>
+              <button type="button" class="btn btn-primary" data-i18n="edit_map.modal.btn_Confirm" data-dismiss="modal"
+                onclick="deleteMap();">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- create a connection with name -->
+      <div class="modal fade" id="name-cell-conn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">New Connection Name</h4>
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                  class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <input type="text" id="new-conn-name" name="newConnName" required="" class="valid" aria-invalid="false">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="confirm-conn-name">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="zone-config-modal">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="available-items-title"></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul class="products-list product-list-in-card pl-2 pr-2" id="available-items-list">
+              </ul>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+      <div class="card-body text-center">
+        <img id="initial-image" style="display: none" />
+      </div>
+      <!-- hidden initial map image -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <aside class="control-sidebar control-sidebar-dark farobot-sidemenu">
+      <div class="p-2 control-sidebar-content" style="overflow: auto;">
+        <div class="row card-deck" style="border-radius: 15px; height:10%; justify-content: left; padding-left:1rem;">
+          <div id="hide-sidebar"><i class="fas fa-angle-double-right fa-2x"></i></div>
+        </div>
+        <!-- hide-sidebar double arrow -->
+
+        <!-- <div type="text" style="text-align:center; font-size: 1.6rem;">Cell Types</div> -->
+        <div type="text" style="text-align:center; font-size: 1.6rem;">Function Type Menu</div>
+        <!-- title -->
+
+        <div class="col-md-12" id="cell-size-sb" style="padding-top:0.5rem;">
+          <div class="card card-dark card-outline">
+            <div class="card-body" id="sb-cell-size-deck" style="overflow-y:scroll; height:500px;"></div>
+            <!-- /.cell-type card-body -->
+
+            <div id="functionType-footer" class="card-footer">
+              <div class="row">
+                <div class="col-2">
+                  <input type="text" class="form-control cell-type-name function-type-input" id="sbft-cell-name"
+                    placeholder="name">
+                </div>
+                <div class="col-3">
+                  <select class="form-control" id="sbft-cell-detection-type"></select>
+                </div>
+                <div class="col-5 function-type-params" id="user-defined-params">
+                  <div class="row col-12">
+                    <label class="col-5" style="font-size: 1.0rem;">Recog. : </label>
+                    <select class="form-control col-7 device-recognition" id="sbft-recog" name="sel-cell">
+                      <option value="Rack">Rack</option>
+                    </select>
+                  </div>
+                  <!-- <div class="row col-12">
+                    <label class="col-5" style="font-size: 1.0rem;">Offset : </label>
+                    <input class="form-control col-7 device-offset" id="sbft-offset" type="text"
+                      placeholder="width, length (m), yaw(rad.)">
+                  </div> -->
+                  <div class="row col-12">
+                    <label class="col-5" style="font-size: 1.0rem;">Size : </label>
+                    <input class="form-control col-7 device-size function-type-input" id="sbft-size" type="text"
+                      placeholder="width, length, height (m)">
+                  </div>
+                  <div class="row col-12">
+                    <label class="col-5" style="font-size: 1.0rem;">Payload : </label>
+                    <input class="form-control col-7 device-payload function-type-input" id="sbft-payload" type="text"
+                      placeholder="unit: kg">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <button type="button" class="btn btn-secondary" id="sbft-add-btn" onclick="createNewCellSize();"><i
+                      class="fas fa-plus"></i>&nbsp;Add</button>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.cell-type card-footer -->
+
+          </div>
+          <!-- /.nav-tabs-custom -->
+
+          <div class="row justify-content-center" style="margin-top:1rem;">
+            <div style="text-align: center;" id="save-placeholder">
+              <button type="button" class="btn btn-primary btn-lg" id="sb-settings-save" onclick="">Save</button>
+            </div>
+          </div>
+          <!-- /.save-btn -->
+
+        </div>
+        <!-- /.col-md-12 -->
+
+      </div>
+      <!-- /. control-sidebar-content -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <div id="node-popUp">
+      <span id="node-operation">node</span> <br />
+      <table style="margin: auto">
+        <!-- user should not edit the id -->
+        <!-- <tr>
+            <td>id</td>
+            <td><input id="node-id" value="new value" /></td>
+          </tr> -->
+        <tr>
+          <td data-i18n="edit_map.editor.lbl_Label">label</td>
+          <td colspan="2"><input type="text" class="node-input" id="node-label" value="new" style="width:100%" /></td>
+        </tr>
+        <tr>
+          <td>x</td>
+          <td class="posTD"><input type="text" class="node-input" id="node-x" value="-1.0" style="width:100%" /></td>
+          <td class="anchorTD" rowspan="2"><button id="anchorX" onclick="navRouteAnchor();"><i
+                class="fas fa-anchor"></i></button></td>
+        </tr>
+        <tr>
+          <td>y</td>
+          <td class="posTD"><input type="text" class="node-input" id="node-y" value="-1.0" style="width:100%" /></td>
+        </tr>
+      </table>
+      <button type="button" data-i18n="edit_map.editor.btn_Create" id="node-createButton">Create</button>
+      <button type="button" data-i18n="edit_map.editor.btn_Cancel" id="node-cancelButton">Cancel</button>
+    </div>
+    <!-- /. node-operation pop-up -->
+
+    <div id="edge-popUp">
+      <span id="edge-operation">edge</span> <br />
+      <table style="margin: auto">
+        <tr>
+          <td data-i18n="edit_map.editor.lbl_Label">label</td>
+          <td><input id="edge-label" value="new value" /></td>
+        </tr>
+        <tr>
+          <td>weight</td>
+          <td><input id="edge-weight" value="new value" /></td>
+        </tr>
+      </table>
+      <button type="button" data-i18n="edit_map.editor.btn_Create" id="edge-createButton">Create</button>
+      <button type="button" data-i18n="edit_map.editor.btn_Cancel" id="edge-cancelButton">Cancel</button>
+    </div>
+    <!-- /. edge-operation pop-up -->
+
+    <div id="cell-popUp">
+      <span id="cell-operation">node</span> <br />
+      <table style="margin: auto">
+        <tr class="tr-cell-label">
+          <td data-i18n="edit_map.editor.lbl_Label">label</td>
+          <td colspan="2"><input type="text" class="cell-input" id="cell-label" value="new" style="width: 100%" /></td>
+        </tr>
+        <tr>
+          <!-- <td>type</td> -->
+          <td data-i18n="edit_map.editor.lbl_FunctionType">function_type</td>
+          <td colspan="2">
+            <select name="sel-cell" id="cell-type" style="width:100%">
+            </select>
+          </td>
+        </tr>
+        <tr class="tr-cell-area">
+          <td data-i18n="edit_map.editor.lbl_Area">area</td>
+          <td colspan="2"><input type="text" class="cell-input" id="cell-area" value="inbound" style="width: 100%" />
+          </td>
+        </tr>
+        <tr>
+          <td>x</td>
+          <td class="posTD"><input type="text" class="cell-input" id="cell-x" value="-1.0" style="width: 100%" /></td>
+          <td class="anchorTD" rowspan="2"><button id="anchorX" onclick="navCellAnchor();"><i
+                class="fas fa-anchor"></i></button></td>
+        </tr>
+        <tr>
+          <td>y</td>
+          <td class="posTD"><input type="text" class="cell-input" id="cell-y" value="-1.0" style="width: 100%" /></td>
+        </tr>
+        <tr>
+          <td style="width:20%">initial orientation after switch to this map from connected cell</td>
+          <td class="posTD"><input type="text" class="cell-input" id="cell-r" value="None" style="width: 100%"
+              placeholder="eg.75 (unit: degree)" /></td>
+        </tr>
+        <tr>
+          <td data-i18n="edit_map.editor.lbl_Direction">direction</td>
+          <!-- <td><input id="cell-direction" value="forward" /></td> -->
+          <td colspan="2"><select id="cell-direction" style="width: 100%;">
+              <option value="forward" data-i18n="edit_map.editor.opt_Forward">Forward</option>
+              <option value="backward" data-i18n="edit_map.editor.opt_Backward">Backward</option>
+              <option value="left" data-i18n="edit_map.editor.opt_Left">Left</option>
+              <option value="right" data-i18n="edit_map.editor.opt_Right">Right</option>
+            </select></td>
+        </tr>
+        <tr class="tr-cell-load" style="display: none;">
+          <td data-i18n="edit_map.editor.lbl_Load">load</td>
+          <!-- <td><input id="cell-direction" value="forward" /></td> -->
+          <td colspan="2"><select id="cell-load" style="width: 100%;">
+              <option value="empty" data-i18n="edit_map.editor.opt_Empty">empty</option>
+              <option value="occupied" data-i18n="edit_map.editor.opt_Occupied">occupied</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td data-i18n="edit_map.editor.lbl_Markers">markers</td>
+          <td colspan="2"><select id="cell-markers" style="width: 100%;">
+              <option value="Pattern" data-i18n="edit_map.editor.opt_Pattern">Pattern</option>
+              <option value="None" data-i18n="edit_map.editor.opt_None">None</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td data-i18n="edit_map.editor.lbl_MarkerOffset">Marker_Offset</td>
+          <td colspan="2"><input type="text" class="cell-input" id="marker-offset" value=""
+              placeholder="width, length (m), yaw (rad.)" style="width: 100%;" /></td>
+        </tr>
+        <tr>
+          <td data-i18n="edit_map.editor.lbl_CellSize">Cell Size</td>
+          <td colspan="2"><input type="text" class="cell-input" id="cell-size" value=""
+              placeholder="width, length, height (m)" style="width: 100%;" />
+          </td>
+        </tr>
+      </table>
+      <button type="button" data-i18n="edit_map.editor.btn_Create" id="cell-applyButton"
+        style="display:none;">Apply</button>
+      <button type="button" data-i18n="edit_map.editor.btn_Create" id="cell-createButton">Create</button>
+      <button type="button" data-i18n="edit_map.editor.btn_Cancel" id="cell-cancelButton">Cancel</button>
+    </div>
+    <!-- /. node-operation pop-up -->
+
+    <div id="zone-node-popUp">
+      <span id="zone-node-operation">Edit Vertex</span> <br />
+      <table style="margin: auto">
+        <tr>
+          <td>x</td>
+          <td><input type="text" class="zone-node-input" id="zone-node-x" value="-1.0" /></td>
+        </tr>
+        <tr>
+          <td>y</td>
+          <td><input type="text" class="zone-node-input" id="zone-node-y" value="-1.0" /></td>
+        </tr>
+      </table>
+      <button type="button" data-i18n="edit_map.editor.btn_Create" id="zone-node-createButton">Create</button>
+      <button type="button" data-i18n="edit_map.editor.btn_Cancel" id="zone-node-cancelButton">Cancel</button>
+    </div>
+    <!-- /. node-operation pop-up -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Image base64 encoding
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="canvas-content" style="font-size: small">
+            Modal Content is here
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.pop-up modal -->
+
+    <div class="modal fade" id="modal-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Triton Mapping</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-12" alt="function 1: enable triton navigation">
+              <div class="row">
+                <!-- 1. check box -->
+                <div class="form-check col-6">
+                  <input type="checkbox" class="form-check-input" id="include-triton-map" />
+                  <label class="form-check-label" for="exampleCheck1">Include Triton Map</label>
+                </div>
+                <!-- 3. button -->
+                <div class="col-6">
+                  <button type="button" id="create-triton-map" class="btn btn-default">
+                    Create Triton Map
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" alt="function 2: create triton map" style="padding-top: 1em">
+              <div class="row">
+                <!-- 2. text -->
+                <div class="col-6">
+                  <label id="map-existence-msg" style="color: #808080">Latest map created: 2020/05/25</label>
+                </div>
+                <!-- 4. drop-down menu -->
+                <div class="col-6">
+                  Robot:
+                  <select id="agent-select">
+                    <option>fb_0</option>
+                    <option>fb_1</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+
+  </div>
+  <!-- ./wrapper -->
+
+  <template id="sb-cell-type-row">
+    <div class="card card-default farobot-view-bg">
+      <div class="card-body px-1">
+        <div class="row">
+          <div class="col-2 text-center">
+            <label class="cell-type-name" style="font-size: 1.0rem;">name</label>
+          </div>
+          <div class="col-3">
+            <!-- <label id="cell-type-label" style="font-size: 1.0rem;"></label> -->
+            <select class="form-control cell-detection-type" style="font-size: 1.0rem;" disabled=true></select>
+          </div>
+          <div class="col-3">
+            <div class="row col-12">
+              <label class="col-5" style="font-size: 1.0rem;">front:</label>
+              <input type="text" class="form-control col-5 cell-width" value="1.0" readonly=true>
+              <label class="col-2" style="font-size: 1.0rem;">m</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="row col-12">
+              <label class="col-sm-5" style="font-size: 1.0rem;">side:</label>
+              <input type="text" class="form-control col-sm-5 cell-length" value="1.0" readonly=true>
+              <label class="col-2" style="font-size: 1.0rem;">m</label>
+            </div>
+          </div>
+          <div class="col-1">
+            <a class="btn form-control edit-cell-size"><i class="fas fa-pen fa-1x"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="sb-cell-type-row2">
+    <div class="card card-default farobot-view-bg">
+      <div class="card-body px-1">
+        <div class="row">
+          <div class="col-2 text-center">
+            <label class="cell-type-name" style="font-size: 1.0rem;">name</label>
+          </div>
+          <div class="col-3">
+            <select class="form-control cell-detection-type" style="font-size: 1.0rem;" disabled>
+              <option value="rack">Rack</option>
+              <option value="charger">Charger</option>
+            </select>
+          </div>
+          <div class="col-5 function-type-params">
+            <div class="row col-12">
+              <label class="col-5" style="font-size: 1.0rem;">Recog. : </label>
+              <select class="form-control col-7 device-recognition" name="sel-cell" disabled>
+                <option value="Rack">Rack</option>
+                <option value="Position">Position</option>
+                <option value="Charger">Charger</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-2">
+            <a class="btn form-control edit-cell-size"><i class="fas fa-pen fa-1x"></i>&nbsp;<span>Edit</span></a>
+            <a class="btn form-control delete-cell-size"><i class="fas fa-trash fa-1x"></i>&nbsp;<span>Delete</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="sb-cell-type-rack">
+    <div class="row col-12">
+      <label class="col-5" style="font-size: 1.0rem;">Size : </label>
+      <input class="form-control col-7 device-size function-type-input" type="text"
+        placeholder="width, length, height (m)">
+    </div>
+    <div class="row col-12">
+      <label class="col-5" style="font-size: 1.0rem;">Payload : </label>
+      <input class="form-control col-7 device-payload function-type-input" type="text" placeholder="unit: kg">
+    </div>
+  </template>
+  <template id="sb-cell-type-charger">
+    <div class="row col-12">
+      <label class="col-5" style="font-size: 1.0rem;">Offset : </label>
+      <input class="form-control col-7 device-offset function-type-input" type="text"
+        placeholder="width, length (m), yaw(rad.)">
+    </div>
+    <div class="row col-12">
+      <label class="col-5" style="font-size: 1.0rem;">Model : </label>
+      <select class="form-control col-7 device-model" name="sel-cell" multiple></select>
+    </div>
+  </template>
+  <template id="tmpl-cell-conn">
+    <div class="card card-default conn-card farobot-view-bg card-dark">
+      <div class="card-body px-1">
+        <div class="row">
+          <div class="col-3 text-center">
+            <label class="conn-name" style="font-size: 1.0rem;">conn. name</label>
+          </div>
+          <div class="col-6">
+            <select class="form-control conn-combination" style="font-size: 1.0rem;" disabled>
+            </select>
+          </div>
+          <div class="col-3 btn-group">
+            <!-- <a class="btn form-control add-cell-conn"><i class="fas fa-plus fa-1x"></i></a> -->
+            <a class="btn form-control edit-cell-conn"><i class="fas fa-pen fa-1x"></i></a>
+            <a class="btn form-control delete-cell-conn"><i class="fas fa-trash fa-1x"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="zone-card">
+    <div class="card card-default m-1 zone-container">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-5 text-left" style="border-width: 0;">
+            <input type="checkbox" class="activation-switch" data-on-text="&nbsp;activate&nbsp;&nbsp;"
+              data-off-text="deactivate">
+          </div>
+          <div class="col-2"><img class="zone-type-img img-size-32"></div>
+          <div class="col-5 text-left" style="border-width: 0;">
+            <div class="zone-option-name" style="font-size:1.2rem;">Zone Name</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="zone-config-item">
+    <li class="item">
+      <a href="javascript:void(0)" class="product-title"></a>
+    </li>
+  </template>
+  <template id="edit-config-row">
+    <div class="row" style="padding-top:0.3rem; min-height: 72px">
+      <div class="col-5 align-self-center">
+        <div type="text" class="config-label" style="font-size: 1.0rem; word-wrap: break-word;">
+          <span>Param:</span>
+          <i class="fa fa-info-circle custom-tooltip" data-toggle="tooltip" style="display: none;"></i>
+        </div>
+      </div>
+      <div class="col-5 align-self-center">
+        <div class="input-group">
+          <input type="text" class="form-control" readonly=true>
+          <div class="input-group-append">
+            <div class="input-group-text config-edit"><i class="fas fa-pen"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2 align-self-center">
+        <a class="btn remove-config"><i class="fas fa-trash"></i></a>
+      </div>
+    </div>
+  </template>
+  <template id="edit-func-row">
+    <div class="row">
+      <div class="col-9 align-self-center text-left">
+        <div type="text" class="func-label" style="word-wrap: break-word;">
+          <span></span>
+        </div>
+      </div>
+      <div class="col-3 align-self-center">
+        <a class="btn remove-func"><i class="fas fa-trash"></i></a>
+      </div>
+    </div>
+  </template>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- jquery-validation -->
+  <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script scr="plugins/jquery-validation/additional-methods.min.js"></script>
+
+  <script>
+    $.widget.bridge("uibutton", $.ui.button);
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- Sparkline -->
+  <script src="plugins/sparklines/sparkline.js"></script>
+  <!-- jquery-validation -->
+  <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script scr="plugins/jquery-validation/additional-methods.min.js"></script>
+  <!-- Powertip 1.3.2 -->
+  <script src="plugins/powertip/jquery.powertip.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.js"></script>
+  <!-- Notification -->
+  <script src="dist/js/pages/lib/notification.js"></script>
+  <!-- i18Next -->
+  <script src="dist/js/pages/lib/i18next.min.js"></script>
+  <script src="dist/js/pages/lib/jquery-i18next.min.js"></script>
+  <!-- Fabric -->
+  <!-- <script src="dist/js/pages/lib/fabric.min.js"></script> -->
+  <script src="dist/js/pages/lib/fabric_with_gestures.js"></script>
+  <!-- vis.js Network 8.5.4 -->
+  <script src="dist/js/pages/lib/vis-network.min.js"></script>
+  <!-- JSON Deep Diff -->
+  <script src="dist/js/pages/lib/deep-diff.min.js"></script>
+  <!-- Lodash App -->
+  <script src="dist/js/pages/lib/lodash.min.js"></script>
+  <!-- Select2 - 4.0.9 -->
+  <script src="dist/js/pages/lib/select2.min.js"></script>
+
+  <script src="dist/js/pages/lib/solution.js"></script>
+
+  <!-- FARobot Map Editor Page -->
+  <script src="dist/js/pages/util_validation.js"></script>
+  <script src="dist/js/pages/far_utilities.js"></script>
+  <script src="dist/js/pages/far_requests.js"></script>
+  <script src="dist/js/pages/far_requests_rmt.js"></script>
+  <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+  <script src="dist/js/pages/far_comm.js"></script>
+  <script src="dist/js/pages/far_comm_data.js"></script>
+  <script src="dist/js/pages/far_map2_geometry.js"></script>
+  <script src="dist/js/pages/far_map_util.js"></script>
+  <script src="dist/js/pages/far_map.js"></script>
+  <script src="dist/js/pages/util_hollywood.js"></script>
+</body>
+
+</html>

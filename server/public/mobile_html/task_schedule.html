@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Scheduled task viewer</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="public/dist/css/mobile/task-schedule-style.css">
+  <script type="text/javascript" src="public/dist/js/pages/lib/toastify.js"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn"
+            onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class='country_flags' country=''></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <div class="sidebar">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <div class="content-header"></div>
+      <section class="content" style="margin-left: 1.5rem;">
+        <div class="container-fluid" id="main-content">
+          <form>
+            <div class="form-inline">
+              <div class="row">
+                <div class="col-12 col-sm-6 col-xl-2">
+                  <div id="startDatePicker" class="datepicker date input-group p-0">
+                    <input type="text" placeholder="YYYY/MM/DD" class="form-control" id="startDate"
+                      onkeydown="event.preventDefault()">
+                    <div class="input-group-append"><span class="input-group-text"><i
+                          class="fas fa-calendar-alt"></i></span></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2">
+                  <div class="input-group bootstrap-timepicker timepicker">
+                    <input id="startTime" type="text" class="form-control" autocomplete="off">
+                    <div class="input-group-append"><span class="input-group-text"><i class="far fa-clock"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-1 text-center">-</div>
+                <div class="col-12 col-sm-6 col-xl-2">
+                  <div id="endDatePicker" class="datepicker date input-group p-0">
+                    <input type="text" placeholder="YYYY/MM/DD" class="form-control" id="endDate"
+                      onkeydown="event.preventDefault()">
+                    <div class="input-group-append"><span class="input-group-text"><i
+                          class="fas fa-calendar-alt"></i></span></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2">
+                  <div class="input-group bootstrap-timepicker timepicker">
+                    <input id="endTime" type="text" class="form-control" autocomplete="off">
+                    <div class="input-group-append"><span class="input-group-text"><i class="far fa-clock"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-3 text-center">
+                  <button type="button" id="apply-date" class="btn btn-primary farobot-md-btn"
+                    onClick="applyDateRange()">
+                    <span data-i18n="task_schedule_viewer.btn_ApplyDate">Apply Date</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-4 col-xl-3">
+                <div class="form-inline">
+                  <span data-i18n="task_schedule_viewer.lbl_ViewBy">View
+                    by</span>:
+                  <select id="scale-select" class="form-control select-bold-text" onchange="applyScale(this)">
+                    <!-- <option value="auto">Auto</option> -->
+                    <option value="second-1">1 sec</option>
+                    <option value="second-10">10 secs</option>
+                    <option value="minute-1">1 min</option>
+                    <option value="minute-10">10 mins</option>
+                    <option value="hour-1">1 hr</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 col-xl-3">
+                <div class="row">
+                  <div class="col-12">
+                    <select id="agent-select" class="selectpicker" multiple data-live-search="true" data-width="100%"
+                      data-actions-box="true" title="Agent filter" onchange="filterAgents(this, event)"></select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 col-xl-3">
+                <div class="row">
+                  <div class="col-12">
+                    <select id="flow-select" class="selectpicker" multiple data-live-search="true" data-width="100%"
+                      data-actions-box="true" title="Flow filter" onchange="filterFlows(this, event)"></select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xl-3 text-center">
+                <button type="button" class="btn btn-secondary farobot-md-btn" onclick="resetFilters()">
+                  <span data-i18n="task_schedule_viewer.btn_Reset">Reset</span>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="row">
+            <div id="chartdiv"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- Send manual operation trigger confirm -->
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+  </div>
+  <!-- ./wrapper -->
+
+
+  <!-- jQuery -->
+  <script src="public/plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Sparkline -->
+  <script src="public/plugins/sparklines/sparkline.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="public/dist/js/adminlte.js"></script>
+  <!-- Bootstrap Datetimepicker -->
+  <script src="public/dist/js/pages/lib/bootstrap-datepicker.min.js"></script>
+  <script src="public/dist/js/pages/lib/moment.min.js"></script>
+  <script src="public/dist/js/pages/lib/bootstrap-timepicker.min.js"></script>
+  <!-- Bootstrap Select -->
+  <script src="public/dist/js/pages/lib/bootstrap-select.min.js"></script>
+  <!-- Lodash App -->
+  <script src="public/dist/js/pages/lib/lodash.min.js"></script>
+  <!-- Notification -->
+  <script src="public/dist/js/pages/lib/notification.js"></script>
+  <!-- i18Next -->
+  <script src="public/dist/js/pages/lib/i18next.min.js"></script>
+  <script src="public/dist/js/pages/lib/jquery-i18next.min.js"></script>
+  <!-- AMCharts -->
+  <script src="public/dist/js/pages/lib/amcharts5/index.js"></script>
+  <script src="public/dist/js/pages/lib/amcharts5/xy.js"></script>
+  <script src="public/dist/js/pages/lib/amcharts5/themes/Dark.js"></script>
+  <script src="public/dist/js/pages/lib/amcharts5/themes/Animated.js"></script>
+  <!-- FARobot Dashboard Page -->
+  <script src="public/dist/js/pages/far_chart.js"></script>
+  <script src="public/dist/js/pages/far_task_schedule.js"></script>
+  <script src="public/dist/js/pages/far_utilities.js"></script>
+  <script src="public/dist/js/pages/far_requests.js"></script>
+  <script src="public/dist/js/pages/far_requests_rmt.js"></script>
+  <script src="public/dist/js/pages/far_comm.js"></script>
+  <script src="public/dist/js/pages/far_comm_data.js"></script>
+  <script src="public/dist/js/pages/util_hollywood.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FARobot | Operation</title>
+  <!-- FARobot style -->
+  <link rel="stylesheet" href="dist/css/operation-style.css">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark farobot-dark-mode">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ml-auto">
+          <a href="#" class="nav-link" id="statusIndicator"></a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item align-self-center font-weight-bold" id="user-login-status"></li>
+        <li class="nav-item align-self-center font-weight-bold">&emsp;|&emsp;</li>
+        <li class="nav-item align-self-center">
+          <button type="button" data-i18n="nav.sign_out" class="btn btn-link" id="user-logout-btn" onclick="restLogout()">Sign out</button>
+        </li>
+        <li class="nav-item">
+          <!-- <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"> -->
+          <a class="nav-link" data-slide="true" href="#" role="button">
+            <i class='country_flags' country=''></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper farobot-dark-mode">
+      <div class="row">
+        <div class="col-12" id="flow_dashboard">
+          <div id="list_section" class="col-4" style="float: left;">
+
+            <section class="content mt-3" style="margin-left: 3rem;">
+              <div class="container-fluid" id="main-content">
+                <div class="row">
+                  <div class="content-header">
+                    <div class="col-sm-12">
+                      <h4 class="m-0" data-i18n="flow_config.ttl_Flows">Flows</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" id="task-row">
+                  <div class="card-deck col-lg-12 farobot-card-deck-darkshadow" id="operation-deck"
+                    style="border-radius: 15px; min-height: 500px; height: 500px; overflow: hidden scroll;">
+                    <div class="row col-lg-12 d-flex justify-content-center align-self-start" id="add-list"></div>
+                    <div class="row col-lg-12 d-flex align-items-end" style="margin-top: 30px;">
+                      <button type="button" class="btn btn-secondary" id="flow-item" data-toggle="modal" style="margin-left: 15px;
+                      margin-bottom: 15px;"><i class="fas fa-plus"></i><span
+                          data-i18n="flow_config.btn_createFlow">Flow</span></button>
+                      <button type="button" class="btn btn-light" id="open-role-btn"
+                        onClick="location.href='role.html'"><span data-i18n="flow_config.btn_ToRoleEditor">Go to Role
+                          Overview</span></button>
+                    </div>
+                  </div>
+                  <!-- /.card-deck -->
+                </div>
+                <!-- /.row -->
+
+              </div>
+              <!-- /.container-fluid -->
+              <div id="tmp_select" hidden="true">
+
+              </div>
+
+            </section>
+            <!-- /.row container-fluid -->
+            <!--  -->
+          </div>
+          <div id="plan_artifact_section" class="col-8" style="padding-right: 15px; float: right;">
+            <!--  -->
+            <div class="row" style="margin-top:1rem;">
+
+              <div class="content-header">
+                <div class="col-sm-12">
+                  <h4 class="m-0" data-i18n="flow_config.ttl_PlanArtfStts">Plan Artifact Status</h4>
+                </div>
+                <!-- /.col-sm-12 -->
+              </div>
+              <!-- /.content-header -->
+
+              <div class="row col-lg-12">
+                <div class="card-deck col-lg-12 farobot-card-deck" id="plan-artifact-deck"
+                  style="border-radius: 15px;min-height:15em">
+                  <!-- MEMBER-CARD-HERE -->
+                </div>
+                <!-- /.card-deck -->
+
+                <div id="add-plan-artifact" class="round-rect my-button" data-toggle="modal" data-target="#modal-lg">
+                  <div class="content_wrapper">
+                    <i class="fas fa-plus fa-2x"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-12 (agent fleet status) -->
+            </div>
+            <!--  -->
+            <div class="card-deck col-lg-12 farobot-card-deck" id="artifact_conf_panel"
+              style="border-radius: 15px;min-height:15em; margin-top: 20px; display: none;">
+              <div class="col-lg-12">
+                <h4>Artifact Config</h4>
+              </div>
+              <div class="col-lg-12" id="artifact_content" style="border-radius: 15px;min-height:15em; ">
+                <!-- artifact conf panel -->
+              </div>
+              <div class="col-lg-12 justify-content-center"
+                style="margin-top: 1rem; font-size: 100%; margin-bottom: 1rem;">
+                <div style="text-align: center; font-size: 100%;" id="artifact_conf_save">
+                  <button class="btn btn-primary btn-lg">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12" id="flow_edit_dashboard" style="display: none;">
+          <!-- return button -->
+          <div class="row align-items-center" style="margin: 20px;">
+            <div class="col-11 conainter text-left" id="back-div" style="display: none;">
+              <button class="btn btn-default btn-lg" id="flow-back">
+                <span data-i18n="flow_config.editor.btn_Back">Back</span>
+              </button>
+            </div>
+            <div class="col-1 conainter text-right" id="save-flow-div" style="display: none;">
+              <button type="button" class="btn btn-primary btn-lg" id="save-flow-btn" onclick="save('op')">
+                <span data-i18n="flow_config.editor.btn_Save">Save</span>
+              </button>
+            </div>
+          </div>
+          <!-- Flow -->
+          <div class="row col-lg-12" id="flow-row">
+            <div class="card border-light col-lg-12" id="flow-deck"
+              style="border-radius: 15px;background-color: #353941;min-height:500px; padding: 0;">
+              <!-- Test -->
+              <ul class="nav nav-tabs" id="flowTab" role="tablist">
+                <li class="nav-item op-c" role="presentation">
+                  <a class="nav-link active" id="flow-home-tab" data-toggle="tab" href="#flow-home" role="tab"
+                    aria-controls="flow-home" aria-selected="true"
+                    style="border-top-left-radius: 15px; height: 100%; padding: 0;">
+                    <div class="card-header text-center" style="font-size: 19px;">
+                      <span class="editing-flowname"></span>
+                      <button id='edit-flowname-switch' class="edit_flow_name_btn">
+                        <i class='fa fa-pen fa-lg' style="color: white;"></i>
+                      </button>
+                    </div>
+                  </a>
+                </li>
+                <li class="nav-item op-c" role="presentation">
+                  <a class="nav-link" id="flow-profile-tab" data-toggle="tab" href="#flow-profile" role="tab"
+                    aria-controls="profile" aria-selected="false"
+                    style="border-top-right-radius: 15px; height: 100%; padding: 0;">
+                    <div id="timer_label_flow" class="card-header text-center">Timer</div>
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content" id="flow-myTabContent">
+                <div class="tab-pane fade show active" id="flow-home" role="tabpanel" aria-labelledby="flow-home-tab">
+                  <div class="card-body" style="width:100%;height:800px;overflow:auto;">
+                    <table class="table table-borderless" id="task-field-table">
+                      <tbody>
+                        <tr>
+                          <td class="title-td" width="30%">
+                            <div>
+                              <span data-i18n="flow_config.editor.lbl_FlowTrig">Flow Trigger</span>:
+                            </div>
+                          </td>
+                          <td class="text-right py-0 align-middle">
+                            <select id="flow_select" class="form-control trigger-select select-bold-text"
+                              style="width: 100%;">
+                              <option hidden disabled selected value></option>
+                              <option id="flow-manual" value="manual">Manual</option>
+                              <option id="flow-event" value="event">Event</option>
+                              <option id="flow-timer" value="timer">Timer</option>
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <div class="col-3" style="margin-top: 40px;width:300px;height:800px;overflow:auto;">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Task" role="tab"
+                              aria-controls="home" aria-selected="true">
+                              <span data-i18n="flow_config.editor.tab_Role">Role</span>
+                            </a>
+                          </li>
+                          <!-- <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Logical" role="tab"
+                              aria-controls="profile" aria-selected="false">Logical</a>
+                          </li> -->
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                          <div class="tab-pane fade show active" id="Task" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="start"
+                              style="display: none;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-play-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                  d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+                              </svg>
+                              <span> Start</span>
+                            </div>
+                            <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="finish"
+                              style="display: none;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-record-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                              </svg>
+                              <span> Finish</span>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="Logical" role="tabpanel" aria-labelledby="profile-tab">
+                            <!-- <div class="drag-drawflow" draggable="true" ondragstart="drag(event)"
+                              data-node="logical_and">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                                <path
+                                  d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
+                              </svg>
+                              <span> And</span>
+                            </div> -->
+                            <!-- <div class="drag-drawflow" draggable="true" ondragstart="drag(event)" data-node="logical_or">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-sunglasses" viewBox="0 0 16 16">
+                                <path
+                                  d="M3 5a2 2 0 0 0-2 2v.5H.5a.5.5 0 0 0 0 1H1V9a2 2 0 0 0 2 2h1a3 3 0 0 0 3-3 1 1 0 1 1 2 0 3 3 0 0 0 3 3h1a2 2 0 0 0 2-2v-.5h.5a.5.5 0 0 0 0-1H15V7a2 2 0 0 0-2-2h-2a2 2 0 0 0-1.888 1.338A1.99 1.99 0 0 0 8 6a1.99 1.99 0 0 0-1.112.338A2 2 0 0 0 5 5H3zm0 1h.941c.264 0 .348.356.112.474l-.457.228a2 2 0 0 0-.894.894l-.228.457C2.356 8.289 2 8.205 2 7.94V7a1 1 0 0 1 1-1z" />
+                              </svg>
+                              <span> Or</span>
+                            </div> -->
+                            <!-- <div class="drag-drawflow" draggable="true" ondragstart="drag(event)"
+                              data-node="logical_delay">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-stopwatch" viewBox="0 0 16 16">
+                                <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                                <path
+                                  d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+                              </svg>
+                              <span> Delay</span>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-9">
+                        <div class="wrapper" style="height: 800px;">
+                          <div id="drawflow" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                            <!-- <div class="btn-export" onclick="Swal.fire({ title: 'Export',
+                                html: '<pre><code>'+JSON.stringify(editor.export(), null,4)+'</code></pre>'
+                                })">Export</div> -->
+                            <!-- <div class="btn-export" onclick="save()">Save</div> -->
+                            <div class="btn-testflow" onclick="testflowInit()">
+                              <span data-i18n="flow_config.editor.btn_Run">Run</span>
+                            </div>
+                            <div class="btn-clear" onclick="init_panel();">
+                              <span data-i18n="flow_config.editor.btn_ClearPanel">Clear Panel</span>
+                            </div>
+                            <!-- <div class="btn-delete" id="delete-node" onclick="deleteSelNode()" style="display: none;">Delete Node</div> -->
+                            <div class="btn-delete" onclick="deleteSelectedItem()" style="display: none;">Delete</div>
+                            <!-- <div class="btn-delete" onclick="delete_flow()">Delet flow</div> -->
+                            <!-- <div class="btn-collapse" onclick="flows_collapse()">Collapse flow</div> -->
+                            <div class="btn-lock">
+                              <i id="lock" class="fas fa-lock"
+                                onclick="editor.editor_mode='fixed'; changeMode('lock');"></i>
+                              <i id="unlock" class="fas fa-lock-open"
+                                onclick="editor.editor_mode='edit'; changeMode('unlock');" style="display:none;"></i>
+                            </div>
+                            <div class="bar-zoom">
+                              <i class="fas fa-search-minus" onclick="editor.zoom_out()"></i>
+                              <i class="fas fa-search" onclick="editor.zoom_reset()"></i>
+                              <i class="fas fa-search-plus" onclick="editor.zoom_in()"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="flow-profile" role="tabpanel" aria-labelledby="flow-profile-tab">
+                  <div id='flow-timer-sche-status' class="col-lg-12"></div>
+                  <div id='flow-timer-sche' class="col-lg-12" style="height:800px; overflow:auto;"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- /. Flow -->
+        </div>
+      </div>
+
+      <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="available-items-title"></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul class="products-list product-list-in-card pl-2 pr-2" id="available-items-list">
+              </ul>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+      <!-- Content Header (Page header) -->
+      <!-- <div class="row" style="margin-left:1rem;">
+        <div class="content-header" style="margin-top: 40px;">
+          <div class="col-sm-12">
+            <h4 class="m-0">Task Schedule Overview</h4>
+          </div>
+        </div>
+      </div> -->
+      <!-- /.content-header(task schedule overview) -->
+
+      <div class="row col-12" id="task-schedule-div" style="display: none;">
+        <div class="card col-12" id="no-data-div" style="margin: 10px;">
+          <div class="card-body">No task yet.</div>
+        </div>
+      </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <aside id="control_sidebar" class="control-sidebar control-sidebar-dark farobot-sidemenu"
+      style="width: 30%; top:88px;">
+      <div id="card_content_div" class="p-3 control-sidebar-content">
+
+      </div>
+      <!-- /.agent-info -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <div class="modal fade" id="task-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form>
+              <div class="form-inline">
+                <label for="task-name" class="col-form-label space-right">New Task:</label>
+                <input type="text" class="form-control" id="task-name">
+                <button type="button" class="btn btn-primary" style="margin-left: 20px;" id="add-task">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" id="flow-modal">
+      <div class="modal-dialog" style="margin-top: 60px;">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form>
+              <div class="form-inline justify-content-center">
+                <label for="flow-name" class="col-form-label space-right">New Flow:</label>
+                <input type="text" class="form-control flow-input" id="flow-name">
+                <!-- <button type="button" class="btn btn-secondary" style="margin-left: 10px;" id="cancel-add-flow">Cancel</button> -->
+                <button type="button" class="btn btn-primary ml-2" id="add-flow">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal" id="manual-trigger-confirm-modal" data-keyboard="false" data-backdrop="static"></div>
+
+    <div class="modal fade" id="event-trigger-modal" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content" style="margin-top: 60px;">
+          <div class="modal-body">
+            <form>
+              <div class="form-inline">
+                <label for="event-id" class="col-form-label space-right" id="event-label"></label>
+                <input type="text" class="form-control col-md-9 flow-input" id="event-id">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary" id="add-event">Confirm</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" id="timer-trigger-modal" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content" style="margin-top: 60px;">
+          <div class="modal-body">
+            <div class="container col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <form>
+                    <div class="form-inline">
+                      <label for="startTime" class="col-form-label space-right" id="timer-label"></label>
+                      <div class="datepicker date input-group p-0 space-right" style="width: 180px;">
+                        <input type="text" placeholder="YYYY/MM/DD" class="form-control py-2 px-2" id="startDate">
+                        <div class="input-group-append"><span class="input-group-text px-2"><i
+                              class="fas fa-calendar-alt"></i></span></div>
+                      </div>
+                      <input type="text" class="form-control flow-input" id="startTime" placeholder="HH:MM" maxlength="5"
+                        style="width: 100px;">
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-12">
+                  <form>
+                    <div class="form-group form-inline">
+                      <div class="checkbox">
+                        <label for="repeatCheckbox">
+                          <input type="checkbox" id="repeatCheckbox" class="space-right" value="" checked>Repeat every
+                          <input id="cycle-time" type="text" class="form-control space-right" value="30" maxlength="3"
+                            style="width:55px;"> Min.
+                        </label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-12">
+                  <form>
+                    <div class="form-inline">
+                      <label for="endTime" class="space-right">Until</label>
+                      <div class="datepicker date input-group p-0 space-right" style="width: 180px;">
+                        <input type="text" placeholder="YYYY/MM/DD" class="form-control py-2 px-2" id="endDate">
+                        <div class="input-group-append"><span class="input-group-text px-2"><i
+                              class="fas fa-calendar-alt"></i></span></div>
+                      </div>
+                      <input type="text" class="form-control flow-input" id="endTime" placeholder="HH:MM" maxlength="5"
+                        style="width: 100px;">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- /.container -->
+          </div>
+          <!-- /.modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="add-timer">Confirm</button>
+          </div>
+          <!-- /.modal-footer -->
+
+
+          <template id="agent-item">
+            <li class="item" id="">
+              <div class="product-img">
+                <img src="dist/img/sprites/bbr-150x150.png" alt="Product Image" class="img-size-50">
+              </div>
+              <div class="product-info">
+                <a href="javascript:void(0)" class="product-title">
+                  <span class="badge float-right"></span></a>
+                <span class="product-description"></span>
+              </div>
+            </li>
+            <!-- /.item -->
+          </template>
+
+          <template id="member-card">
+            <div class="card col-lg-3" style="margin:1rem ;">
+              <img class="card-img-top" src="dist/img/sprites/smr250-440x220.png" alt="Card image cap">
+              <div class="card-body">
+                <button type="button" class="close agent-remove" aria-label="Close" style="font-size: 36px;">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="info-box-content">
+                  <div style="text-align: center;">
+                    <span class="info-box-number" style="font-size: 18px;">SMR 250</span>
+                  </div>
+                  <br>
+                  <div style="text-align: center;">
+                    <label class="agent-mode">Active</label>
+                    <button id="config_btn" type="button" class="btn agent-settings plan"
+                      style="float:right; padding-right: 0.0rem;"><i class="nav-icon fas fa-cog"></i></button>
+                  </div>
+                  <br>
+                  <div class="art_id" style="text-align: center;"></div>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.smr-card-0 -->
+          </template>
+
+          <template id="params-tab-pane">
+            <div class="tab-pane" style="overflow-y:scroll; height:200px">
+              <div class="row col-12">
+                <div class="col-6 left-col"></div>
+                <div class="col-6 right-col" style="padding-left:1rem;"></div>
+              </div>
+            </div>
+          </template>
+
+          <template id="param-group-row">
+            <div class="row" style="padding-top:0.3rem;">
+              <div class="col-6">
+                <div type="text" class="param-label" style="text-align:center; font-size: 1.0rem;">Param: </div>
+              </div>
+              <div class="col-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" readonly=true>
+                  <div class="input-group-append">
+                    <div class="input-group-text param-edit"><i class="fas fa-pen"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <template id="no-need-set-parameter">
+            <div class="row card-deck" style="border-radius: 15px; ">
+              <div class="card col-lg-12 p-3 nav2dmapCanvas farobot-view-bg" data-widget="" style="margin:1rem; background-color:white">
+                <div class="card-header">
+                  <h4 class="card-title">No Role</h4>
+                </div>
+                <div class="card-body" style="font-size: 1.0rem;">
+                  <div class="row" style="padding:0.0rem;margin-top: 10px;">
+                    <div class="col-12">
+                      <div type="text"  style="text-align: center;font-size: 1.0rem;">No need to set parameters</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>            
+          </template>
+
+          <!-- side bar for plan artifact -->
+          <div class="row card-deck" style="border-radius: 15px; height:25%; padding-top:3rem;">
+            <div class="col-md-12" style="margin-top:0rem;">
+              <div class="card card-dark card-outline" id="sidebar-param-card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-tabs">
+                    <!-- <li class="nav-item"><a class="nav-link" href="#amcl" data-toggle="tab" font-size:1.5rem;">AMCL</a></li> -->
+                  </ul>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div id="overlay-div"></div>
+                  <div class="tab-content">
+                  </div>
+                  <!-- /.tab-content -->
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.nav-tabs-custom -->
+              <div class="row justify-content-center" style="margin-top:1rem;">
+                <div style="text-align: center;" id="save-placeholder">
+                  <!-- <button type="button" class="btn btn-light btn-lg" id="sb-settings-save">Save</button> -->
+                </div>
+              </div>
+              <!-- /.save-btn -->
+            </div>
+            <!-- /.col -->
+            <div>
+
+              <!-- /.agent-params -->
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+      </div>
+      <!-- ./wrapper -->
+
+      <!-- jQuery -->
+      <script src="plugins/jquery/jquery.min.js"></script>
+      <!-- jQuery UI 1.11.4 -->
+      <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+      <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+      <script>
+        $.widget.bridge('uibutton', $.ui.button)
+      </script>
+      <!-- Bootstrap 4 -->
+      <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="plugins/chart.js/Chart.min.js"></script>
+      <!-- Sparkline -->
+      <script src="plugins/sparklines/sparkline.js"></script>
+      <!-- overlayScrollbars -->
+      <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+      <!-- AdminLTE App -->
+      <script src="dist/js/adminlte.js"></script>
+      <!-- Powertip 1.3.2 -->
+      <script src="plugins/powertip/jquery.powertip.min.js"></script>  
+
+      <!-- Bootstrap Datetimepicker -->
+      <script src="dist/js/pages/lib/bootstrap-datepicker.min.js"></script>
+
+      <script src="dist/js/pages/lib/toastify-js.js"></script>
+      <script src="dist/js/pages/lib/jquery.cookie.min.js"></script>
+      <script src="dist/js/pages/lib/moment.min.js"></script>
+      <script src="dist/js/pages/lib/drawflow.min.js"></script>
+      <!-- Lodash App -->
+      <script src="dist/js/pages/lib/lodash.min.js"></script>
+      <!-- Notification -->
+      <script src="dist/js/pages/lib/notification.js"></script>
+      <!-- i18Next -->
+      <script src="dist/js/pages/lib/i18next.min.js"></script>
+      <script src="dist/js/pages/lib/jquery-i18next.min.js"></script>
+
+      <!-- FARobot Operation Page -->
+      <script src="dist/js/pages/util_validation.js"></script>
+      <script src="dist/js/pages/far_requests.js"></script>
+      <script src="dist/js/pages/far_requests_rmt.js"></script>
+      <script src="dist/js/pages/far_utilities.js"></script>
+      <!-- <script src="dist/js/pages/far_ros_broker.js"></script> -->
+      <script src="dist/js/pages/far_comm.js"></script>
+      <script src="dist/js/pages/far_comm_data.js"></script>
+      <script src="dist/js/pages/far_flow.js"></script>
+      <script src="dist/js/pages/far_operation.js"></script>
+      <script src="dist/js/pages/util_hollywood.js"></script>
+</body>
+
+</html>

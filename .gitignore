@@ -1,0 +1,20 @@
+# Node artifact files
+ros_mocks_ws/build/
+ros_mocks_ws/install/
+ros_mocks_ws/log/
+ros_mocks_ws/src/rosbridge_suite/
+
+server/node_modules/
+server/far-swarm-ui
+server/ros_bridge
+server/thumbnails/
+server/bin/
+server/upload-zips/
+server/services/mock_cli/wrappers/
+
+tests/node_modules
+
+react_ui/node_modules
+react_ui/dist
+
+local-build/

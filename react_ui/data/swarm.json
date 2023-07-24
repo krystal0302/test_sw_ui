@@ -1,0 +1,130 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "artifact_1",
+      "artifact_name": "artifact 1",
+      "wrapper_id": "wrapper_1",
+      "type": "wrapper",
+      "sw_version": "1.0.0",
+      "ip": "192.168.0.1",
+      "mac": "Ab:cD:ef:gh:ij:k8",
+      "artifact_category": "Embedded",
+      "run_on_image": "image a",
+      "support_skd": "sdk a",
+      "builder": "builder a",
+      "build_time": "100",
+      "build_env": "env a"
+    },
+    {
+      "artifact_id": "artifact_2",
+      "artifact_name": "artifact 2",
+      "wrapper_id": "wrapper_2",
+      "type": "wrapper",
+      "sw_version": "1.0.0",
+      "ip": "192.168.0.1",
+      "mac": "Ab:cD:ef:gh:ij:k8",
+      "artifact_category": "Embedded",
+      "run_on_image": "image b",
+      "support_skd": "sdk b",
+      "builder": "builder b",
+      "build_time": "200",
+      "build_env": "env b"
+    },
+    {
+      "artifact_id": "artifact_3",
+      "artifact_name": "artifact 3",
+      "wrapper_id": "wrapper_3",
+      "type": "wrapper",
+      "sw_version": "1.0.0",
+      "ip": "192.168.0.1",
+      "mac": "Ab:cD:ef:gh:ij:k8",
+      "artifact_category": "Embedded",
+      "run_on_image": "image c",
+      "support_skd": "sdk c",
+      "builder": "builder c",
+      "build_time": "200",
+      "build_env": "env c"
+    },
+    {
+      "artifact_id": "artifact_4",
+      "artifact_name": "artifact 4",
+      "wrapper_id": "wrapper_4",
+      "type": "wrapper",
+      "sw_version": "1.0.0",
+      "ip": "192.168.0.1",
+      "mac": "Ab:cD:ef:gh:ij:k8",
+      "artifact_category": "Embedded",
+      "run_on_image": "image d",
+      "support_skd": "sdk d",
+      "builder": "builder d",
+      "build_time": "200",
+      "build_env": "env d"
+    },
+    {
+      "artifact_id": "artifact_5",
+      "artifact_name": "artifact 5",
+      "wrapper_id": "wrapper_5",
+      "type": "wrapper",
+      "sw_version": "1.0.0",
+      "ip": "192.168.0.1",
+      "mac": "Ab:cD:ef:gh:ij:k8",
+      "artifact_category": "Embedded",
+      "run_on_image": "image e",
+      "support_skd": "sdk e",
+      "builder": "builder e",
+      "build_time": "200",
+      "build_env": "env e"
+    },
+    {
+      "artifact_id": "artifact_6",
+      "artifact_name": "artifact 6",
+      "wrapper_id": "wrapper_6",
+      "type": "wrapper",
+      "sw_version": "1.0.0",
+      "ip": "192.168.0.1",
+      "mac": "Ab:cD:ef:gh:ij:k8",
+      "artifact_category": "Embedded",
+      "run_on_image": "image f",
+      "support_skd": "sdk f",
+      "builder": "builder f",
+      "build_time": "200",
+      "build_env": "env f"
+    }
+  ],
+  "sdk_tree_view": {
+    "wrapper_config": {
+      "name": "Wrapper configuration",
+      "children": [
+        {
+          "name": "Live info"
+        },
+        {
+          "name": "Configuration"
+        },
+        {
+          "name": "Wrapper data"
+        },
+        {
+          "name": "Picture"
+        }
+      ]
+    },
+    "service_list": {
+      "name": "Service list",
+      "children": [
+        {
+          "name": "my_service_1"
+        },
+        {
+          "name": "my_service_2"
+        },
+        {
+          "name": "my_service_3"
+        }
+      ]
+    },
+    "operation_logic": {
+      "name": "Operation logic"
+    }
+  }
+}
